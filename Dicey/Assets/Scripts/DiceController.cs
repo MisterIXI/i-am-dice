@@ -16,17 +16,25 @@ public class DiceController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void FixedUpdate()
     {
-        if (Movement.x != 0 || Movement.y != 0)
+        if (IsMoving())
         {
-            rb.AddForce(Movement * 10);
+            rb.AddForce(GetMovementVector());
         }
     }
 
+    private bool IsMoving()
+    {
+        return Movement.x != 0 || Movement.y != 0;
+    }
+    private Vector3 GetMovementVector()
+    {
+        return new Vector3(Movement.x, 0, Movement.y) * 10;
+    }
     public void MoveDice(InputAction.CallbackContext context)
     {
         if (context.action.name == "MoveDice")
@@ -37,7 +45,28 @@ public class DiceController : MonoBehaviour
             }
             else if (context.action.phase == InputActionPhase.Performed)
             {
-                Debug.Log("Performed");
+                Movement = context.action.ReadValue<Vector2>();
+            }
+            else if (context.action.phase == InputActionPhase.Canceled)
+            {
+                Movement = new Vector2(0, 0);
+            }
+        }
+    }
+    public float jumpStrength = 800;
+    public void Jump(InputAction.CallbackContext context)
+    {
+        if (context.action.name == "Jump")
+        {
+            if (context.action.phase == InputActionPhase.Started)
+            {
+                Debug.Log("Started");
+            }
+            else if (context.action.phase == InputActionPhase.Performed)
+            {
+                rb.AddForce(new Vector3(0, jumpStrength, 0));
+                rb.AddTorque(new Vector3(Random.Range(1f, 2f) * jumpStrength, Random.Range(1f, 2f) * jumpStrength, Random.Range(1f, 2f) * jumpStrength));
+
             }
             else if (context.action.phase == InputActionPhase.Canceled)
             {
@@ -51,6 +80,9 @@ public class DiceController : MonoBehaviour
     {
         Gizmos.color = Color.red;
         // draw force arrow
-        Gizmos.DrawRay(transform.position, new Vector3(1,1.5f,0) * 10);
+        if (IsMoving())
+        {
+            Gizmos.DrawRay(transform.position, GetMovementVector());
+        }
     }
 }
