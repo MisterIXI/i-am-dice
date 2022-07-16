@@ -28,12 +28,12 @@ public class FollowCam : MonoBehaviour
         if (direction.y > 0)
         {
             if (angle + directionChange.y * speed < 90f)
-                transform.RotateAround(target.position, transform.right, directionChange.y * speed);
+                transform.RotateAround(target.position, transform.right, -directionChange.y * speed);
         }
         else
         {
             if (angle - directionChange.y * speed < 90f)
-                transform.RotateAround(target.position, transform.right, directionChange.y * speed);
+                transform.RotateAround(target.position, transform.right, -directionChange.y * speed);
         }
 
         direction = transform.position - target.position;
