@@ -317,7 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 531045fa22b8f57448347a0c2eb18715, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpStrength: 800
+  jumpStrength: 500
 --- !u!54 &2291940191728438186
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -376,7 +376,19 @@ MonoBehaviour:
     m_ActionId: 44c1adc8-beb1-41cb-a8b1-1777f6ed689c
     m_ActionName: Player/MoveDice[/XInputControllerWindows/leftStick,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow,/BEEF-46D/stick]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: FollowCam, Assembly-CSharp
+        m_MethodName: RotateCamera
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: a3807f9d-0ffb-4283-8422-ae6e6aba775f
     m_ActionName: Player/Look[/XInputControllerWindows/rightStick,/Mouse/delta]
   - m_PersistentCalls:
@@ -435,6 +447,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 573f67a3-4d74-473a-b391-2bb9dcafd9ab
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: FollowCam, Assembly-CSharp
+        m_MethodName: ZoomCamera
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 82871717-d9c7-4af7-bcbe-68493d9f91fb
+    m_ActionName: Player/CameraZoomOut[/XInputControllerWindows/leftTrigger]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
