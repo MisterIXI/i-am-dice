@@ -6,20 +6,37 @@ using UnityEngine.InputSystem;
 public class FollowCam : MonoBehaviour
 {
     public Transform target;
+    public float speed = 5f;
     private Vector3 direction;
     private Vector2 directionChange;
     // Start is called before the first frame update
     void Start()
     {
-        
+        direction = new Vector3(5, 0, 5);
     }
 
+
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        float oldX = transform.rotation.y;
         transform.position = target.position + direction;
         transform.LookAt(target);
-        direction = (new Vector3(directionChange.x, directionChange.y, 0) + direction).normalized * 10;
+        transform.RotateAround(target.position, Vector3.up, directionChange.x * speed);
+        float angle = Vector3.Angle(new Vector3(direction.x, 0, direction.z), direction);
+
+        if (direction.y > 0)
+        {
+            if (angle + directionChange.y * speed < 90f)
+                transform.RotateAround(target.position, transform.right, directionChange.y * speed);
+        }
+        else
+        {
+            if (angle - directionChange.y * speed < 90f)
+                transform.RotateAround(target.position, transform.right, directionChange.y * speed);
+        }
+
+        direction = transform.position - target.position;
     }
 
     public void RotateCamera(InputAction.CallbackContext context)
@@ -33,7 +50,7 @@ public class FollowCam : MonoBehaviour
             else if (context.action.phase == InputActionPhase.Performed)
             {
                 directionChange = context.action.ReadValue<Vector2>();
-                Debug.Log("Direction change: " + directionChange);
+                // Debug.Log("Direction change: " + directionChange);
             }
             else if (context.action.phase == InputActionPhase.Canceled)
             {
