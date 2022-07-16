@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Goal : MonoBehaviour
+public class DiceRollDetector : MonoBehaviour
 {
     public DiceFaceManager diceFaceManager;
 
@@ -30,12 +30,11 @@ public class Goal : MonoBehaviour
         if (other.gameObject.CompareTag("DiceFace"))
         {
             _currentlyTouchingFaceNumber = diceFaceManager.GetFaceNumber(other);
-            Debug.Log($"Currently touching face: {_currentlyTouchingFaceNumber}.");
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        //_currentFaceNumber = 0;
+        _currentlyTouchingFaceNumber = 0;
     }
 }
