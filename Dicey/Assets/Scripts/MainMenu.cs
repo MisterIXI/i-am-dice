@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
     public GameObject mainMenuPanel;
     public GameObject optionsPanel;
     public GameObject creditsPanel;
-    public Camera mainMenuCamera;
+    public GameObject mainMenuCamera;
 
     // Update is called once per frame
     void Update()
@@ -22,7 +22,7 @@ public class MainMenu : MonoBehaviour
     {
         player.SetActive(true);
         mainMenuPanel.SetActive(false);
-        mainMenuCamera.enabled = false;
+        mainMenuCamera.SetActive(false);
     }
 
     public void OpenOptionsMenu()
