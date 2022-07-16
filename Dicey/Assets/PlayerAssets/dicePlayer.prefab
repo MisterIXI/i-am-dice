@@ -230,6 +230,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 573f67a3-4d74-473a-b391-2bb9dcafd9ab
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: FollowCam, Assembly-CSharp
+        m_MethodName: ZoomCamera
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 82871717-d9c7-4af7-bcbe-68493d9f91fb
+    m_ActionName: Player/CameraZoomOut[/XInputControllerWindows/leftTrigger]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
