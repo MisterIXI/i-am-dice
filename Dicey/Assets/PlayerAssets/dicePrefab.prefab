@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 5395797273886958024}
   - component: {fileID: 9088184702331925994}
   m_Layer: 0
-  m_Name: dicePlayer
+  m_Name: dicePrefab
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
