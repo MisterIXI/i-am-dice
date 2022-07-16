@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.45002824, g: 0.50008124, b: 0.5755019, a: 1}
+  m_IndirectSpecularColor: {r: 0.45002836, g: 0.50008166, b: 0.57550246, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -426,10 +426,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6346116397218548023, guid: 5ba5f0cded00f8f4288d6e1611fb66f6, type: 3}
-      propertyPath: jumpStrength
-      value: 800
-      objectReference: {fileID: 0}
     - target: {fileID: 7001519526389945231, guid: 5ba5f0cded00f8f4288d6e1611fb66f6, type: 3}
       propertyPath: m_Name
       value: dicePlayer
@@ -479,57 +475,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7719925731228480317, guid: 5ba5f0cded00f8f4288d6e1611fb66f6, type: 3}
-      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7719925731228480317, guid: 5ba5f0cded00f8f4288d6e1611fb66f6, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7719925731228480317, guid: 5ba5f0cded00f8f4288d6e1611fb66f6, type: 3}
-      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7719925731228480317, guid: 5ba5f0cded00f8f4288d6e1611fb66f6, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7719925731228480317, guid: 5ba5f0cded00f8f4288d6e1611fb66f6, type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 963194229}
-    - target: {fileID: 7719925731228480317, guid: 5ba5f0cded00f8f4288d6e1611fb66f6, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 963194229}
-    - target: {fileID: 7719925731228480317, guid: 5ba5f0cded00f8f4288d6e1611fb66f6, type: 3}
-      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7719925731228480317, guid: 5ba5f0cded00f8f4288d6e1611fb66f6, type: 3}
-      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RotateCamera
-      objectReference: {fileID: 0}
-    - target: {fileID: 7719925731228480317, guid: 5ba5f0cded00f8f4288d6e1611fb66f6, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7719925731228480317, guid: 5ba5f0cded00f8f4288d6e1611fb66f6, type: 3}
-      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: FollowCam, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7719925731228480317, guid: 5ba5f0cded00f8f4288d6e1611fb66f6, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: FollowCam, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7719925731228480317, guid: 5ba5f0cded00f8f4288d6e1611fb66f6, type: 3}
-      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 7719925731228480317, guid: 5ba5f0cded00f8f4288d6e1611fb66f6, type: 3}
-      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ba5f0cded00f8f4288d6e1611fb66f6, type: 3}
 --- !u!1001 &1747410606
