@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1822820190960062351}
   - component: {fileID: 5369116344544439164}
+  - component: {fileID: 7176756422213201916}
   m_Layer: 0
   m_Name: Face3
-  m_TagString: Untagged
+  m_TagString: DiceFace
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,6 +46,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7176756422213201916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2243027661812498156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df05de59f7b699f4aa654259dc638387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FaceNumber: 3
 --- !u!1 &5041033052260380032
 GameObject:
   m_ObjectHideFlags: 0
@@ -55,9 +69,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1245147666390481712}
   - component: {fileID: 5939460001861492868}
+  - component: {fileID: 1353761726791612100}
   m_Layer: 0
   m_Name: Face1
-  m_TagString: Untagged
+  m_TagString: DiceFace
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -90,6 +105,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1353761726791612100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5041033052260380032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df05de59f7b699f4aa654259dc638387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FaceNumber: 1
 --- !u!1 &5318856781511990264
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,9 +128,10 @@ GameObject:
   m_Component:
   - component: {fileID: 510842094020287029}
   - component: {fileID: 4971837574776269906}
+  - component: {fileID: 6494537039403138641}
   m_Layer: 0
   m_Name: Face2
-  m_TagString: Untagged
+  m_TagString: DiceFace
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -135,6 +164,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6494537039403138641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5318856781511990264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df05de59f7b699f4aa654259dc638387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FaceNumber: 2
 --- !u!1 &6613089737723865775
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,9 +229,11 @@ GameObject:
   - component: {fileID: 2291940191728438186}
   - component: {fileID: 7719925731228480317}
   - component: {fileID: 2112840682812340645}
+  - component: {fileID: 5395797273886958024}
+  - component: {fileID: 9088184702331925994}
   m_Layer: 0
   m_Name: dicePlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -410,6 +454,30 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -835688487210165693, guid: 1e36a26c349b83f4183d352f23a0aaec, type: 3}
+--- !u!114 &5395797273886958024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7001519526389945231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee4facb5f300e5c46aa053cd35fd6810, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9088184702331925994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7001519526389945231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee4facb5f300e5c46aa053cd35fd6810, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8144332921995063670
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,9 +488,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7266212357808918216}
   - component: {fileID: 8311542712075568211}
+  - component: {fileID: 2485025032519051313}
   m_Layer: 0
   m_Name: Face4
-  m_TagString: Untagged
+  m_TagString: DiceFace
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -455,6 +524,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2485025032519051313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8144332921995063670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df05de59f7b699f4aa654259dc638387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FaceNumber: 4
 --- !u!1 &8940321028361560486
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,9 +547,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6019163839652610852}
   - component: {fileID: 8533809125606201055}
+  - component: {fileID: 8470546381127204351}
   m_Layer: 0
   m_Name: Face6
-  m_TagString: Untagged
+  m_TagString: DiceFace
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -500,6 +583,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8470546381127204351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8940321028361560486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df05de59f7b699f4aa654259dc638387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FaceNumber: 6
 --- !u!1 &9214768187368673084
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,9 +606,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6826277086602053273}
   - component: {fileID: 2391100543115647408}
+  - component: {fileID: 55808484831551783}
   m_Layer: 0
   m_Name: Face5
-  m_TagString: Untagged
+  m_TagString: DiceFace
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -545,3 +642,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 0}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &55808484831551783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9214768187368673084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df05de59f7b699f4aa654259dc638387, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FaceNumber: 5
