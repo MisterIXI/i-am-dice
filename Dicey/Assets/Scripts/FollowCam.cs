@@ -55,7 +55,14 @@ public class FollowCam : MonoBehaviour
             }
             else if (context.action.phase == InputActionPhase.Performed)
             {
-                directionChange = context.action.ReadValue<Vector2>();
+                if (context.action.activeControl.device.name == "Mouse")
+                {
+                    directionChange = context.action.ReadValue<Vector2>() * 0.2f;
+                }
+                else
+                {
+                    directionChange = context.action.ReadValue<Vector2>();
+                }
                 // Debug.Log("Direction change: " + directionChange);
             }
             else if (context.action.phase == InputActionPhase.Canceled)
