@@ -6,7 +6,14 @@ public class Goal : MonoBehaviour
 {
     public DiceFaceManager diceFaceManager;
 
-    private int _currentFaceNumber;
+    // If the dice is currently on the goal, this returns the number shown on top of the dice.
+    // Otherwise, 0 is returned.
+    public int GetCurrentlyRolledNumber()
+    {
+        return _currentlyTouchingFaceNumber == 0 ? 0 : 7 - _currentlyTouchingFaceNumber;
+    }
+
+    private int _currentlyTouchingFaceNumber;
 
     // Start is called before the first frame update
     void Start()
@@ -22,8 +29,8 @@ public class Goal : MonoBehaviour
     {
         if (other.gameObject.CompareTag("DiceFace"))
         {
-            _currentFaceNumber = diceFaceManager.GetFaceNumber(other);
-            Debug.Log($"Currently touching face: {_currentFaceNumber}.");
+            _currentlyTouchingFaceNumber = diceFaceManager.GetFaceNumber(other);
+            Debug.Log($"Currently touching face: {_currentlyTouchingFaceNumber}.");
         }
     }
 
