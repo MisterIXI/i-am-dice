@@ -7,7 +7,6 @@ public class MainMenu : MonoBehaviour
     public float rotationSpeed;
     public GameObject player;
     public GameObject mainMenuPanel;
-    public GameObject optionsPanel;
     public GameObject creditsPanel;
     public GameObject mainMenuCamera;
 
@@ -27,7 +26,6 @@ public class MainMenu : MonoBehaviour
 
     public void OpenOptionsMenu()
     {
-        optionsPanel.SetActive(true);
         mainMenuPanel.SetActive(false);
     }
 
@@ -39,7 +37,6 @@ public class MainMenu : MonoBehaviour
 
     public void BackToMainMenu()
     {
-        optionsPanel.SetActive(false);
         creditsPanel.SetActive(false);
         mainMenuPanel.SetActive(true);
     }
