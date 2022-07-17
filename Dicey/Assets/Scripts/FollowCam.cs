@@ -5,43 +5,48 @@ using UnityEngine.InputSystem;
 
 public class FollowCam : MonoBehaviour
 {
-    public Transform target;
-    public float speed = 5f;
-    public float cameraDistance = 10f;
-    private float cameraZoom = 0;
-    private Vector3 direction;
-    private Vector2 directionChange;
+    public Transform Target;
+    public float Speed = 5f;
+    public float CameraDistance = 10f;
+    private float _cameraZoom = 0;
+    private Vector3 _direction;
+    private Vector2 _directionChange;
+    private DiceController _diceController;
     // Start is called before the first frame update
     void Start()
     {
-        direction = new Vector3(1, 0, 1).normalized * cameraDistance;
+        _diceController = Target.gameObject.GetComponent<DiceController>();
+        _direction = new Vector3(1, 0, 1).normalized * CameraDistance;
     }
-
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (_directionChange.x != 0 || _directionChange.y != 0)
+        {
+            _diceController.updateMovement(_diceController.CurrentInput);
+        }
         // Debug.Log("CameraDistance: " + cameraDistance+ " CameraZoom: " + cameraZoom);
-        cameraDistance = Mathf.Clamp(cameraDistance + cameraZoom, 5f, 20f);
+        CameraDistance = Mathf.Clamp(CameraDistance + _cameraZoom, 5f, 20f);
 
         float oldX = transform.rotation.y;
-        transform.position = target.position + direction;
-        transform.LookAt(target);
-        transform.RotateAround(target.position, Vector3.up, directionChange.x * speed);
-        float angle = Vector3.Angle(new Vector3(direction.x, 0, direction.z), direction);
+        transform.position = Target.position + _direction;
+        transform.LookAt(Target);
+        transform.RotateAround(Target.position, Vector3.up, _directionChange.x * Speed);
+        float angle = Vector3.Angle(new Vector3(_direction.x, 0, _direction.z), _direction);
 
-        if (direction.y > 0)
+        if (_direction.y > 0)
         {
-            if (angle - directionChange.y * speed < 90f)
-                transform.RotateAround(target.position, transform.right, -directionChange.y * speed);
+            if (angle - _directionChange.y * Speed < 90f)
+                transform.RotateAround(Target.position, transform.right, -_directionChange.y * Speed);
         }
         else
         {
-            if (angle + directionChange.y * speed < 90f)
-                transform.RotateAround(target.position, transform.right, -directionChange.y * speed);
+            if (angle + _directionChange.y * Speed < 90f)
+                transform.RotateAround(Target.position, transform.right, -_directionChange.y * Speed);
         }
 
-        direction = (transform.position - target.position).normalized * cameraDistance;
+        _direction = (transform.position - Target.position).normalized * CameraDistance;
 
     }
 
@@ -55,12 +60,19 @@ public class FollowCam : MonoBehaviour
             }
             else if (context.action.phase == InputActionPhase.Performed)
             {
-                directionChange = context.action.ReadValue<Vector2>();
+                if (context.action.activeControl.device.name == "Mouse")
+                {
+                    _directionChange = context.action.ReadValue<Vector2>() * 0.2f;
+                }
+                else
+                {
+                    _directionChange = context.action.ReadValue<Vector2>();
+                }
                 // Debug.Log("Direction change: " + directionChange);
             }
             else if (context.action.phase == InputActionPhase.Canceled)
             {
-                directionChange = new Vector2(0, 0);
+                _directionChange = new Vector2(0, 0);
             }
         }
     }
@@ -71,12 +83,12 @@ public class FollowCam : MonoBehaviour
         {
             if (context.action.phase == InputActionPhase.Performed)
             {
-                cameraZoom = context.action.ReadValue<float>();
+                _cameraZoom = context.action.ReadValue<float>();
                 // Debug.Log("Zoom: " + cameraZoom);
             }
             else if (context.action.phase == InputActionPhase.Canceled)
             {
-                cameraZoom = 0;
+                _cameraZoom = 0;
             }
         }
     }
