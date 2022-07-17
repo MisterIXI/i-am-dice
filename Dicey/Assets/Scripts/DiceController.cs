@@ -5,14 +5,19 @@ using UnityEditor;
 using UnityEngine.InputSystem;
 public class DiceController : MonoBehaviour
 {
+    private float JUMP_COOLDOWN = 1f;
+
     private Vector2 _movement;
     [HideInInspector]
     public Vector2 CurrentInput;
     Rigidbody _rb;
     public float JumpStrength = 800;
-    private bool _isJumping = true;
+    private bool _isJumping = false;
+    private bool _isOnJumpCooldown = false;
     private Vector3 _initialPosition;
     private Quaternion _initialRotation;
+    private Material _material;
+    private Material _material2;
 
     void Start()
     {
@@ -21,6 +26,8 @@ public class DiceController : MonoBehaviour
         CurrentInput = new Vector2(0, 0);
         _initialPosition = transform.position;
         _initialRotation = transform.rotation;
+        _material = GetComponent<MeshRenderer>().material;
+        _material2 = GetComponent<MeshRenderer>().materials[1];
     }
 
     // Update is called once per frame
@@ -35,6 +42,7 @@ public class DiceController : MonoBehaviour
         {
             _rb.AddForce(GetMovementVector());
         }
+        CheckForFloor();
     }
 
     private bool IsMoving()
@@ -83,14 +91,14 @@ public class DiceController : MonoBehaviour
     {
         if (context.action.name == "Jump")
         {
-            if (_isJumping)
+            if (!_isJumping && !_isOnJumpCooldown)
             {
 
                 if (context.action.phase == InputActionPhase.Performed)
                 {
                     _rb.AddForce(new Vector3(0, JumpStrength, 0));
                     _rb.AddTorque(new Vector3(Random.Range(1f, 2f) * JumpStrength, Random.Range(1f, 2f) * JumpStrength, Random.Range(1f, 2f) * JumpStrength));
-
+                    StartCoroutine(JumpCooldown());
                 }
                 else if (context.action.phase == InputActionPhase.Canceled)
                 {
@@ -98,6 +106,46 @@ public class DiceController : MonoBehaviour
                 }
             }
         }
+    }
+
+    private string _debugString = "";
+    private void CheckForFloor()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 2.5f))
+        {
+            _debugString = "Hit: " + hit.collider.gameObject.name;
+            if (hit.collider.gameObject.tag != "DiceFace")
+            {
+                _isJumping = false;
+                _material2.color = Color.green;
+            }
+            // else
+            // {
+            //     _isJumping = true;
+            //     _material2.color = Color.red;
+            // }
+        }
+        else
+        {
+            _isJumping = true;
+            _material2.color = Color.red;
+        }
+    }
+    private IEnumerator JumpCooldown()
+    {
+        _isOnJumpCooldown = true;
+        //darken material color
+        Color oldColor = _material.color;
+        _material.color = new Color(_material.color.r / 3, _material.color.g / 3, _material.color.b / 3, _material.color.a);
+        Vector3 colorSteps = new Vector3(_material.color.r / 10, _material.color.g / 10, _material.color.b / 10);
+        for (int i = 0; i < 10; i++)
+        {
+            yield return new WaitForSeconds(JUMP_COOLDOWN / 10);
+            _material.color = new Color(_material.color.r + colorSteps.x, _material.color.g + colorSteps.y, _material.color.b + colorSteps.z, _material.color.a);
+        }
+        _isOnJumpCooldown = false;
+        _material.color = oldColor;
     }
 
     public void ResetPosition(InputAction.CallbackContext context)
@@ -130,6 +178,8 @@ public class DiceController : MonoBehaviour
         // }
         // Handles.Label(transform.position, "Angle: " + angle);
 
+        Gizmos.DrawRay(transform.position, Vector3.down * 3f);
+        Handles.Label(transform.position, _debugString);
         if (IsMoving())
         {
             Gizmos.DrawRay(transform.position, GetMovementVector());
