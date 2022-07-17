@@ -652,6 +652,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: dice
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 471fc888175eabb48aa191fe94bcca51, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 471fc888175eabb48aa191fe94bcca51, type: 3}
 --- !u!1 &3636485407184740408 stripped
@@ -895,6 +899,7 @@ MonoBehaviour:
   CurrentInput: {x: 0, y: 0}
   JumpStrength: 800
   Offset: 0.5
+  BaseColor: {r: 0, g: 0, b: 0, a: 0}
   InfiniteJumpsEnabled: 0
 --- !u!4 &4124369929674898050 stripped
 Transform:
