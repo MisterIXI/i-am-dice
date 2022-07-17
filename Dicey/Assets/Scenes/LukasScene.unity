@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4366756, g: 0.48427194, b: 0.5645252, a: 1}
+  m_IndirectSpecularColor: {r: 0.43667564, g: 0.48427135, b: 0.56452316, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -18047,6 +18047,8 @@ GameObject:
   - component: {fileID: 7994963706000859076}
   - component: {fileID: 8586007444254647105}
   - component: {fileID: 8586007444254647104}
+  - component: {fileID: 8586007444254647106}
+  - component: {fileID: 8586007444254647107}
   m_Layer: 0
   m_Name: King.001
   m_TagString: Untagged
@@ -19179,6 +19181,38 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 622389830684850844, guid: 3b0b46b829c291f488b0b20b951bd9d4, type: 3}
+--- !u!114 &8586007444254647106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6769735171661786813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7b6d8f98d770064992509877167aa3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AngleThreshold: 30
+  VelocityThreshold: 0.5
+  UpdateFrequency: 10
+  DotSpawnOffset: {x: 0, y: 1, z: 0}
+--- !u!114 &8586007444254647107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6769735171661786813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7b6d8f98d770064992509877167aa3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AngleThreshold: 30
+  VelocityThreshold: 0.5
+  UpdateFrequency: 10
+  DotSpawnOffset: {x: 0, y: 5, z: 0}
 --- !u!1001 &8610273580115088794
 PrefabInstance:
   m_ObjectHideFlags: 0
