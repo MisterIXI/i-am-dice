@@ -190,15 +190,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7719925731228480317, guid: 5ba5f0cded00f8f4288d6e1611fb66f6, type: 3}
       propertyPath: m_ActionEvents.Array.size
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 7719925731228480317, guid: 5ba5f0cded00f8f4288d6e1611fb66f6, type: 3}
       propertyPath: m_ActionEvents.Array.data[14].m_ActionId
       value: 342e3d16-d618-4035-998f-9578d9e39779
       objectReference: {fileID: 0}
     - target: {fileID: 7719925731228480317, guid: 5ba5f0cded00f8f4288d6e1611fb66f6, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_ActionId
+      value: d6197ab5-f876-4906-8b30-bea08a1745e4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7719925731228480317, guid: 5ba5f0cded00f8f4288d6e1611fb66f6, type: 3}
       propertyPath: m_ActionEvents.Array.data[14].m_ActionName
       value: Player/ResetPosition[/XInputControllerWindows/buttonNorth,/Keyboard/r]
+      objectReference: {fileID: 0}
+    - target: {fileID: 7719925731228480317, guid: 5ba5f0cded00f8f4288d6e1611fb66f6, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_ActionName
+      value: Player/DebugSpawn[/XInputControllerWindows/buttonEast]
       objectReference: {fileID: 0}
     - target: {fileID: 7719925731228480317, guid: 5ba5f0cded00f8f4288d6e1611fb66f6, type: 3}
       propertyPath: m_ActionEvents.Array.data[14].m_PersistentCalls.m_Calls.Array.size
@@ -261,6 +269,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2.0000002, z: 2.0000002}
   m_Center: {x: 0, y: 0, z: 0.0000038146973}
+--- !u!114 &4227399356243919595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939637367604084053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85dcd87686647c94c91111f68a70e8df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3761008034884102125 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6346116397218548023, guid: 5ba5f0cded00f8f4288d6e1611fb66f6, type: 3}

@@ -2735,6 +2735,46 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 774404482}
+    - target: {fileID: 505115985625423335, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 505115985625423335, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_ActionId
+      value: d6197ab5-f876-4906-8b30-bea08a1745e4
+      objectReference: {fileID: 0}
+    - target: {fileID: 505115985625423335, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_ActionName
+      value: Player/DebugSpawn[/XInputControllerWindows/buttonEast]
+      objectReference: {fileID: 0}
+    - target: {fileID: 505115985625423335, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 505115985625423335, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 505115985625423335, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2105426940}
+    - target: {fileID: 505115985625423335, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 505115985625423335, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SpawnDot
+      objectReference: {fileID: 0}
+    - target: {fileID: 505115985625423335, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DiceController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 505115985625423335, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5920022382202239533, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
       propertyPath: m_Name
       value: Player
@@ -5108,6 +5148,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 247770849}
     m_Modifications:
+    - target: {fileID: 253318027, guid: 2ddb496fef3b40e4abf0599a0f5651dd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 253318030, guid: 2ddb496fef3b40e4abf0599a0f5651dd, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5412201338045655601, guid: 2ddb496fef3b40e4abf0599a0f5651dd, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -13697,6 +13745,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee71e4fe24550034d9ae33e69aaaf678, type: 3}
+--- !u!114 &2105426940 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3761008034884102125, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+  m_PrefabInstance: {fileID: 351713991}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 531045fa22b8f57448347a0c2eb18715, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2120107445 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8416272007918961125, guid: b4e3b8d7c73ca754296041666c764fac, type: 3}

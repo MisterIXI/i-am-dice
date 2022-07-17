@@ -17,6 +17,7 @@ public class DiceController : MonoBehaviour
     public float Offset = 0.5f;
     private bool _isJumping = false;
     private bool _isOnJumpCooldown = false;
+    public bool InfiniteJumpsEnabled = false;
     private Vector3 _initialPosition;
     private Quaternion _initialRotation;
     private Material _material;
@@ -82,7 +83,7 @@ public class DiceController : MonoBehaviour
             adjustedMovement.x * Mathf.Cos(angle) - adjustedMovement.y * Mathf.Sin(angle),
             adjustedMovement.x * Mathf.Sin(angle) + adjustedMovement.y * Mathf.Cos(angle));
         _movement = adjustedMovement;
-        Debug.Log("Movement: " + _movement + " currentMovement: " + currentMovement);
+        // Debug.Log("Movement: " + _movement + " currentMovement: " + currentMovement);
     }
     public void Jump(InputAction.CallbackContext context)
     {
@@ -117,12 +118,12 @@ public class DiceController : MonoBehaviour
         if (isOnFloor)
         {
             _isJumping = false;
-            _material2.color = Color.green;
+            // _material2.color = Color.green;
         }
         else
         {
             _isJumping = true;
-            _material2.color = Color.red;
+            // _material2.color = Color.red;
         }
     }
     public void SpawnDot(InputAction.CallbackContext context)

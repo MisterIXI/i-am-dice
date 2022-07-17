@@ -35,7 +35,7 @@ public class DotAnimation : MonoBehaviour
 
     public void PlayCollectedAnimation()
     {
-
+        StartCoroutine(CollectedAnimation());
     }
 
     private IEnumerator SpawnAnimation(GameObject _dot)
