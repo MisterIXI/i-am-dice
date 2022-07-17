@@ -8,9 +8,10 @@ public class DotAnimation : MonoBehaviour
     private const float BOB_DISTANCE = 0.3f;
     private const float ROTATION_SPEED = 1f;
     private const float ROTATION_MAX = 10f;
+    public int Value = 1;
     private float _rot = 0;
     private GameObject _dot;
-    private bool _isIdle = false;
+    private bool _isIdle = true;
 
     void Start()
     {
@@ -32,13 +33,21 @@ public class DotAnimation : MonoBehaviour
         StartCoroutine(SpawnAnimation(transform.GetChild(0).gameObject));
     }
 
+    public void PlayCollectedAnimation()
+    {
+
+    }
+
     private IEnumerator SpawnAnimation(GameObject _dot)
     {
-        _isIdle = false;
         float oldTS = Time.timeScale;
-        Time.timeScale = 0.0f;
-        Camera.main.GetComponent<FollowCam>().enabled = false;
-        Camera.main.transform.position = _dot.transform.position + -Camera.main.transform.forward * 20;
+        if (oldTS != 0)
+        {
+            _isIdle = false;
+            Camera.main.GetComponent<FollowCam>().enabled = false;
+            Camera.main.transform.position = _dot.transform.position + -Camera.main.transform.forward * 20;
+            Time.timeScale = 0.0f;
+        }
         //Spawn animation
         float _rot = 0;
         float _rotVelocity = ROTATION_MAX;
@@ -71,11 +80,23 @@ public class DotAnimation : MonoBehaviour
             _dot.transform.localRotation = Quaternion.Euler(0, _rot, 90);
             yield return new WaitForSecondsRealtime(0.01f);
         }
-        Time.timeScale = oldTS;
-        Camera.main.GetComponent<FollowCam>().enabled = true;
+        if (oldTS != 0)
+        {
+            Time.timeScale = oldTS;
+            Camera.main.GetComponent<FollowCam>().enabled = true;
+
+        }
         _isIdle = true;
     }
 
+    private IEnumerator CollectedAnimation()
+    {
+        transform.GetChild(0).gameObject.SetActive(false);
+        transform.GetChild(1).gameObject.SetActive(true);
+        transform.GetChild(2).gameObject.SetActive(false);
+        yield return new WaitForSeconds(2f);
+        Destroy(gameObject);
+    }
     public static void SpawnDot(Vector3 position)
     {
         GameObject dot = Instantiate(Resources.Load("DotObj"), position, Quaternion.identity) as GameObject;
