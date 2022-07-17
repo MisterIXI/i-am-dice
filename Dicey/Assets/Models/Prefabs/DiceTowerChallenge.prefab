@@ -88,6 +88,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6189271669281959924}
+  - {fileID: 1048809798950219556}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -107,6 +108,7 @@ MonoBehaviour:
   DiceTowerPassCheck: {fileID: 3407967932172213314}
   DiceTowerRangeCheck: {fileID: 370178628725195920}
   DesiredNumber: 6
+  DotSpawnPosition: {fileID: 3747652493741738520}
 --- !u!1 &2783952975672838650
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,6 +501,37 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &3747652493741738520
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1048809798950219556}
+  m_Layer: 0
+  m_Name: DotSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1048809798950219556
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3747652493741738520}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7.17, y: -5.64, z: 0.78}
+  m_LocalScale: {x: 0.42833892, y: 0.42833892, z: 0.42833892}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 961832755849814538}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4297079011271288032
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,8 @@ public class DiceTowerChallengeController : MonoBehaviour
 
     public int DesiredNumber = 6;
 
+    public GameObject DotSpawnPosition;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +30,12 @@ public class DiceTowerChallengeController : MonoBehaviour
 
     void SpawnReward()
     {
-        Debug.Log($"A {DesiredNumber} was rolled through the dice tower.");
-        //TODO
+        if(DotSpawnPosition == null)
+        {
+            Debug.Log($"{typeof(DiceTowerChallengeController)}: No Dot Spawn Position set in inspector.");
+            return;
+        }
+
+        DotAnimation.SpawnDot(DotSpawnPosition.transform.position);
     }
 }

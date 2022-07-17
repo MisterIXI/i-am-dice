@@ -14,6 +14,8 @@ public class ChallengeFallOver : MonoBehaviour
     [Tooltip("The number of frames between two checks for being fallen over.")]
     public int UpdateFrequency = 10;
 
+    public Vector3 DotSpawnOffset = new Vector3(0, 1, 0);
+
     private Rigidbody _rigidbody;
     private int _updateCount = 0;
 
@@ -41,12 +43,12 @@ public class ChallengeFallOver : MonoBehaviour
         if(angleToGround < AngleThreshold)
         {
             SpawnReward();
+            enabled = false;
         }
     }
 
     void SpawnReward()
     {
-        Debug.Log("Object has successfully been tipped over.");
-        //TODO
+        DotAnimation.SpawnDot(transform.position + DotSpawnOffset);
     }
 }
