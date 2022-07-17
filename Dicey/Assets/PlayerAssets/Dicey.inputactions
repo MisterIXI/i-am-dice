@@ -49,6 +49,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "DebugSpawn",
+                    "type": "Button",
+                    "id": "d6197ab5-f876-4906-8b30-bea08a1745e4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -357,6 +366,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ResetPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "746ae8f3-609e-4c16-a388-16cfa3d8852a",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DebugSpawn",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -83,7 +83,7 @@ public class FollowCam : MonoBehaviour
         {
             if (context.action.phase == InputActionPhase.Performed)
             {
-                Debug.Log("Zoom: " + context.action.ReadValue<float>());
+                // Debug.Log("Zoom: " + context.action.ReadValue<float>());
                 if (context.action.activeControl.device.name == "Mouse")
                 {
                     CameraDistance += context.action.ReadValue<float>() < 0 ? 3 : -3;
