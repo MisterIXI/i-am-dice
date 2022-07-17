@@ -11,12 +11,16 @@ public class DiceController : MonoBehaviour
     Rigidbody _rb;
     public float JumpStrength = 800;
     private bool _isJumping = true;
-    
+    private Vector3 _initialPosition;
+    private Quaternion _initialRotation;
+
     void Start()
     {
         _movement = new Vector2(0, 0);
         _rb = GetComponent<Rigidbody>();
         CurrentInput = new Vector2(0, 0);
+        _initialPosition = transform.position;
+        _initialRotation = transform.rotation;
     }
 
     // Update is called once per frame
@@ -92,6 +96,20 @@ public class DiceController : MonoBehaviour
                 {
                     // Debug.Log("Canceled");
                 }
+            }
+        }
+    }
+
+    public void ResetPosition(InputAction.CallbackContext context)
+    {
+        if (context.action.name == "ResetPosition")
+        {
+            if (context.action.phase == InputActionPhase.Performed)
+            {
+                transform.position = _initialPosition;
+                transform.rotation = _initialRotation;
+                _rb.velocity = Vector3.zero;
+                _rb.angularVelocity = Vector3.zero;
             }
         }
     }
