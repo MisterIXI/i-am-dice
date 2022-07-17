@@ -33,12 +33,6 @@ public class DiceController : MonoBehaviour
         _material2 = GetComponent<MeshRenderer>().materials[1];
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     void FixedUpdate()
     {
         if (IsMoving())
@@ -129,6 +123,13 @@ public class DiceController : MonoBehaviour
         {
             _isJumping = true;
             _material2.color = Color.red;
+        }
+    }
+    public void SpawnDot(InputAction.CallbackContext context)
+    {
+        if (context.action.phase == InputActionPhase.Performed)
+        {
+            DotAnimation.SpawnDot(transform.position + transform.forward * 5f);
         }
     }
     private bool CheckFloorRaycast(Vector3 position, float distance)
