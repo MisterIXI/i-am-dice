@@ -88,7 +88,7 @@ public class DiceController : MonoBehaviour
             adjustedMovement.x * Mathf.Cos(angle) - adjustedMovement.y * Mathf.Sin(angle),
             adjustedMovement.x * Mathf.Sin(angle) + adjustedMovement.y * Mathf.Cos(angle));
         _movement = adjustedMovement;
-        Debug.Log("Movement: " + _movement + " currentMovement: " + currentMovement);
+        // Debug.Log("Movement: " + _movement + " currentMovement: " + currentMovement);
     }
     public void Jump(InputAction.CallbackContext context)
     {
