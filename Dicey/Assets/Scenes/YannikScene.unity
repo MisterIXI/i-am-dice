@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43667555, g: 0.48427182, b: 0.56452405, a: 1}
+  m_IndirectSpecularColor: {r: 0.4366756, g: 0.48427194, b: 0.5645252, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1873,6 +1873,46 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 774404482}
+    - target: {fileID: 505115985625423335, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 505115985625423335, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_ActionId
+      value: d6197ab5-f876-4906-8b30-bea08a1745e4
+      objectReference: {fileID: 0}
+    - target: {fileID: 505115985625423335, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_ActionName
+      value: Player/DebugSpawn[/XInputControllerWindows/buttonEast]
+      objectReference: {fileID: 0}
+    - target: {fileID: 505115985625423335, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 505115985625423335, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 505115985625423335, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1699229114}
+    - target: {fileID: 505115985625423335, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 505115985625423335, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SpawnDot
+      objectReference: {fileID: 0}
+    - target: {fileID: 505115985625423335, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DiceController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 505115985625423335, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.data[15].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5920022382202239533, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
       propertyPath: m_Name
       value: Player
@@ -6435,6 +6475,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24b39929c18209e42b710d197ef1f66d, type: 3}
+--- !u!114 &1699229114 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3761008034884102125, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+  m_PrefabInstance: {fileID: 351713991}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 531045fa22b8f57448347a0c2eb18715, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1701794822
 PrefabInstance:
   m_ObjectHideFlags: 0
