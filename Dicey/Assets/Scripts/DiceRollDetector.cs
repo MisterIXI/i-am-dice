@@ -1,10 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DiceRollDetector : MonoBehaviour
 {
-    public DiceFaceManager diceFaceManager;
+    UnityEvent _diceRolledEvent = new UnityEvent();
+
+    private bool _rollAnnounced = false;
+
+    private int _currentlyTouchingFaceNumber;
+
+    public void AddDiceRollListener(UnityAction listener)
+    {
+        _diceRolledEvent.AddListener(listener);
+    }
+
+    public void RemoveDiceRollListeners()
+    {
+        _diceRolledEvent.RemoveAllListeners();
+    }
 
     // If the dice is currently on the goal, this returns the number shown on top of the dice.
     // Otherwise, 0 is returned.
@@ -13,28 +26,29 @@ public class DiceRollDetector : MonoBehaviour
         return _currentlyTouchingFaceNumber == 0 ? 0 : 7 - _currentlyTouchingFaceNumber;
     }
 
-    private int _currentlyTouchingFaceNumber;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        if(diceFaceManager == null)
-        {
-            Debug.Log("Please assign the diceFaceManager to the Goal object in the editor.");
-            this.enabled = false;
-        }
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("DiceFace"))
         {
+            var diceFaceManager = other.GetComponentInParent<DiceFaceManager>();
             _currentlyTouchingFaceNumber = diceFaceManager.GetFaceNumber(other);
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (!_rollAnnounced && 
+            other.gameObject.CompareTag("DiceFace") && 
+            other.attachedRigidbody.velocity.magnitude < 0.1f)
+        {
+            _diceRolledEvent.Invoke();
+            _rollAnnounced = true;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
         _currentlyTouchingFaceNumber = 0;
+        _rollAnnounced = false;
     }
 }
