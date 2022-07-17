@@ -329,6 +329,17 @@
                 },
                 {
                     "name": "",
+                    "id": "d234b517-fd3b-475e-8b4c-c354ae64238e",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ZoomCamera",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "29055655-6ddb-4930-8210-920a46c5a8f7",
                     "path": "<XInputController>/buttonNorth",
                     "interactions": "",
