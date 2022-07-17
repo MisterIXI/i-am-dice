@@ -48,38 +48,12 @@ public class DotAnimation : MonoBehaviour
             Camera.main.transform.position = _dot.transform.position + -Camera.main.transform.forward * 20;
             Time.timeScale = 0.0f;
         }
-        //Spawn animation
-        float _rot = 0;
-        float _rotVelocity = ROTATION_MAX;
-        //jump up
-        for (int i = 0; i < 100; i++)
-        {
-            _dot.transform.localPosition = _dot.transform.localPosition + new Vector3(0, 0.01f, 0);
-            _rot = (_rot + _rotVelocity) % 360;
-            _rotVelocity -= (ROTATION_MAX - ROTATION_SPEED) / 300;
-            Debug.Log(_rotVelocity);
-            _dot.transform.localRotation = Quaternion.Euler(0, _rot, 90);
-            yield return new WaitForSecondsRealtime(0.01f);
-        }
-        // come down slowly
-        for (int i = 0; i < 200; i++)
-        {
-            _dot.transform.localPosition = _dot.transform.localPosition - new Vector3(0, 0.005f, 0);
-            _rot = (_rot + _rotVelocity) % 360;
-            _rotVelocity -= (ROTATION_MAX - ROTATION_SPEED) / 300;
-            Debug.Log(_rotVelocity);
+        _dot.GetComponentInChildren<Animator>().enabled = true;
+        // _dot.GetComponentInChildren<Animator>().Play("DotSpin");
+        yield return new WaitForSecondsRealtime(3f);
+        _dot.GetComponentInChildren<Animator>().enabled = false;
 
-            _dot.transform.localRotation = Quaternion.Euler(0, _rot, 90);
 
-            yield return new WaitForSecondsRealtime(0.01f);
-        }
-        // rotate in place for a bit
-        for (int i = 0; i < 100; i++)
-        {
-            _rot = (_rot + _rotVelocity) % 360;
-            _dot.transform.localRotation = Quaternion.Euler(0, _rot, 90);
-            yield return new WaitForSecondsRealtime(0.01f);
-        }
         if (oldTS != 0)
         {
             Time.timeScale = oldTS;
