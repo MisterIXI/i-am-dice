@@ -15,6 +15,7 @@ public class DiceController : MonoBehaviour
     Rigidbody _rb;
     public float JumpStrength = 800;
     public float Offset = 0.5f;
+    public Color BaseColor;
     private bool _isJumping = false;
     private bool _isOnJumpCooldown = false;
     public bool InfiniteJumpsEnabled = false;
@@ -25,6 +26,7 @@ public class DiceController : MonoBehaviour
 
     void Start()
     {
+        BaseColor = GetComponent<MeshRenderer>().material.color;
         _movement = new Vector2(0, 0);
         _rb = GetComponent<Rigidbody>();
         CurrentInput = new Vector2(0, 0);
@@ -89,7 +91,7 @@ public class DiceController : MonoBehaviour
     {
         if (context.action.name == "Jump")
         {
-            if (!_isJumping && !_isOnJumpCooldown)
+            if (!_isJumping && !_isOnJumpCooldown || InfiniteJumpsEnabled)
             {
 
                 if (context.action.phase == InputActionPhase.Performed)
@@ -150,15 +152,18 @@ public class DiceController : MonoBehaviour
         _isOnJumpCooldown = true;
         //darken material color
         Color oldColor = _material.color;
-        _material.color = new Color(_material.color.r / 3, _material.color.g / 3, _material.color.b / 3, _material.color.a);
+        if (oldColor == BaseColor)
+            _material.color = new Color(_material.color.r / 3, _material.color.g / 3, _material.color.b / 3, _material.color.a);
         Vector3 colorSteps = new Vector3(_material.color.r / 10, _material.color.g / 10, _material.color.b / 10);
         for (int i = 0; i < 10; i++)
         {
             yield return new WaitForSeconds(JUMP_COOLDOWN / 10);
-            _material.color = new Color(_material.color.r + colorSteps.x, _material.color.g + colorSteps.y, _material.color.b + colorSteps.z, _material.color.a);
+            if (oldColor == BaseColor)
+                _material.color = new Color(_material.color.r + colorSteps.x, _material.color.g + colorSteps.y, _material.color.b + colorSteps.z, _material.color.a);
         }
         _isOnJumpCooldown = false;
-        _material.color = oldColor;
+        if (oldColor == BaseColor)
+            _material.color = oldColor;
     }
 
     public void ResetPosition(InputAction.CallbackContext context)
