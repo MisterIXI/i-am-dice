@@ -7,20 +7,78 @@ public class DotAnimation : MonoBehaviour
     private const float BOB_SPEED = 2f;
     private const float BOB_DISTANCE = 0.3f;
     private const float ROTATION_SPEED = 1f;
+    private const float ROTATION_MAX = 10f;
     private float _rot = 0;
     private GameObject _dot;
+    private bool _isIdle = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         _dot = transform.GetChild(0).gameObject;
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        _dot.transform.localPosition = new Vector3(0, Mathf.Sin(Time.time * BOB_SPEED) * BOB_DISTANCE, 0);
-        _rot = (_rot + ROTATION_SPEED) % 360;
-        _dot.transform.localRotation = Quaternion.Euler(0, _rot, 90);
+        if (_isIdle)
+        {
+            _dot.transform.localPosition = new Vector3(0, Mathf.Sin(Time.time * BOB_SPEED) * BOB_DISTANCE, 0);
+            _rot = (_rot + ROTATION_SPEED) % 360;
+            _dot.transform.localRotation = Quaternion.Euler(0, _rot, 90);
+        }
+    }
+
+    public void PlaySpawnAnimation()
+    {
+        StartCoroutine(SpawnAnimation(transform.GetChild(0).gameObject));
+    }
+
+    private IEnumerator SpawnAnimation(GameObject _dot)
+    {
+        _isIdle = false;
+        float oldTS = Time.timeScale;
+        Time.timeScale = 0.0f;
+        Camera.main.GetComponent<FollowCam>().enabled = false;
+        Camera.main.transform.position = _dot.transform.position + -Camera.main.transform.forward * 20;
+        //Spawn animation
+        float _rot = 0;
+        float _rotVelocity = ROTATION_MAX;
+        //jump up
+        for (int i = 0; i < 100; i++)
+        {
+            _dot.transform.localPosition = _dot.transform.localPosition + new Vector3(0, 0.01f, 0);
+            _rot = (_rot + _rotVelocity) % 360;
+            _rotVelocity -= (ROTATION_MAX - ROTATION_SPEED) / 300;
+            Debug.Log(_rotVelocity);
+            _dot.transform.localRotation = Quaternion.Euler(0, _rot, 90);
+            yield return new WaitForSecondsRealtime(0.01f);
+        }
+        // come down slowly
+        for (int i = 0; i < 200; i++)
+        {
+            _dot.transform.localPosition = _dot.transform.localPosition - new Vector3(0, 0.005f, 0);
+            _rot = (_rot + _rotVelocity) % 360;
+            _rotVelocity -= (ROTATION_MAX - ROTATION_SPEED) / 300;
+            Debug.Log(_rotVelocity);
+
+            _dot.transform.localRotation = Quaternion.Euler(0, _rot, 90);
+
+            yield return new WaitForSecondsRealtime(0.01f);
+        }
+        // rotate in place for a bit
+        for (int i = 0; i < 100; i++)
+        {
+            _rot = (_rot + _rotVelocity) % 360;
+            _dot.transform.localRotation = Quaternion.Euler(0, _rot, 90);
+            yield return new WaitForSecondsRealtime(0.01f);
+        }
+        Time.timeScale = oldTS;
+        Camera.main.GetComponent<FollowCam>().enabled = true;
+        _isIdle = true;
+    }
+
+    public static void SpawnDot(Vector3 position)
+    {
+        GameObject dot = Instantiate(Resources.Load("DotObj"), position, Quaternion.identity) as GameObject;
+        dot.GetComponent<DotAnimation>().PlaySpawnAnimation();
     }
 }
