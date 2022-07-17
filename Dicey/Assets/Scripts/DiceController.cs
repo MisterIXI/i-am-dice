@@ -8,12 +8,14 @@ public class DiceController : MonoBehaviour
     private Vector2 _movement;
     [HideInInspector]
     public Vector2 CurrentInput;
-    Rigidbody rb;
-    // Start is called before the first frame update
+    Rigidbody _rb;
+    public float JumpStrength = 800;
+    private bool _isJumping = true;
+    
     void Start()
     {
         _movement = new Vector2(0, 0);
-        rb = GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody>();
         CurrentInput = new Vector2(0, 0);
     }
 
@@ -27,7 +29,7 @@ public class DiceController : MonoBehaviour
     {
         if (IsMoving())
         {
-            rb.AddForce(GetMovementVector());
+            _rb.AddForce(GetMovementVector());
         }
     }
 
@@ -73,8 +75,6 @@ public class DiceController : MonoBehaviour
         _movement = adjustedMovement;
         Debug.Log("Movement: " + _movement + " currentMovement: " + currentMovement);
     }
-    public float jumpStrength = 800;
-    private bool _isJumping = true;
     public void Jump(InputAction.CallbackContext context)
     {
         if (context.action.name == "Jump")
@@ -84,8 +84,8 @@ public class DiceController : MonoBehaviour
 
                 if (context.action.phase == InputActionPhase.Performed)
                 {
-                    rb.AddForce(new Vector3(0, jumpStrength, 0));
-                    rb.AddTorque(new Vector3(Random.Range(1f, 2f) * jumpStrength, Random.Range(1f, 2f) * jumpStrength, Random.Range(1f, 2f) * jumpStrength));
+                    _rb.AddForce(new Vector3(0, JumpStrength, 0));
+                    _rb.AddTorque(new Vector3(Random.Range(1f, 2f) * JumpStrength, Random.Range(1f, 2f) * JumpStrength, Random.Range(1f, 2f) * JumpStrength));
 
                 }
                 else if (context.action.phase == InputActionPhase.Canceled)
