@@ -11,16 +11,21 @@ public class FollowCam : MonoBehaviour
     private float cameraZoom = 0;
     private Vector3 direction;
     private Vector2 directionChange;
+    private DiceController _diceController;
     // Start is called before the first frame update
     void Start()
     {
+        _diceController = target.gameObject.GetComponent<DiceController>();
         direction = new Vector3(1, 0, 1).normalized * cameraDistance;
     }
-
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (directionChange.x != 0 || directionChange.y != 0)
+        {
+            _diceController.updateMovement(_diceController.CurrentInput);
+        }
         // Debug.Log("CameraDistance: " + cameraDistance+ " CameraZoom: " + cameraZoom);
         cameraDistance = Mathf.Clamp(cameraDistance + cameraZoom, 5f, 20f);
 
