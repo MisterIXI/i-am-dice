@@ -173,30 +173,30 @@ public class DiceController : MonoBehaviour
         }
     }
     // gizmos
-    void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        // draw force arrow
-        // Vector2 viewDir = new Vector2(Camera.main.transform.forward.x, Camera.main.transform.forward.z).normalized;
-        // float angle = Mathf.Atan2(viewDir.y, viewDir.x) *Mathf.Rad2Deg;//Vector2.Angle(new Vector2(0, 1), viewDir);
-        // if(angle < 0){
-        //     GUI.color = Color.red;
-        //     angle = 360 + angle;
-        // }
-        // else{
-        //     GUI.color = Color.green;
-        // }
-        // Handles.Label(transform.position, "Angle: " + angle);
+    //void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.red;
+    //    // draw force arrow
+    //    // Vector2 viewDir = new Vector2(Camera.main.transform.forward.x, Camera.main.transform.forward.z).normalized;
+    //    // float angle = Mathf.Atan2(viewDir.y, viewDir.x) *Mathf.Rad2Deg;//Vector2.Angle(new Vector2(0, 1), viewDir);
+    //    // if(angle < 0){
+    //    //     GUI.color = Color.red;
+    //    //     angle = 360 + angle;
+    //    // }
+    //    // else{
+    //    //     GUI.color = Color.green;
+    //    // }
+    //    // Handles.Label(transform.position, "Angle: " + angle);
 
-        Gizmos.DrawRay(transform.position, Vector3.down * RAYCAST_DISTANCE_INNER);
-        Gizmos.DrawRay(transform.position + new Vector3(Offset, 0, Offset), Vector3.down * RAYCAST_DISTANCE_OUTER);
-        Gizmos.DrawRay(transform.position + new Vector3(-Offset, 0, Offset), Vector3.down * RAYCAST_DISTANCE_OUTER);
-        Gizmos.DrawRay(transform.position + new Vector3(Offset, 0, -Offset), Vector3.down * RAYCAST_DISTANCE_OUTER);
-        Gizmos.DrawRay(transform.position + new Vector3(-Offset, 0, -Offset), Vector3.down * RAYCAST_DISTANCE_OUTER);
-        Handles.Label(transform.position, _debugString);
-        if (IsMoving())
-        {
-            Gizmos.DrawRay(transform.position, GetMovementVector());
-        }
-    }
+    //    Gizmos.DrawRay(transform.position, Vector3.down * RAYCAST_DISTANCE_INNER);
+    //    Gizmos.DrawRay(transform.position + new Vector3(Offset, 0, Offset), Vector3.down * RAYCAST_DISTANCE_OUTER);
+    //    Gizmos.DrawRay(transform.position + new Vector3(-Offset, 0, Offset), Vector3.down * RAYCAST_DISTANCE_OUTER);
+    //    Gizmos.DrawRay(transform.position + new Vector3(Offset, 0, -Offset), Vector3.down * RAYCAST_DISTANCE_OUTER);
+    //    Gizmos.DrawRay(transform.position + new Vector3(-Offset, 0, -Offset), Vector3.down * RAYCAST_DISTANCE_OUTER);
+    //    Handles.Label(transform.position, _debugString);
+    //    if (IsMoving())
+    //    {
+    //        Gizmos.DrawRay(transform.position, GetMovementVector());
+    //    }
+    //}
 }
