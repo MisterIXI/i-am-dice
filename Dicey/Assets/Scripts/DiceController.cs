@@ -6,12 +6,15 @@ using UnityEngine.InputSystem;
 public class DiceController : MonoBehaviour
 {
     private float JUMP_COOLDOWN = 1f;
+    private float RAYCAST_DISTANCE_INNER = 2.3f;
+    private float RAYCAST_DISTANCE_OUTER = 1.5f;
 
     private Vector2 _movement;
     [HideInInspector]
     public Vector2 CurrentInput;
     Rigidbody _rb;
     public float JumpStrength = 800;
+    public float Offset = 0.5f;
     private bool _isJumping = false;
     private bool _isOnJumpCooldown = false;
     private Vector3 _initialPosition;
@@ -111,26 +114,34 @@ public class DiceController : MonoBehaviour
     private string _debugString = "";
     private void CheckForFloor()
     {
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 2.5f))
+        bool isOnFloor = false;
+        isOnFloor = CheckFloorRaycast(transform.position, RAYCAST_DISTANCE_INNER);
+        isOnFloor = !isOnFloor ? CheckFloorRaycast(transform.position + new Vector3(Offset, 0, Offset), RAYCAST_DISTANCE_OUTER) : isOnFloor;
+        isOnFloor = !isOnFloor ? CheckFloorRaycast(transform.position + new Vector3(-Offset, 0, Offset), RAYCAST_DISTANCE_OUTER) : isOnFloor;
+        isOnFloor = !isOnFloor ? CheckFloorRaycast(transform.position + new Vector3(Offset, 0, -Offset), RAYCAST_DISTANCE_OUTER) : isOnFloor;
+        isOnFloor = !isOnFloor ? CheckFloorRaycast(transform.position + new Vector3(-Offset, 0, -Offset), RAYCAST_DISTANCE_OUTER) : isOnFloor;
+        if (isOnFloor)
         {
-            _debugString = "Hit: " + hit.collider.gameObject.name;
-            if (hit.collider.gameObject.tag != "DiceFace")
-            {
-                _isJumping = false;
-                _material2.color = Color.green;
-            }
-            // else
-            // {
-            //     _isJumping = true;
-            //     _material2.color = Color.red;
-            // }
+            _isJumping = false;
+            _material2.color = Color.green;
         }
         else
         {
             _isJumping = true;
             _material2.color = Color.red;
         }
+    }
+    private bool CheckFloorRaycast(Vector3 position, float distance)
+    {
+        RaycastHit[] hits = Physics.RaycastAll(transform.position, Vector3.down, distance);
+        for (int i = 0; i < hits.Length; i++)
+        {
+            if (hits[i].collider.gameObject.tag != "DiceFace")
+            {
+                return true;
+            }
+        }
+        return false;
     }
     private IEnumerator JumpCooldown()
     {
@@ -161,7 +172,6 @@ public class DiceController : MonoBehaviour
             }
         }
     }
-
     // gizmos
     void OnDrawGizmos()
     {
@@ -178,7 +188,11 @@ public class DiceController : MonoBehaviour
         // }
         // Handles.Label(transform.position, "Angle: " + angle);
 
-        Gizmos.DrawRay(transform.position, Vector3.down * 3f);
+        Gizmos.DrawRay(transform.position, Vector3.down * RAYCAST_DISTANCE_INNER);
+        Gizmos.DrawRay(transform.position + new Vector3(Offset, 0, Offset), Vector3.down * RAYCAST_DISTANCE_OUTER);
+        Gizmos.DrawRay(transform.position + new Vector3(-Offset, 0, Offset), Vector3.down * RAYCAST_DISTANCE_OUTER);
+        Gizmos.DrawRay(transform.position + new Vector3(Offset, 0, -Offset), Vector3.down * RAYCAST_DISTANCE_OUTER);
+        Gizmos.DrawRay(transform.position + new Vector3(-Offset, 0, -Offset), Vector3.down * RAYCAST_DISTANCE_OUTER);
         Handles.Label(transform.position, _debugString);
         if (IsMoving())
         {
