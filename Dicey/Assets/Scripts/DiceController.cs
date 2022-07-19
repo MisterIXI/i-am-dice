@@ -132,8 +132,7 @@ public class DiceController : MonoBehaviour
     {
         if (context.action.phase == InputActionPhase.Performed)
         {
-            //DotAnimation.SpawnDot(transform.position + transform.forward * 5f);
-            ControlTest.ReadAxes();
+            DotAnimation.SpawnDot(transform.position + transform.forward * 5f);
         }
     }
     private bool CheckFloorRaycast(Vector3 position, float distance)
