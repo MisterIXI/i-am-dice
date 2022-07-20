@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class DotCollection : MonoBehaviour
 {
+
+    public IngameUI IngameUI;
+
     private int _dotCount = 0;
     private Material[] _materials;
     private List<Material> _materialsList;
@@ -46,7 +49,7 @@ public class DotCollection : MonoBehaviour
             if (_dotCount == _materialsList.Count - 1)
             {
                 Debug.Log("You win!");
-
+                IngameUI.StopStopwatch();
                 _materialsList[0].color = new Color(0.709803921f, 0.6078431372f, 0.05098039f);
                 _materialsList[0].SetFloat("_Metallic", 1f);
                 GetComponent<DiceController>().InfiniteJumpsEnabled = true;
