@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
     public GameObject mainMenuPanel;
     public GameObject creditsPanel;
     public GameObject mainMenuCamera;
-
+    public IngameUI IngameUI;
     // Update is called once per frame
     void Update()
     {
@@ -20,6 +20,7 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
         player.SetActive(true);
+        IngameUI.TriggerStopwatch();
         mainMenuPanel.SetActive(false);
         mainMenuCamera.SetActive(false);
     }
