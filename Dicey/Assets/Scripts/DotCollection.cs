@@ -6,10 +6,12 @@ public class DotCollection : MonoBehaviour
 {
 
     public IngameUI IngameUI;
+    public DotSpot[] DotEffects;
 
     private int _dotCount = 0;
     private Material[] _materials;
     private List<Material> _materialsList;
+
     public void Start()
     {
         _materials = GetComponent<MeshRenderer>().materials;
@@ -39,12 +41,14 @@ public class DotCollection : MonoBehaviour
         Debug.Log("Name: " + _materialsList[0].name);
         if (_dotCount < _materialsList.Count - 1)
         {
+            DotEffects[_dotCount].enabled = true;
             _dotCount++;
             Debug.Log("Dot collected: " + _dotCount);
             if (_dotCount < _materialsList.Count)
             {
                 _materialsList[_dotCount].color = new Color(1f, 0.8431372549019608f, 0f);
                 // _materials[_dotCount].SetFloat("_Metallic", 1);
+
             }
             if (_dotCount == _materialsList.Count - 1)
             {
