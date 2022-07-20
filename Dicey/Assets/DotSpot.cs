@@ -24,5 +24,7 @@ public class DotSpot : MonoBehaviour
             if (_dotLight.intensity <= 0)
                 _dotLight.intensity = 0;
         }
+
+        Destroy(gameObject);
     }
 }

@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeclineSpeed: 0.5
-  DeclinePower: 0.001
+  DeclinePower: 0.0025
 --- !u!1 &105410774
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeclineSpeed: 0.5
-  DeclinePower: 0.001
+  DeclinePower: 0.0025
 --- !u!1 &125856076
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,7 +326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeclineSpeed: 0.5
-  DeclinePower: 0.001
+  DeclinePower: 0.0025
 --- !u!1 &476848699
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,7 +435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeclineSpeed: 0.5
-  DeclinePower: 0.001
+  DeclinePower: 0.0025
 --- !u!1 &485080271
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,7 +544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeclineSpeed: 0.5
-  DeclinePower: 0.001
+  DeclinePower: 0.0025
 --- !u!1 &495896559
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,7 +653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeclineSpeed: 0.5
-  DeclinePower: 0.001
+  DeclinePower: 0.0025
 --- !u!1 &554136169
 GameObject:
   m_ObjectHideFlags: 0
@@ -762,7 +762,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeclineSpeed: 0.5
-  DeclinePower: 0.001
+  DeclinePower: 0.0025
 --- !u!1 &639588082
 GameObject:
   m_ObjectHideFlags: 0
@@ -871,7 +871,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeclineSpeed: 0.5
-  DeclinePower: 0.001
+  DeclinePower: 0.0025
 --- !u!1 &732648013
 GameObject:
   m_ObjectHideFlags: 0
@@ -980,7 +980,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeclineSpeed: 0.5
-  DeclinePower: 0.001
+  DeclinePower: 0.0025
 --- !u!1 &890074822
 GameObject:
   m_ObjectHideFlags: 0
@@ -1089,7 +1089,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeclineSpeed: 0.5
-  DeclinePower: 0.001
+  DeclinePower: 0.0025
 --- !u!1 &921958271
 GameObject:
   m_ObjectHideFlags: 0
@@ -1198,7 +1198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeclineSpeed: 0.5
-  DeclinePower: 0.001
+  DeclinePower: 0.0025
 --- !u!1 &978863453
 GameObject:
   m_ObjectHideFlags: 0
@@ -1307,7 +1307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeclineSpeed: 0.5
-  DeclinePower: 0.001
+  DeclinePower: 0.0025
 --- !u!1 &1205394023
 GameObject:
   m_ObjectHideFlags: 0
@@ -1416,7 +1416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeclineSpeed: 0.5
-  DeclinePower: 0.001
+  DeclinePower: 0.0025
 --- !u!1 &1308415316
 GameObject:
   m_ObjectHideFlags: 0
@@ -1525,7 +1525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeclineSpeed: 0.5
-  DeclinePower: 0.001
+  DeclinePower: 0.0025
 --- !u!1 &1324990178
 GameObject:
   m_ObjectHideFlags: 0
@@ -1634,7 +1634,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeclineSpeed: 0.5
-  DeclinePower: 0.001
+  DeclinePower: 0.0025
 --- !u!1 &1334433811
 GameObject:
   m_ObjectHideFlags: 0
@@ -1743,7 +1743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeclineSpeed: 0.5
-  DeclinePower: 0.001
+  DeclinePower: 0.0025
 --- !u!1 &1681768342
 GameObject:
   m_ObjectHideFlags: 0
@@ -1961,7 +1961,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeclineSpeed: 0.5
-  DeclinePower: 0.001
+  DeclinePower: 0.0025
 --- !u!1 &1945694135
 GameObject:
   m_ObjectHideFlags: 0
@@ -2070,7 +2070,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeclineSpeed: 0.5
-  DeclinePower: 0.001
+  DeclinePower: 0.0025
 --- !u!1 &2000036493
 GameObject:
   m_ObjectHideFlags: 0
@@ -2179,7 +2179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeclineSpeed: 0.5
-  DeclinePower: 0.001
+  DeclinePower: 0.0025
 --- !u!1 &2133236337
 GameObject:
   m_ObjectHideFlags: 0
@@ -2288,7 +2288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeclineSpeed: 0.5
-  DeclinePower: 0.001
+  DeclinePower: 0.0025
 --- !u!1 &1356043319970381817
 GameObject:
   m_ObjectHideFlags: 0
