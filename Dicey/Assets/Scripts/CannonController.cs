@@ -19,6 +19,7 @@ public class CannonController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+
             other.transform.position = transform.position;
             other.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
             SmokeParticles.Play();
