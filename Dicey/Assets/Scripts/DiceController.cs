@@ -9,6 +9,8 @@ public class DiceController : MonoBehaviour
     private float RAYCAST_DISTANCE_INNER = 2.3f;
     private float RAYCAST_DISTANCE_OUTER = 1.5f;
 
+    public GameObject JumpParticleGO;
+
     private Vector2 _movement;
     [HideInInspector]
     public Vector2 CurrentInput;
@@ -96,6 +98,14 @@ public class DiceController : MonoBehaviour
 
                 if (context.action.phase == InputActionPhase.Performed)
                 {
+                    //Instantiate JumpParticleGO at ground position 
+                    RaycastHit hit;
+                    if(Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity))
+                    {
+                        GameObject jumpEffect = Instantiate(JumpParticleGO);
+                        jumpEffect.transform.position = hit.point;
+                        Destroy(jumpEffect, 2);
+                    }
                     _rb.AddForce(new Vector3(0, JumpStrength, 0));
                     _rb.AddTorque(new Vector3(Random.Range(1f, 2f) * JumpStrength, Random.Range(1f, 2f) * JumpStrength, Random.Range(1f, 2f) * JumpStrength));
                     StartCoroutine(JumpCooldown());
@@ -109,6 +119,7 @@ public class DiceController : MonoBehaviour
     }
 
     private string _debugString = "";
+
     private void CheckForFloor()
     {
         bool isOnFloor = false;
