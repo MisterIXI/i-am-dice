@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class FollowCam : MonoBehaviour
 {
+    public LayerMask IgnoreLayer;
     public Transform Target;
     public float Speed = 5f;
     public float CameraDistance = 10f;
@@ -12,11 +13,13 @@ public class FollowCam : MonoBehaviour
     private Vector3 _direction;
     private Vector2 _directionChange;
     private DiceController _diceController;
+    private HashSet<GameObject> _affectedMat;
     // Start is called before the first frame update
     void Start()
     {
         _diceController = Target.gameObject.GetComponent<DiceController>();
         _direction = new Vector3(1, 0, 1).normalized * CameraDistance;
+        _affectedMat = new HashSet<GameObject>();
     }
 
     // Update is called once per frame
@@ -47,7 +50,7 @@ public class FollowCam : MonoBehaviour
         }
 
         _direction = (transform.position - Target.position).normalized * CameraDistance;
-
+        CheckCameraCollision();
     }
 
     public void RotateCamera(InputAction.CallbackContext context)
@@ -101,4 +104,74 @@ public class FollowCam : MonoBehaviour
         }
     }
 
+    public void CheckCameraCollision()
+    {
+        RaycastHit hit;
+        Debug.DrawRay(transform.position, Target.position-transform.position,Color.cyan);
+        //check for collision between camera and player
+        if (Physics.Raycast(transform.position, (Target.position - transform.position), out hit, IgnoreLayer))
+        {
+            //collision detected (which is not the player itself)
+            if (hit.collider.gameObject.layer != 7 && hit.collider.gameObject.GetComponent<Renderer>())
+            {
+
+                RaycastHit[] hitAll = Physics.RaycastAll(transform.position, (Target.position - transform.position), Vector3.Distance(transform.position,Target.position),IgnoreLayer);
+                foreach(RaycastHit hitObj in hitAll)
+                {
+                    //filter out player mesh
+                    if(hitObj.collider.gameObject.layer != 7)
+                    {
+                        //filter for submeshes
+                        if (hitObj.collider.gameObject.tag.Equals("Submesh"))
+                        {
+                            //get list of all submeshes in parent (all children)
+                            int amountOfChildren = hitObj.collider.transform.parent.childCount;
+                            for(int i = 0; i < amountOfChildren; i++)
+                            {
+                                AdjustDitherMaterial(hitObj.collider.transform.parent.GetChild(i).gameObject, 0.5f, 0.8f);
+                            }
+                        }
+                        else
+                        {
+                            AdjustDitherMaterial(hitObj.collider.gameObject, 0.5f, 0.8f);
+                        }
+                    }
+                }
+            }
+        }
+        foreach(GameObject obj in _affectedMat)
+        {
+            bool isInHit = false;
+            RaycastHit[] hitAll = Physics.RaycastAll(transform.position, (Target.position - transform.position), Vector3.Distance(transform.position, Target.position), IgnoreLayer);
+            foreach (RaycastHit hitObj in hitAll)
+            {
+                if (hitObj.collider.gameObject.layer != 7)
+                {
+                    isInHit = true;
+                }
+            }
+
+            if (!isInHit && hit.collider.gameObject.GetComponent<Renderer>())
+            {
+
+                AdjustDitherMaterial(obj, 1f, 1f);
+            }
+        }  
+    }
+
+
+    private void AdjustDitherMaterial(GameObject gameObject, float opacity, float ditherSize)
+    {
+        if (gameObject.GetComponent<Renderer>())
+        {
+            MaterialPropertyBlock materialProperty = new MaterialPropertyBlock();
+            //change the opacity of object which is colliding
+            Renderer objRenderer = gameObject.GetComponent<Renderer>();
+            _affectedMat.Add(gameObject);
+            objRenderer.GetPropertyBlock(materialProperty);
+            materialProperty.SetFloat("_Opacity", opacity);
+            materialProperty.SetFloat("_Dither_Size", ditherSize);
+            objRenderer.SetPropertyBlock(materialProperty);
+        }
+    }
 }
