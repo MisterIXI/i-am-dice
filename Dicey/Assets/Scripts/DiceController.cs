@@ -65,7 +65,7 @@ public class DiceController : MonoBehaviour
             }
             else if (context.action.phase == InputActionPhase.Performed)
             {
-                updateMovement(context.action.ReadValue<Vector2>());
+                UpdateMovement(context.action.ReadValue<Vector2>());
                 CurrentInput = context.action.ReadValue<Vector2>();
             }
             else if (context.action.phase == InputActionPhase.Canceled)
@@ -76,7 +76,7 @@ public class DiceController : MonoBehaviour
         }
     }
 
-    public void updateMovement(Vector2 currentMovement)
+    public void UpdateMovement(Vector2 currentMovement)
     {
         // adjust Vector2 to match the camera angle
         Vector2 adjustedMovement = currentMovement;

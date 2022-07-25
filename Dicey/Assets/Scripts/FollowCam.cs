@@ -5,15 +5,21 @@ using UnityEngine.InputSystem;
 
 public class FollowCam : MonoBehaviour
 {
+
     public LayerMask IgnoreLayer;
+    public LayerMask IgnoreCollision;
     public Transform Target;
     public float Speed = 5f;
+    public float ZoomSpeed = 1;
     public float CameraDistance = 10f;
     private float _cameraZoom = 0;
     private Vector3 _direction;
     private Vector2 _directionChange;
     private DiceController _diceController;
     private HashSet<GameObject> _affectedMat;
+    bool _isCameraColliding;
+    float _lastZoomedDistance;
+    bool _hasZoomedIn;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,17 +29,32 @@ public class FollowCam : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (_directionChange.x != 0 || _directionChange.y != 0)
         {
-            _diceController.updateMovement(_diceController.CurrentInput);
+            _diceController.UpdateMovement(_diceController.CurrentInput);
         }
-        // Debug.Log("CameraDistance: " + cameraDistance+ " CameraZoom: " + cameraZoom);
         CameraDistance = Mathf.Clamp(CameraDistance + _cameraZoom, 5f, 20f);
 
         float oldX = transform.rotation.y;
-        transform.position = Target.position + _direction;
+
+
+        if (_isCameraColliding || IsCameraColliding())
+        {
+            ZoomToPlayer();
+        }
+        else
+        {
+            transform.position = Target.position + _direction;
+        }
+
+        ZoomOut();
+
+
+
+
+
         transform.LookAt(Target);
         transform.RotateAround(Target.position, Vector3.up, _directionChange.x * Speed);
         float angle = Vector3.Angle(new Vector3(_direction.x, 0, _direction.z), _direction);
@@ -51,6 +72,59 @@ public class FollowCam : MonoBehaviour
 
         _direction = (transform.position - Target.position).normalized * CameraDistance;
         CheckCameraCollision();
+    }
+
+    bool _isZooming;
+    bool _canZoomBack;
+    //automatic zoom
+    void ZoomToPlayer()
+    {
+        if (CameraDistance > 5f)
+        {
+            transform.position = Vector3.Lerp(transform.position, Target.position, ZoomSpeed * Time.deltaTime);
+            _hasZoomedIn = true;
+        }
+        CameraDistance = Vector3.Distance(transform.position, Target.position);
+        
+    }
+
+    void ZoomOut()
+    {
+        //if (_lastZoomedDistance < 10)
+        //{
+        //    transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, transform.position.y, transform.position.z - _lastZoomedDistance), ZoomSpeed * Time.deltaTime);
+        //    CameraDistance = Vector3.Distance(transform.localPosition, Target.position);
+        //}
+        //else
+        //{
+        //    _canZoomBack = false;
+        //}
+        //if (!_isCameraColliding && _hasZoomedIn)
+        //{
+
+        //    if(CameraDistance < 20)
+        //    {
+        //        transform.position = Vector3.Lerp(transform.localPosition, new Vector3(transform.localPosition.x, transform.localPosition.y, transform.localPosition.z - _lastZoomedDistance), ZoomSpeed * Time.deltaTime);
+        //        //CameraDistance = Vector3.Distance(transform.localPosition, Target.position);
+        //        Debug.Log("Zoom out");
+        //    }
+        //    else
+        //    {
+        //        _hasZoomedIn = false;
+        //    }
+        //}
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.layer == 8)
+            _isCameraColliding = true;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer == 8)
+            _isCameraColliding = false;
     }
 
     public void RotateCamera(InputAction.CallbackContext context)
@@ -90,6 +164,7 @@ public class FollowCam : MonoBehaviour
                 if (context.action.activeControl.device.name == "Mouse")
                 {
                     CameraDistance += context.action.ReadValue<float>() < 0 ? 3 : -3;
+                    _lastZoomedDistance = CameraDistance;
                 }
                 else
                 {
@@ -102,6 +177,16 @@ public class FollowCam : MonoBehaviour
                 _cameraZoom = 0;
             }
         }
+    }
+
+
+
+    private bool IsCameraColliding()
+    {
+        RaycastHit hit;
+        Debug.DrawRay(transform.position, Target.position - transform.position, Color.red);
+        //check for collision between camera and player
+        return (Physics.Raycast(transform.position, (Target.position - transform.position), out hit, IgnoreCollision) && hit.collider.gameObject.layer == 8);
     }
 
     public void CheckCameraCollision()
