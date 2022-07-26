@@ -70,7 +70,7 @@ public class CameraControl : MonoBehaviour
                 if (context.action.activeControl.device.name == "Mouse")
                 {
                     _directionChange = -context.action.ReadValue<Vector2>() * 0.2f;
-                    _directionChange = new Vector2(-_directionChange.x, _directionChange.y);
+                    //_directionChange = new Vector2(-_directionChange.x, _directionChange.y);
                 }
                 else
                 {
@@ -155,10 +155,14 @@ public class CameraControl : MonoBehaviour
                 }
             }
 
-            if (!isInHit && hit.collider.gameObject.GetComponent<Renderer>())
-            {
 
-                AdjustDitherMaterial(obj, 1f, 1f);
+            if (hit.collider != null)
+            {
+                if (!isInHit && hit.collider.gameObject.GetComponent<Renderer>())
+                {
+
+                    AdjustDitherMaterial(obj, 1f, 1f);
+                }
             }
         }
     }

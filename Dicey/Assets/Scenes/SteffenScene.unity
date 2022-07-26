@@ -21953,6 +21953,14 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.423079
       objectReference: {fileID: 0}
+    - target: {fileID: 4123134512885033084, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 49
+      objectReference: {fileID: 0}
+    - target: {fileID: 4123134512885033084, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 4151880877778509994, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -22082,8 +22090,12 @@ PrefabInstance:
       value: -0.423079
       objectReference: {fileID: 0}
     - target: {fileID: 7791271183346662990, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 80.058
+      objectReference: {fileID: 0}
+    - target: {fileID: 7791271183346662990, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -91.167
+      value: -180
       objectReference: {fileID: 0}
     - target: {fileID: 8274089726766194989, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
       propertyPath: JumpParticle
@@ -22192,6 +22204,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 129
   Target: {fileID: 408396570}
+  LookUpMax: 150
+  LookDownMax: 20
 --- !u!114 &2068166739
 MonoBehaviour:
   m_ObjectHideFlags: 0
