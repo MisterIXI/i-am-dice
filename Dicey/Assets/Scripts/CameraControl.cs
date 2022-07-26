@@ -16,8 +16,8 @@ public class CameraControl : MonoBehaviour
     private HashSet<GameObject> _affectedMat;
 
     Quaternion _camRotation;
-    public float LookUpMax = 60;
-    public float LookDownMax = -60;
+    public float LookUpMax = 150;
+    public float LookDownMax = 20;
     void Start()
     {
         _followCam = VirtualCamera.GetCinemachineComponent<Cinemachine3rdPersonFollow>();
@@ -26,58 +26,31 @@ public class CameraControl : MonoBehaviour
         _camRotation = transform.localRotation;
     }
 
-
-    private void LateUpdate()
-    {
-        
-    }
-
     void Update()
     {
-        if(gameObject.transform.rotation.eulerAngles.x < 75 ){
-            Target.transform.RotateAround(Target.transform.position, Vector3.up, -_directionChange.x * Time.deltaTime * Speed);
-            Target.transform.RotateAround(Target.transform.position, Target.transform.right, _directionChange.y * Time.deltaTime * Speed);
-        }
-        else
+        // Rotate left/right
+        Target.transform.RotateAround(Target.transform.position, Vector3.up, -_directionChange.x * Time.deltaTime * Speed);
+
+        // Rotate up/down
+        float angle = _directionChange.y * Time.deltaTime * Speed;
+        float currentAngle = transform.localRotation.eulerAngles.x;
+        // Rotate frame of reference
+        currentAngle += 90f;
+        currentAngle = currentAngle % 360;
+        // clamp angle for full rotations
+        angle = angle % 180f;
+        // check for out of bounds
+        if (currentAngle + angle > LookUpMax)
         {
-            Debug.Log("Limit reached!");
-            Quaternion newRot = transform.rotation;
-            newRot = new Quaternion(70, transform.rotation.y, transform.rotation.z, transform.rotation.w);
-            transform.rotation = newRot;
+            angle = LookUpMax - currentAngle;
         }
+        else if (currentAngle + angle < LookDownMax)
+        {
+            angle = LookDownMax - currentAngle;
+        }
+        // do the actual rotation
+        Target.transform.RotateAround(Target.transform.position, Target.transform.right, angle);
 
-
-
-        // rotate camera based on _directionChange
-        //if (_directionChange.x != 0 || _directionChange.y != 0)
-        //{
-            //float futureAngle = Target.transform.rotation.eulerAngles.x + _directionChange.y * Time.deltaTime * Speed;
-            //if ((futureAngle >= 0 && futureAngle < 85) || (futureAngle <= 0 && futureAngle > 275))
-            //{
-            //if(Target.transform.eulerAngles.x < 80 && Target.transform.eulerAngles.x > -60)
-            //{
-            //Target.transform.RotateAround(Target.transform.position, Vector3.up, -_directionChange.x * Time.deltaTime * Speed);
-            //Target.transform.RotateAround(Target.transform.position, Target.transform.right, _directionChange.y * Time.deltaTime * Speed);
-            //_camRotation.x = Mathf.Clamp(_camRotation.x, LookDownMax, LookUpMax);
-            //transform.localRotation = Quaternion.Euler(_camRotation.x, _camRotation.y, _camRotation.z);
-            //Debug.Log(transform.localRotation.eulerAngles.x);
-            //if (gameObject.transform.rotation.eulerAngles.x > 75)
-            //{
-            //    Debug.Log("Camera above clamp");
-            //}
-            //}
-            //else if(Target.transform.eulerAngles.x > 80)
-            //{
-            //    Target.transform.eulerAngles = new Vector3(79, Target.transform.eulerAngles.y, Target.transform.eulerAngles.z);
-            //}
-            //else if(Target.transform.eulerAngles.x < -60)
-            //{
-            //    Target.transform.eulerAngles = new Vector3(-59, Target.transform.eulerAngles.y, Target.transform.eulerAngles.z);
-            //}
-            //Debug.Log(Target.transform.eulerAngles.x);
-
-            //}
-        //}
 
         if (_cameraZoom != 0)
         {
