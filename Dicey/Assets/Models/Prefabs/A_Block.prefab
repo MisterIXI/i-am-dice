@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2870385752269208881}
   m_Layer: 0
   m_Name: Cube.005_Cube.006
-  m_TagString: Untagged
+  m_TagString: Submesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 2160475041503990390}
   m_Layer: 0
   m_Name: A.003_Text.003
-  m_TagString: Untagged
+  m_TagString: Submesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 1212359326704551291}
   m_Layer: 0
   m_Name: A_Text
-  m_TagString: Untagged
+  m_TagString: Submesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -308,7 +308,7 @@ GameObject:
   - component: {fileID: 8883078741265777832}
   m_Layer: 0
   m_Name: A.002_Text.002
-  m_TagString: Untagged
+  m_TagString: Submesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 4700953501085218054}
   m_Layer: 0
   m_Name: A.004_Text.004
-  m_TagString: Untagged
+  m_TagString: Submesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -504,7 +504,7 @@ GameObject:
   - component: {fileID: 3877740989717834686}
   m_Layer: 0
   m_Name: Cube.008_Cube.009
-  m_TagString: Untagged
+  m_TagString: Submesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -602,7 +602,7 @@ GameObject:
   - component: {fileID: 3462978917066112623}
   m_Layer: 0
   m_Name: A.005_Text.005
-  m_TagString: Untagged
+  m_TagString: Submesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -700,7 +700,7 @@ GameObject:
   - component: {fileID: 1066496392732704907}
   m_Layer: 0
   m_Name: A.001_Text.001
-  m_TagString: Untagged
+  m_TagString: Submesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -810,7 +810,7 @@ Transform:
   m_GameObject: {fileID: 9194234570355141929}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.6681, y: 4.6681, z: 4.6681}
+  m_LocalScale: {x: 0.233405, y: 0.23340501, z: 0.23340501}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8524059601463793256}

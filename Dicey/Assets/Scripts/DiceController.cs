@@ -65,7 +65,7 @@ public class DiceController : MonoBehaviour
             }
             else if (context.action.phase == InputActionPhase.Performed)
             {
-                updateMovement(context.action.ReadValue<Vector2>());
+                UpdateMovement(context.action.ReadValue<Vector2>());
                 CurrentInput = context.action.ReadValue<Vector2>();
             }
             else if (context.action.phase == InputActionPhase.Canceled)
@@ -76,7 +76,7 @@ public class DiceController : MonoBehaviour
         }
     }
 
-    public void updateMovement(Vector2 currentMovement)
+    public void UpdateMovement(Vector2 currentMovement)
     {
         // adjust Vector2 to match the camera angle
         Vector2 adjustedMovement = currentMovement;
@@ -161,20 +161,8 @@ public class DiceController : MonoBehaviour
     private IEnumerator JumpCooldown()
     {
         _isOnJumpCooldown = true;
-        //darken material color
-        Color oldColor = _material.color;
-        if (oldColor == BaseColor)
-            _material.color = new Color(_material.color.r / 3, _material.color.g / 3, _material.color.b / 3, _material.color.a);
-        Vector3 colorSteps = new Vector3(_material.color.r / 10, _material.color.g / 10, _material.color.b / 10);
-        for (int i = 0; i < 10; i++)
-        {
-            yield return new WaitForSeconds(JUMP_COOLDOWN / 10);
-            if (oldColor == BaseColor)
-                _material.color = new Color(_material.color.r + colorSteps.x, _material.color.g + colorSteps.y, _material.color.b + colorSteps.z, _material.color.a);
-        }
+         yield return new WaitForSeconds(JUMP_COOLDOWN);
         _isOnJumpCooldown = false;
-        if (oldColor == BaseColor)
-            _material.color = oldColor;
     }
 
     public void ResetPosition(InputAction.CallbackContext context)
