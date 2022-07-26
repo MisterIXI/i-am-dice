@@ -15,25 +15,69 @@ public class CameraControl : MonoBehaviour
     public Transform Target;
     private HashSet<GameObject> _affectedMat;
 
+    Quaternion _camRotation;
+    public float LookUpMax = 60;
+    public float LookDownMax = -60;
     void Start()
     {
         _followCam = VirtualCamera.GetCinemachineComponent<Cinemachine3rdPersonFollow>();
         _cameraDistance = _followCam.CameraDistance;
         _affectedMat = new HashSet<GameObject>();
+        _camRotation = transform.localRotation;
     }
+
+
+    private void LateUpdate()
+    {
+        
+    }
+
     void Update()
     {
-        // rotate camera based on _directionChange
-        if (_directionChange.x != 0 || _directionChange.y != 0)
-        {
-            Debug.Log(Target.transform.rotation.eulerAngles);
-            float futureAngle = Target.transform.rotation.eulerAngles.x + _directionChange.y * Time.deltaTime * Speed;
-            if ((futureAngle >= 0 && futureAngle < 85) || (futureAngle <= 0 && futureAngle > 275))
-            {
-                Target.transform.RotateAround(Target.transform.position, Vector3.up, -_directionChange.x * Time.deltaTime * Speed);
-                Target.transform.RotateAround(Target.transform.position, Target.transform.right, _directionChange.y * Time.deltaTime * Speed);
-            }
+        if(gameObject.transform.rotation.eulerAngles.x < 75 ){
+            Target.transform.RotateAround(Target.transform.position, Vector3.up, -_directionChange.x * Time.deltaTime * Speed);
+            Target.transform.RotateAround(Target.transform.position, Target.transform.right, _directionChange.y * Time.deltaTime * Speed);
         }
+        else
+        {
+            Debug.Log("Limit reached!");
+            Quaternion newRot = transform.rotation;
+            newRot = new Quaternion(70, transform.rotation.y, transform.rotation.z, transform.rotation.w);
+            transform.rotation = newRot;
+        }
+
+
+
+        // rotate camera based on _directionChange
+        //if (_directionChange.x != 0 || _directionChange.y != 0)
+        //{
+            //float futureAngle = Target.transform.rotation.eulerAngles.x + _directionChange.y * Time.deltaTime * Speed;
+            //if ((futureAngle >= 0 && futureAngle < 85) || (futureAngle <= 0 && futureAngle > 275))
+            //{
+            //if(Target.transform.eulerAngles.x < 80 && Target.transform.eulerAngles.x > -60)
+            //{
+            //Target.transform.RotateAround(Target.transform.position, Vector3.up, -_directionChange.x * Time.deltaTime * Speed);
+            //Target.transform.RotateAround(Target.transform.position, Target.transform.right, _directionChange.y * Time.deltaTime * Speed);
+            //_camRotation.x = Mathf.Clamp(_camRotation.x, LookDownMax, LookUpMax);
+            //transform.localRotation = Quaternion.Euler(_camRotation.x, _camRotation.y, _camRotation.z);
+            //Debug.Log(transform.localRotation.eulerAngles.x);
+            //if (gameObject.transform.rotation.eulerAngles.x > 75)
+            //{
+            //    Debug.Log("Camera above clamp");
+            //}
+            //}
+            //else if(Target.transform.eulerAngles.x > 80)
+            //{
+            //    Target.transform.eulerAngles = new Vector3(79, Target.transform.eulerAngles.y, Target.transform.eulerAngles.z);
+            //}
+            //else if(Target.transform.eulerAngles.x < -60)
+            //{
+            //    Target.transform.eulerAngles = new Vector3(-59, Target.transform.eulerAngles.y, Target.transform.eulerAngles.z);
+            //}
+            //Debug.Log(Target.transform.eulerAngles.x);
+
+            //}
+        //}
 
         if (_cameraZoom != 0)
         {
@@ -48,11 +92,7 @@ public class CameraControl : MonoBehaviour
     {
         if (context.action.name == "RotateCamera")
         {
-            if (context.action.phase == InputActionPhase.Started)
-            {
-                // Debug.Log("Started");
-            }
-            else if (context.action.phase == InputActionPhase.Performed)
+            if (context.action.phase == InputActionPhase.Performed)
             {
                 if (context.action.activeControl.device.name == "Mouse")
                 {
@@ -63,7 +103,6 @@ public class CameraControl : MonoBehaviour
                 {
                     _directionChange = -context.action.ReadValue<Vector2>();
                 }
-                // Debug.Log("Direction change: " + directionChange);
             }
             else if (context.action.phase == InputActionPhase.Canceled)
             {
