@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -44,7 +45,7 @@ public class DotAnimation : MonoBehaviour
         if (oldTS != 0)
         {
             _isIdle = false;
-            Camera.main.GetComponent<FollowCam>().enabled = false;
+            Camera.main.GetComponent<CinemachineBrain>().enabled = false;
             Camera.main.transform.position = _dot.transform.position + -Camera.main.transform.forward * 20;
             Time.timeScale = 0.0f;
         }
@@ -59,7 +60,7 @@ public class DotAnimation : MonoBehaviour
         if (oldTS != 0)
         {
             Time.timeScale = oldTS;
-            Camera.main.GetComponent<FollowCam>().enabled = true;
+            Camera.main.GetComponent<CinemachineBrain>().enabled = true;
 
         }
         _isIdle = true;

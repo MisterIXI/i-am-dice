@@ -192,6 +192,7 @@ public class FollowCam : MonoBehaviour
     public void CheckCameraCollision()
     {
         RaycastHit hit;
+        RaycastHit[] hitAll = Physics.RaycastAll(transform.position, (Target.position - transform.position), Vector3.Distance(transform.position,Target.position),IgnoreLayer);
         Debug.DrawRay(transform.position, Target.position-transform.position,Color.cyan);
         //check for collision between camera and player
         if (Physics.Raycast(transform.position, (Target.position - transform.position), out hit, IgnoreLayer))
@@ -200,7 +201,6 @@ public class FollowCam : MonoBehaviour
             if (hit.collider.gameObject.layer != 7 && hit.collider.gameObject.GetComponent<Renderer>())
             {
 
-                RaycastHit[] hitAll = Physics.RaycastAll(transform.position, (Target.position - transform.position), Vector3.Distance(transform.position,Target.position),IgnoreLayer);
                 foreach(RaycastHit hitObj in hitAll)
                 {
                     //filter out player mesh
@@ -227,7 +227,8 @@ public class FollowCam : MonoBehaviour
         foreach(GameObject obj in _affectedMat)
         {
             bool isInHit = false;
-            RaycastHit[] hitAll = Physics.RaycastAll(transform.position, (Target.position - transform.position), Vector3.Distance(transform.position, Target.position), IgnoreLayer);
+            //get all raycasts
+            //RaycastHit[] hitAll = Physics.RaycastAll(transform.position, (Target.position - transform.position), Vector3.Distance(transform.position, Target.position), IgnoreLayer);
             foreach (RaycastHit hitObj in hitAll)
             {
                 if (hitObj.collider.gameObject.layer != 7)
@@ -235,11 +236,13 @@ public class FollowCam : MonoBehaviour
                     isInHit = true;
                 }
             }
-
-            if (!isInHit && hit.collider.gameObject.GetComponent<Renderer>())
+            if (hit.collider.gameObject)
             {
-
-                AdjustDitherMaterial(obj, 1f, 1f);
+                if (!isInHit && hit.collider.gameObject.GetComponent<Renderer>())
+                {
+                    //readjusting dither back to normal
+                    AdjustDitherMaterial(obj, 1f, 1f);
+                }
             }
         }  
     }
