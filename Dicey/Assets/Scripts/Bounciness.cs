@@ -9,7 +9,7 @@ public class Bounciness : MonoBehaviour
     {
         if (collision.rigidbody)
         {
-            collision.rigidbody.velocity = transform.TransformDirection(new Vector3(0, Mathf.Abs(collision.relativeVelocity.y) + BouncyFactor, 0));
+            collision.rigidbody.velocity = transform.TransformDirection(new Vector3(0, -(collision.relativeVelocity.y) + BouncyFactor, 0));
         }
     }
 }
