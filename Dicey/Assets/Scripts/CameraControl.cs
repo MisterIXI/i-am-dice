@@ -14,6 +14,7 @@ public class CameraControl : MonoBehaviour
     public LayerMask IgnoreLayer;
     public Transform Target;
     private HashSet<GameObject> _affectedMat;
+    private DiceController _diceController;
 
     Quaternion _camRotation;
     public float LookUpMax = 150;
@@ -24,6 +25,8 @@ public class CameraControl : MonoBehaviour
         _cameraDistance = _followCam.CameraDistance;
         _affectedMat = new HashSet<GameObject>();
         _camRotation = transform.localRotation;
+        _diceController = Target.gameObject.GetComponent<FollowTarget>().Target.gameObject.GetComponent<DiceController>();
+        Debug.Log(_diceController);
     }
 
     void Update()
@@ -59,6 +62,12 @@ public class CameraControl : MonoBehaviour
         }
 
         CheckCameraCollision();
+
+        // update direction every frame according to camera rotation
+        if (_directionChange.x != 0 || _directionChange.y != 0)
+        {
+            _diceController.UpdateMovement(_diceController.CurrentInput);
+        }
     }
 
     public void RotateCamera(InputAction.CallbackContext context)
