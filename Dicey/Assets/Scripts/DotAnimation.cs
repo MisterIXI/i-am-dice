@@ -70,9 +70,10 @@ public class DotAnimation : MonoBehaviour
         yield return new WaitForSeconds(2f);
         Destroy(gameObject);
     }
-    public static void SpawnDot(Vector3 position)
+    public static GameObject SpawnDot(Vector3 position)
     {
         GameObject dot = Instantiate(Resources.Load("DotObj"), position, Quaternion.identity) as GameObject;
         dot.GetComponent<DotAnimation>().PlaySpawnAnimation();
+        return dot;
     }
 }

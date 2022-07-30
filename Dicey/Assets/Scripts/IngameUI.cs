@@ -10,7 +10,6 @@ public class IngameUI : MonoBehaviour
     int _minutes;
     int _seconds;
     float _millis;
-    float totalTime;
     bool _isPlaying;
     Stopwatch _stopwatch;
 
