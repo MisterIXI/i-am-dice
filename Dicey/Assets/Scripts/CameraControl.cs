@@ -160,7 +160,6 @@ public class CameraControl : MonoBehaviour
             {
                 if (!isInHit && hit.collider.gameObject.GetComponent<Renderer>())
                 {
-
                     AdjustDitherMaterial(obj, 1f, 1f);
                 }
             }
@@ -170,16 +169,19 @@ public class CameraControl : MonoBehaviour
 
     private void AdjustDitherMaterial(GameObject gameObject, float opacity, float ditherSize)
     {
-        if (gameObject.GetComponent<Renderer>())
+        if(gameObject != null)
         {
-            MaterialPropertyBlock materialProperty = new MaterialPropertyBlock();
-            //change the opacity of object which is colliding
-            Renderer objRenderer = gameObject.GetComponent<Renderer>();
-            _affectedMat.Add(gameObject);
-            objRenderer.GetPropertyBlock(materialProperty);
-            materialProperty.SetFloat("_Opacity", opacity);
-            materialProperty.SetFloat("_Dither_Size", ditherSize);
-            objRenderer.SetPropertyBlock(materialProperty);
+            if (gameObject.GetComponent<Renderer>())
+            {
+                MaterialPropertyBlock materialProperty = new MaterialPropertyBlock();
+                //change the opacity of object which is colliding
+                Renderer objRenderer = gameObject.GetComponent<Renderer>();
+                _affectedMat.Add(gameObject);
+                objRenderer.GetPropertyBlock(materialProperty);
+                materialProperty.SetFloat("_Opacity", opacity);
+                materialProperty.SetFloat("_Dither_Size", ditherSize);
+                objRenderer.SetPropertyBlock(materialProperty);
+            }
         }
     }
 }

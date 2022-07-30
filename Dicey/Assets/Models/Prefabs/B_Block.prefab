@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2697664292437401876}
   m_Layer: 0
   m_Name: A.006_Text.006
-  m_TagString: Untagged
+  m_TagString: Submesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,7 +124,7 @@ Transform:
   m_GameObject: {fileID: 1588124265209298139}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4.6681, y: 4.6681, z: 4.6681}
+  m_LocalScale: {x: 0.233405, y: 0.233405, z: 0.233405}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8434857398050835384}
@@ -168,7 +168,7 @@ GameObject:
   - component: {fileID: 8105318098711951839}
   m_Layer: 0
   m_Name: A.011_Text.011
-  m_TagString: Untagged
+  m_TagString: Submesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -266,7 +266,7 @@ GameObject:
   - component: {fileID: 8316928718182647642}
   m_Layer: 0
   m_Name: A.009_Text.009
-  m_TagString: Untagged
+  m_TagString: Submesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -364,7 +364,7 @@ GameObject:
   - component: {fileID: 2621344653318455776}
   m_Layer: 0
   m_Name: A.010_Text.010
-  m_TagString: Untagged
+  m_TagString: Submesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -462,7 +462,7 @@ GameObject:
   - component: {fileID: 5953244783826780836}
   m_Layer: 0
   m_Name: Cube.003_Cube.004
-  m_TagString: Untagged
+  m_TagString: Submesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -560,7 +560,7 @@ GameObject:
   - component: {fileID: 8564416373156589461}
   m_Layer: 0
   m_Name: Cube.007_Cube.008
-  m_TagString: Untagged
+  m_TagString: Submesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -658,7 +658,7 @@ GameObject:
   - component: {fileID: 3767179059801835256}
   m_Layer: 0
   m_Name: A.008_Text.008
-  m_TagString: Untagged
+  m_TagString: Submesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -756,7 +756,7 @@ GameObject:
   - component: {fileID: 3207675095282217774}
   m_Layer: 0
   m_Name: A.007_Text.007
-  m_TagString: Untagged
+  m_TagString: Submesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
