@@ -13,7 +13,6 @@ public class DotAnimation : MonoBehaviour
     private float _rot = 0;
     private GameObject _dot;
     private bool _isIdle = true;
-    // public Animation SpinAnimation;
     void Start()
     {
         _dot = transform.GetChild(0).gameObject;
@@ -50,9 +49,6 @@ public class DotAnimation : MonoBehaviour
             Time.timeScale = 0.0f;
         }
         _dot.GetComponentInChildren<Animator>().enabled = true;
-        // _dot.GetComponentInChildren<Animation>().Play();
-        // _dot.GetComponentInChildren<Animator>().Play("DotSpin");
-        // SpinAnimation.Play("DotSpin");
         yield return new WaitForSecondsRealtime(3f);
         _dot.GetComponentInChildren<Animator>().enabled = false;
 
@@ -74,9 +70,10 @@ public class DotAnimation : MonoBehaviour
         yield return new WaitForSeconds(2f);
         Destroy(gameObject);
     }
-    public static void SpawnDot(Vector3 position)
+    public static GameObject SpawnDot(Vector3 position)
     {
         GameObject dot = Instantiate(Resources.Load("DotObj"), position, Quaternion.identity) as GameObject;
         dot.GetComponent<DotAnimation>().PlaySpawnAnimation();
+        return dot;
     }
 }

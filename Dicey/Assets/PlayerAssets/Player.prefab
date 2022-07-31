@@ -775,6 +775,7 @@ GameObject:
   - component: {fileID: 639588084}
   - component: {fileID: 639588085}
   - component: {fileID: 1848344425}
+  - component: {fileID: 227709181}
   m_Layer: 0
   m_Name: DotSpot61
   m_TagString: Untagged
@@ -874,6 +875,26 @@ MonoBehaviour:
   DeclineSpeed: 0.5
   DeclinePower: 0.0025
 --- !u!114 &1848344425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639588082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+--- !u!114 &227709181
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1777,6 +1798,7 @@ GameObject:
   - component: {fileID: 1681768344}
   - component: {fileID: 1681768345}
   - component: {fileID: 1712467145}
+  - component: {fileID: 2121294664}
   m_Layer: 0
   m_Name: DotSpot11
   m_TagString: Untagged
@@ -1895,6 +1917,26 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!114 &2121294664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681768342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &1839311909
 GameObject:
   m_ObjectHideFlags: 0
@@ -1907,6 +1949,7 @@ GameObject:
   - component: {fileID: 1839311911}
   - component: {fileID: 1839311912}
   - component: {fileID: 947927229}
+  - component: {fileID: 165169958}
   m_Layer: 0
   m_Name: DotSpot62
   m_TagString: Untagged
@@ -2006,6 +2049,26 @@ MonoBehaviour:
   DeclineSpeed: 0.5
   DeclinePower: 0.0025
 --- !u!114 &947927229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839311909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+--- !u!114 &165169958
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2364,6 +2427,7 @@ GameObject:
   - component: {fileID: 4799213789700601871}
   - component: {fileID: 6876354030009285831}
   - component: {fileID: 367865436}
+  - component: {fileID: 35260590}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -2426,6 +2490,30 @@ MonoBehaviour:
   m_BiasY: 0
   m_CenterOnActivate: 1
 --- !u!114 &367865436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765103177789161966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd6043bde05a7fc4cba197d06915c1e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damping: {x: 0.1, y: 0.5, z: 0.3}
+  ShoulderOffset: {x: 0.5, y: -0.4, z: 0}
+  VerticalArmLength: 0.4
+  CameraSide: 0.5
+  CameraDistance: 20
+  CameraCollisionFilter:
+    serializedVersion: 2
+    m_Bits: 256
+  IgnoreTag: 
+  CameraRadius: 0.2
+  DampingIntoCollision: 0
+  DampingFromCollision: 2
+--- !u!114 &35260590
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2595,8 +2683,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2380227918932441171}
-  m_LocalRotation: {x: -0, y: 0.9060928, z: -0.423079, w: 0}
-  m_LocalPosition: {x: 0, y: 15.100624, z: 12.644783}
+  m_LocalRotation: {x: 0.000000014901161, y: 0.9361824, z: -0.35151488, w: -0.000000029802322}
+  m_LocalPosition: {x: -0.0000026598573, y: 13.06443, z: 14.794235}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2703,14 +2791,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3754085092981250216}
-  m_LocalRotation: {x: -0.899025, y: 0, z: 0, w: -0.4378972}
+  m_LocalRotation: {x: 0, y: 0.9361824, z: -0.35151488, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 42037661948864903}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -3831.94, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 41.16, y: 180, z: 0}
 --- !u!114 &907065690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2796,6 +2884,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 42037661948864903}
+  - component: {fileID: 2068166723}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2822,6 +2911,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2068166723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5920022382202239533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e79e0f7490fe5bc45a53fe3145e151dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6221963190088788694
 GameObject:
   m_ObjectHideFlags: 0
@@ -2963,11 +3064,10 @@ GameObject:
   - component: {fileID: 7791271183346662991}
   - component: {fileID: 7791271183346662984}
   - component: {fileID: 3881146159536161448}
-  - component: {fileID: 367865440}
-  - component: {fileID: 367865439}
-  - component: {fileID: 367865435}
-  - component: {fileID: 367865437}
-  - component: {fileID: 367865438}
+  - component: {fileID: 2068166731}
+  - component: {fileID: 2068166730}
+  - component: {fileID: 2068166733}
+  - component: {fileID: 2068166734}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2982,8 +3082,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7791271183346662985}
-  m_LocalRotation: {x: -0, y: 0.9060928, z: -0.423079, w: 0}
-  m_LocalPosition: {x: 0, y: 15.100624, z: 12.644783}
+  m_LocalRotation: {x: 0.000000014901161, y: 0.9361824, z: -0.35151488, w: -0.000000029802322}
+  m_LocalPosition: {x: -0.0000026598573, y: 13.06443, z: 14.794235}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3074,7 +3174,7 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!54 &367865440
+--- !u!54 &2068166731
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3090,7 +3190,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!135 &367865439
+--- !u!135 &2068166730
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3103,49 +3203,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &367865435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7791271183346662985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae44107cc0db77a4782cc828b7d51b19, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 200
-  VirtualCamera: {fileID: 7089899274164117548}
-  IgnoreLayer:
-    serializedVersion: 2
-    m_Bits: 129
-  Target: {fileID: 5152583126750702072}
-  LookUpMax: 150
-  LookDownMax: 20
---- !u!114 &367865437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7791271183346662985}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae9104ff07def5c4e8612f3ac5612e02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IgnoreLayer:
-    serializedVersion: 2
-    m_Bits: 129
-  IgnoreCollision:
-    serializedVersion: 2
-    m_Bits: 256
-  Target: {fileID: 4124369929674898050}
-  Speed: 5
-  ZoomSpeed: 1
-  CameraDistance: 10
---- !u!114 &367865438
+--- !u!114 &2068166733
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3179,6 +3237,26 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2068166734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7791271183346662985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae44107cc0db77a4782cc828b7d51b19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 200
+  VirtualCamera: {fileID: 7089899274164117548}
+  IgnoreLayer:
+    serializedVersion: 2
+    m_Bits: 129
+  Target: {fileID: 5152583126750702072}
+  LookUpMax: 150
+  LookDownMax: 20
 --- !u!1 &8505761423641226595
 GameObject:
   m_ObjectHideFlags: 0
@@ -3408,7 +3486,7 @@ MonoBehaviour:
     m_ActionName: Player/MoveDice[/XInputControllerWindows/leftStick,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow,/BEEF-46D/stick]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 367865435}
+      - m_Target: {fileID: 2068166734}
         m_TargetAssemblyTypeName: CameraControl, Assembly-CSharp
         m_MethodName: RotateCamera
         m_Mode: 0
@@ -3480,7 +3558,7 @@ MonoBehaviour:
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 367865435}
+      - m_Target: {fileID: 2068166734}
         m_TargetAssemblyTypeName: CameraControl, Assembly-CSharp
         m_MethodName: ZoomCamera
         m_Mode: 0

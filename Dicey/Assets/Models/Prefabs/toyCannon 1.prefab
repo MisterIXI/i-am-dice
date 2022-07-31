@@ -4405,7 +4405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0bdae338c7f10d4ab84322007b9c39a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ShootingForce: 3000
+  ShootingForce: 6000
   SmokeParticles: {fileID: 8956792521331414874}
 --- !u!82 &8956792520242528307
 AudioSource:
