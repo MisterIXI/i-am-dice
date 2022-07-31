@@ -10,7 +10,17 @@ public class MainMenu : MonoBehaviour
     public GameObject creditsPanel;
     public GameObject mainMenuCamera;
     public IngameUI IngameUI;
-    // Update is called once per frame
+
+    public bool DebugSkipMenu = false;
+
+    void Start()
+    {
+        if (DebugSkipMenu)
+        {
+            StartGame();
+        }
+    }
+    
     void Update()
     {
         mainMenuCamera.transform.RotateAround(mainMenuCamera.transform.position, Vector3.up, rotationSpeed * Time.deltaTime);
