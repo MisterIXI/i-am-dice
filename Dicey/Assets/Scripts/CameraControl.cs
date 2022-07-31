@@ -26,7 +26,6 @@ public class CameraControl : MonoBehaviour
         _affectedMat = new HashSet<GameObject>();
         _camRotation = transform.localRotation;
         _diceController = Target.gameObject.GetComponent<FollowTarget>().Target.gameObject.GetComponent<DiceController>();
-        Debug.Log(_diceController);
     }
 
     void Update()
