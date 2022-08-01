@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 public class CarController : MonoBehaviour, IControllable
 {
@@ -24,18 +25,20 @@ public class CarController : MonoBehaviour, IControllable
     public Material HeadLightsMaterial, TailLightsMaterial;
     private bool _hasTriggered = false;
     private Rigidbody _rb;
+    private Transform _followTarget;
+    private Transform _oldFollowTarget;
+    private CameraControl _cameraControl;
+    private CinemachineVirtualCamera _cmVcam;
+
 
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
         // expected first child of car to be the trigger zone
-        GameObject tempObj = transform.GetChild(0).gameObject;
-        if (tempObj == null || tempObj.name != "TriggerZone")
-        {
-            gameObject.SetActive(false);
-            throw new System.Exception("TriggerZone not found");
-        }
-        _triggerZone = tempObj.GetComponent<Collider>();
+        _triggerZone = transform.GetComponentInChildren<CarTriggerZone>().gameObject.GetComponent<Collider>();
+        _followTarget = transform.Find("CarFollowTarget");
+        _cameraControl = DiceController.PLAYER.GetComponentInChildren<CameraControl>();
+        _cmVcam = DiceController.PLAYER.GetComponentInChildren<CinemachineVirtualCamera>();
     }
 
     // Update is called once per frame
@@ -45,7 +48,7 @@ public class CarController : MonoBehaviour, IControllable
 
         float motor = maxMotorTorque * (_movement.y + (_movement.y < 0 ? -Mathf.Abs(_movement.x) : Mathf.Abs(_movement.x)));
         // Debug.Log("_movement: " + _movement);
-        Debug.Log("motor: " + motor);
+        // Debug.Log("motor: " + motor);
         foreach (AxleInfo axle in axleInfos)
         {
 
@@ -55,8 +58,8 @@ public class CarController : MonoBehaviour, IControllable
                 axle.leftWheel.steerAngle = steering;
                 axle.rightWheel.steerAngle = steering;
                 // rotate wheels to match steering angle
-                axle.leftWheel.transform.localRotation = Quaternion.Euler(0, steering, 0);
-                axle.rightWheel.transform.localRotation = Quaternion.Euler(0, steering, 0);
+                axle.leftWheel.transform.GetChild(0).localRotation = Quaternion.Euler(0, steering, 0);
+                axle.rightWheel.transform.GetChild(0).localRotation = Quaternion.Euler(0, steering, 0);
             }
             // acceleration
             if (axle.motor)
@@ -96,6 +99,7 @@ public class CarController : MonoBehaviour, IControllable
             {
                 _movement = Vector2.zero;
             }
+            Debug.Log("Input received: " + _movement);
         }
 
     }
@@ -110,11 +114,13 @@ public class CarController : MonoBehaviour, IControllable
                 }
                 else
                 {
-                    if(_isReversing){
+                    if (_isReversing)
+                    {
                         _isReversing = false;
                         HandleLights(CarState.Reversing, false);
                     }
-                    if(_isBraking){
+                    if (_isBraking)
+                    {
                         _isBraking = false;
                         HandleLights(CarState.Braking, false);
                     }
@@ -134,11 +140,16 @@ public class CarController : MonoBehaviour, IControllable
     public void PlayerCollisionEnter(Collider other)
     {
         _movement = other.gameObject.GetComponent<DiceController>().RegisterControllable(this);
+        _oldFollowTarget = _cameraControl.Target;
+        _cameraControl.Target = _followTarget;
+        _cmVcam.Follow = _followTarget;
     }
     public void PlayerCollisionExit(Collider other)
     {
         other.gameObject.GetComponent<DiceController>().UnregisterControllable(this);
         _movement = Vector2.zero;
+        _cameraControl.Target = _oldFollowTarget;
+        _cmVcam.Follow = _oldFollowTarget;
     }
 
 
