@@ -25,9 +25,13 @@ public class DiceController : MonoBehaviour
     private Quaternion _initialRotation;
     private Material _material;
     private Material _material2;
-
+    public static GameObject PLAYER;
     private bool _isMovementLocked = false;
     private List<IControllable> _controllables;
+    private void Awake()
+    {
+        PLAYER = transform.parent.gameObject;
+    }
     void Start()
     {
         BaseColor = GetComponent<MeshRenderer>().material.color;
@@ -39,6 +43,7 @@ public class DiceController : MonoBehaviour
         _material = GetComponent<MeshRenderer>().material;
         _material2 = GetComponent<MeshRenderer>().materials[1];
         _controllables = new List<IControllable>();
+        transform.parent.gameObject.SetActive(false);
     }
 
     void FixedUpdate()
