@@ -17,7 +17,7 @@ public class MainMenu : MonoBehaviour
     {
         if (DebugSkipMenu)
         {
-            StartGame();
+            StartCoroutine(DelayedAutoStart());
         }
     }
     
@@ -50,5 +50,12 @@ public class MainMenu : MonoBehaviour
     {
         creditsPanel.SetActive(false);
         mainMenuPanel.SetActive(true);
+    }
+
+    IEnumerator DelayedAutoStart()
+    {
+        // delay the start for other code to finish
+        yield return new WaitForSeconds(0.1f);
+        StartGame();
     }
 }
