@@ -3,7 +3,7 @@ using UnityEngine;
 
 public interface IAbility
 {
-    MonoBehaviour MonoBehaviour { get; }
+    MonoBehaviour MonoBehaviour();
     void Select();
     void Deselect();
     void AcquireAnimation();
@@ -12,10 +12,8 @@ public interface IAbility
 
 public abstract class Ability : MonoBehaviour, IAbility
 {
-    public MonoBehaviour MonoBehaviour { get; private set; }
-    private void Start()
-    {
-        MonoBehaviour = this;
+    public MonoBehaviour MonoBehaviour(){
+        return this;
     }
     public abstract void Select();
     public abstract void Deselect();

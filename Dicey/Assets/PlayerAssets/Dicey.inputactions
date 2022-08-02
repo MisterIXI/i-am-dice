@@ -69,7 +69,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "CycleAbilites",
+                    "name": "CycleAbilities",
                     "type": "Button",
                     "id": "08c2eab1-866d-4f1f-9b6f-a84c9cfed7bf",
                     "expectedControlType": "Button",
@@ -427,7 +427,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "CycleAbilites",
+                    "action": "CycleAbilities",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -438,7 +438,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "CycleAbilites",
+                    "action": "CycleAbilities",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

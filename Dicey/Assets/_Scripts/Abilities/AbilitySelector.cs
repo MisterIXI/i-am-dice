@@ -25,7 +25,7 @@ public class AbilitySelector : MonoBehaviour
         };
         for (int i = 0; i < _abilities.Length; i++)
         {
-            _abilities[i].MonoBehaviour.enabled = false;
+            _abilities[i].MonoBehaviour().enabled = false;
         }
     }
     public void SelectAbility(int index)
@@ -33,19 +33,19 @@ public class AbilitySelector : MonoBehaviour
         if (_currentAbility != null)
         {
             _currentAbility.Deselect();
-            _currentAbility.MonoBehaviour.enabled = false;
+            _currentAbility.MonoBehaviour().enabled = false;
             _playerInput.currentActionMap.FindAction("AbilityAction", true).performed -= _currentAbility.AbilityAction;
 
         }
         _currentAbility = _abilities[index];
         _currentAbility.Select();
-        _currentAbility.MonoBehaviour.enabled = true;
+        _currentAbility.MonoBehaviour().enabled = true;
         _playerInput.currentActionMap.FindAction("AbilityAction", true).performed += _currentAbility.AbilityAction;
     }
 
     public void CycleAbility(InputAction.CallbackContext context)
     {
-        if (context.action.name == "CycleAbility")
+        if (context.action.name == "CycleAbilities")
         {
             if (context.performed)
             {
