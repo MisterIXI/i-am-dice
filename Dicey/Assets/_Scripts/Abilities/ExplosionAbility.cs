@@ -5,26 +5,26 @@ using UnityEditor;
 using UnityEngine.InputSystem;
 
 
-public class ExplosionAbility : MonoBehaviour, IAbility
+public class ExplosionAbility : Ability
 {
-    public void Select()
+
+    public override void Select()
     {
         Debug.Log("ExplosionAbility Selected");
     }
 
-    public void Deselect()
+    public override void Deselect()
     {
         Debug.Log("ExplosionAbility Deselected");
     }
 
-    public void AcquireAnimation()
+    public override void AcquireAnimation()
     {
         Debug.Log("ExplosionAbility AcquireAnimation");
     }
 
-    public void AbilityAction(InputAction.CallbackContext context)
+    public override void AbilityAction(InputAction.CallbackContext context)
     {
         Debug.Log("ExplosionAbility AbilityAction");
-        
     }
 }

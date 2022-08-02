@@ -6,32 +6,40 @@ using UnityEngine.InputSystem;
 public class AbilitySelector : MonoBehaviour
 {
     private IAbility _currentAbility;
-    private readonly IAbility[] _abilities = new IAbility[]{
-        new ExplosionAbility()
-        // new JumpAbility(),
-        // new TeleportAbility()
-    };
+    private IAbility[] _abilities;
     private int _abilityIndex = 0;
     private PlayerInput _playerInput;
-
     void Start()
     {
+        InitializeAbilities();
+        _playerInput = GetComponent<PlayerInput>();
         // Select first ability
         SelectAbility(_abilityIndex);
-        _playerInput = GetComponent<PlayerInput>();
     }
 
-
+    private void InitializeAbilities()
+    {
+        _abilities = new IAbility[]{
+            gameObject.AddComponent<ExplosionAbility>(),
+            gameObject.AddComponent<DashAbility>()
+        };
+        for (int i = 0; i < _abilities.Length; i++)
+        {
+            _abilities[i].MonoBehaviour.enabled = false;
+        }
+    }
     public void SelectAbility(int index)
     {
         if (_currentAbility != null)
         {
             _currentAbility.Deselect();
-        _playerInput.currentActionMap.FindAction("AbilityAction", true).performed -= _currentAbility.AbilityAction;
+            _currentAbility.MonoBehaviour.enabled = false;
+            _playerInput.currentActionMap.FindAction("AbilityAction", true).performed -= _currentAbility.AbilityAction;
 
         }
         _currentAbility = _abilities[index];
         _currentAbility.Select();
+        _currentAbility.MonoBehaviour.enabled = true;
         _playerInput.currentActionMap.FindAction("AbilityAction", true).performed += _currentAbility.AbilityAction;
     }
 
