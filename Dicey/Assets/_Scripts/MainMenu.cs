@@ -10,7 +10,17 @@ public class MainMenu : MonoBehaviour
     public GameObject creditsPanel;
     public GameObject mainMenuCamera;
     public IngameUI IngameUI;
-    // Update is called once per frame
+
+    public bool DebugSkipMenu = false;
+
+    void Start()
+    {
+        if (DebugSkipMenu)
+        {
+            StartCoroutine(DelayedAutoStart());
+        }
+    }
+    
     void Update()
     {
         mainMenuCamera.transform.RotateAround(mainMenuCamera.transform.position, Vector3.up, rotationSpeed * Time.deltaTime);
@@ -40,5 +50,12 @@ public class MainMenu : MonoBehaviour
     {
         creditsPanel.SetActive(false);
         mainMenuPanel.SetActive(true);
+    }
+
+    IEnumerator DelayedAutoStart()
+    {
+        // delay the start for other code to finish
+        yield return new WaitForSeconds(0.1f);
+        StartGame();
     }
 }

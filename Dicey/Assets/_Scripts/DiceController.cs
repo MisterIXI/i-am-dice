@@ -25,7 +25,13 @@ public class DiceController : MonoBehaviour
     private Quaternion _initialRotation;
     private Material _material;
     private Material _material2;
-
+    public static GameObject PLAYER;
+    private bool _isMovementLocked = false;
+    private List<IControllable> _controllables;
+    private void Awake()
+    {
+        PLAYER = transform.parent.gameObject;
+    }
     void Start()
     {
         BaseColor = GetComponent<MeshRenderer>().material.color;
@@ -36,11 +42,13 @@ public class DiceController : MonoBehaviour
         _initialRotation = transform.rotation;
         _material = GetComponent<MeshRenderer>().material;
         _material2 = GetComponent<MeshRenderer>().materials[1];
+        _controllables = new List<IControllable>();
+        transform.parent.gameObject.SetActive(false);
     }
 
     void FixedUpdate()
     {
-        if (IsMoving())
+        if (IsMoving() && !_isMovementLocked)
         {
             _rb.AddForce(GetMovementVector());
         }
@@ -51,6 +59,34 @@ public class DiceController : MonoBehaviour
     {
         return _movement.x != 0 || _movement.y != 0;
     }
+
+
+    public Vector2 RegisterControllable(IControllable controllable)
+    {
+        if (!_controllables.Contains(controllable))
+        {
+            _controllables.Add(controllable);
+            if (_controllables.Count == 1)
+            {
+                _isMovementLocked = true;
+            }
+            return _movement;
+        }
+        return Vector2.zero;
+    }
+
+    public void UnregisterControllable(IControllable controllable)
+    {
+        if (_controllables.Contains(controllable))
+        {
+            _controllables.Remove(controllable);
+            if (_controllables.Count == 0)
+            {
+                _isMovementLocked = false;
+            }
+        }
+    }
+
     private Vector3 GetMovementVector()
     {
         return new Vector3(_movement.x, 0, _movement.y) * 10;
@@ -72,6 +108,10 @@ public class DiceController : MonoBehaviour
             {
                 _movement = new Vector2(0, 0);
                 CurrentInput = new Vector2(0, 0);
+            }
+            foreach (var controllable in _controllables)
+            {
+                controllable.ReceiveInput(context);
             }
         }
     }
@@ -100,7 +140,7 @@ public class DiceController : MonoBehaviour
                 {
                     //Instantiate JumpParticleGO at ground position 
                     RaycastHit hit;
-                    if(Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity))
+                    if (Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity))
                     {
                         GameObject jumpEffect = Instantiate(JumpParticleGO);
                         jumpEffect.transform.position = hit.point;
@@ -114,6 +154,10 @@ public class DiceController : MonoBehaviour
                 {
                     // Debug.Log("Canceled");
                 }
+            }
+            foreach (var controllable in _controllables)
+            {
+                controllable.ReceiveInput(context);
             }
         }
     }
@@ -161,7 +205,7 @@ public class DiceController : MonoBehaviour
     private IEnumerator JumpCooldown()
     {
         _isOnJumpCooldown = true;
-         yield return new WaitForSeconds(JUMP_COOLDOWN);
+        yield return new WaitForSeconds(JUMP_COOLDOWN);
         _isOnJumpCooldown = false;
     }
 
