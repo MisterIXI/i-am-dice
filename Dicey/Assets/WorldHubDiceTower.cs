@@ -10,6 +10,7 @@ public class WorldHubDiceTower : MonoBehaviour
     CinemachineVirtualCamera _cinemachineCam;
     public CameraManager CameraManager;
     CinemachineBlendDefinition _style;
+    public bool ApplyTransformToFollowTarget = true;
     private void Start()
     {
         try
@@ -27,8 +28,7 @@ public class WorldHubDiceTower : MonoBehaviour
     {
         if (other.gameObject.tag.Equals("Player"))
         {
-            // CameraManager.PlayerCamera.Follow = null;
-            // CameraManager.PlayerCamera.LookAt = null;
+            CameraManager.GetComponent<CameraControl>().enabled = false;
             _style = CameraManager.GetCinemachineBrain().m_DefaultBlend;
             CameraManager.GetCinemachineBrain().m_DefaultBlend.m_Style = CinemachineBlendDefinition.Style.Cut;
             CameraManager.EnableCamera(_cinemachineCam);
@@ -40,14 +40,15 @@ public class WorldHubDiceTower : MonoBehaviour
 
     IEnumerator ResetCamera()
     {
-        // Transform _followTarget = _playerTransform.parent.GetComponentInChildren<FollowTarget>().gameObject.transform;
-        // _followTarget.localRotation = _cinemachineCam.transform.localRotation;
         yield return new WaitForSecondsRealtime(3);
-        // CameraManager.PlayerCamera.transform.rotation = _cinemachineCam.transform.rotation;
-        // CameraManager.PlayerCamera.transform.position = _cinemachineCam.transform.position;
-        // CameraManager.PlayerCamera.Follow = _followTarget;
-        // CameraManager.PlayerCamera.LookAt = _followTarget;
+        if (ApplyTransformToFollowTarget)
+        {
+            Transform _followTarget = _playerTransform.parent.GetComponentInChildren<FollowTarget>().gameObject.transform;
+            _followTarget.localRotation = _cinemachineCam.transform.rotation;
+        }
         CameraManager.GetComponent<CinemachineBrain>().m_DefaultBlend = _style;
         CameraManager.EnablePlayerCamera();
+        yield return new WaitForSecondsRealtime(CameraManager.CinemachineBrain.m_DefaultBlend.m_Time);
+        CameraManager.GetComponent<CameraControl>().enabled = true;
     }
 }
