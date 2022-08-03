@@ -1,5 +1,7 @@
 using UnityEngine.InputSystem;
 using UnityEngine;
+using UnityEditor;
+using System.Collections;
 
 public interface IAbility
 {
@@ -14,6 +16,12 @@ public abstract class Ability : MonoBehaviour, IAbility
 {
     public MonoBehaviour MonoBehaviour(){
         return this;
+    }
+    protected bool _isOnCoolDown = false;
+    private IEnumerator AbilityCoolDown(float coolDownTime)
+    {
+        yield return new WaitForSeconds(coolDownTime);
+        _isOnCoolDown = false;
     }
     public abstract void Select();
     public abstract void Deselect();

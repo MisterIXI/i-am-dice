@@ -26,7 +26,8 @@ public class DiceController : MonoBehaviour
     private Material _material;
     private Material _material2;
     public static GameObject PLAYER;
-    private bool _isMovementLocked = false;
+    [HideInInspector]
+    public bool IsMovementLocked = false;
     private List<IControllable> _controllables;
     private void Awake()
     {
@@ -48,7 +49,7 @@ public class DiceController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (IsMoving() && !_isMovementLocked)
+        if (IsMoving() && !IsMovementLocked)
         {
             _rb.AddForce(GetMovementVector());
         }
@@ -68,7 +69,7 @@ public class DiceController : MonoBehaviour
             _controllables.Add(controllable);
             if (_controllables.Count == 1)
             {
-                _isMovementLocked = true;
+                IsMovementLocked = true;
             }
             return _movement;
         }
@@ -82,7 +83,7 @@ public class DiceController : MonoBehaviour
             _controllables.Remove(controllable);
             if (_controllables.Count == 0)
             {
-                _isMovementLocked = false;
+                IsMovementLocked = false;
             }
         }
     }
@@ -163,8 +164,7 @@ public class DiceController : MonoBehaviour
     }
 
     private string _debugString = "";
-
-    private void CheckForFloor()
+    public bool IsOnFloor()
     {
         bool isOnFloor = false;
         isOnFloor = CheckFloorRaycast(transform.position, RAYCAST_DISTANCE_INNER);
@@ -172,6 +172,11 @@ public class DiceController : MonoBehaviour
         isOnFloor = !isOnFloor ? CheckFloorRaycast(transform.position + new Vector3(-Offset, 0, Offset), RAYCAST_DISTANCE_OUTER) : isOnFloor;
         isOnFloor = !isOnFloor ? CheckFloorRaycast(transform.position + new Vector3(Offset, 0, -Offset), RAYCAST_DISTANCE_OUTER) : isOnFloor;
         isOnFloor = !isOnFloor ? CheckFloorRaycast(transform.position + new Vector3(-Offset, 0, -Offset), RAYCAST_DISTANCE_OUTER) : isOnFloor;
+        return isOnFloor;
+    }
+    private void CheckForFloor()
+    {
+        bool isOnFloor = IsOnFloor();
         if (isOnFloor)
         {
             _isJumping = false;
