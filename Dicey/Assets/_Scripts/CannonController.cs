@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class CannonController : MonoBehaviour
 {
+    public bool ShootFromCenter;
     public float ShootingForce = 6000f;
     public ParticleSystem SmokeParticles;
 
@@ -21,11 +22,13 @@ public class CannonController : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
 
-            other.transform.position = transform.position;
+            if(ShootFromCenter)
+                other.transform.position = transform.position;
             other.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            SmokeParticles.Play();
             if(_audioSource)
                 _audioSource.Play();
+            if(SmokeParticles)
+                SmokeParticles.Play();
             other.attachedRigidbody.AddForce(ShootingForce * transform.forward);
         }
     }

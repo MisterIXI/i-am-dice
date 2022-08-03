@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class MainMenu : MonoBehaviour
 {
+    public CameraManager CameraManager;
     public float rotationSpeed;
     public GameObject player;
     public GameObject mainMenuPanel;
     public GameObject creditsPanel;
-    public GameObject mainMenuCamera;
+    public CinemachineVirtualCamera MainMenuCamera;
+    public CinemachineVirtualCamera PlayerCamera;
     public IngameUI IngameUI;
 
     public bool DebugSkipMenu = false;
@@ -23,16 +26,17 @@ public class MainMenu : MonoBehaviour
     
     void Update()
     {
-        mainMenuCamera.transform.RotateAround(mainMenuCamera.transform.position, Vector3.up, rotationSpeed * Time.deltaTime);
+        MainMenuCamera.transform.RotateAround(MainMenuCamera.transform.position, Vector3.up, rotationSpeed * Time.deltaTime);
     }
 
 
     public void StartGame()
     {
-        player.SetActive(true);
+
         IngameUI.TriggerStopwatch();
         mainMenuPanel.SetActive(false);
-        mainMenuCamera.SetActive(false);
+        CameraManager.EnableCamera(PlayerCamera);
+        player.SetActive(true);
     }
 
     public void OpenOptionsMenu()
