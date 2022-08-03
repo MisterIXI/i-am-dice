@@ -20200,6 +20200,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9175703391497064365, guid: 42c70590182b0be47bee62bcdd4c285c, type: 3}
   m_PrefabInstance: {fileID: 1119154573}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1119864346 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3636485407184740408, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+  m_PrefabInstance: {fileID: 2068166720}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1119864348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1119864346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ade71e6dd8f0dbc4b90c56072fbe32b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!64 &1126637096
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -32638,6 +32655,82 @@ PrefabInstance:
     - target: {fileID: 4124369929674898050, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4408193188149632355, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4408193188149632355, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_ActionId
+      value: ecb6cf78-9a65-4365-8629-773e67106b43
+      objectReference: {fileID: 0}
+    - target: {fileID: 4408193188149632355, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.data[17].m_ActionId
+      value: 08c2eab1-866d-4f1f-9b6f-a84c9cfed7bf
+      objectReference: {fileID: 0}
+    - target: {fileID: 4408193188149632355, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_ActionName
+      value: Player/AbilityAction[/XInputControllerWindows/buttonWest,/Keyboard/e]
+      objectReference: {fileID: 0}
+    - target: {fileID: 4408193188149632355, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.data[17].m_ActionName
+      value: Player/CycleAbilites[/Keyboard/tab,/XInputControllerWindows/leftShoulder]
+      objectReference: {fileID: 0}
+    - target: {fileID: 4408193188149632355, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4408193188149632355, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.data[17].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4408193188149632355, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4408193188149632355, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.data[17].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4408193188149632355, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1119864348}
+    - target: {fileID: 4408193188149632355, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.data[17].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1119864348}
+    - target: {fileID: 4408193188149632355, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4408193188149632355, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.data[17].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4408193188149632355, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CycleAbility
+      objectReference: {fileID: 0}
+    - target: {fileID: 4408193188149632355, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.data[17].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CycleAbility
+      objectReference: {fileID: 0}
+    - target: {fileID: 4408193188149632355, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: AbilitySelector, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4408193188149632355, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.data[17].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: AbilitySelector, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4408193188149632355, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.data[16].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4408193188149632355, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: m_ActionEvents.Array.data[17].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5152583126750702072, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
       propertyPath: m_RootOrder
