@@ -25,7 +25,7 @@ public class DiceController : MonoBehaviour
     private Quaternion _initialRotation;
     private Material _material;
     private Material _material2;
-    public static GameObject PLAYER;
+    public static GameObject PLAYER { get; private set; }
     [HideInInspector]
     public bool IsMovementLocked = false;
     private List<IControllable> _controllables;
