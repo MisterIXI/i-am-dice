@@ -27,6 +27,8 @@ public class WorldHubDiceTower : MonoBehaviour
     {
         if (other.gameObject.tag.Equals("Player"))
         {
+            // CameraManager.PlayerCamera.Follow = null;
+            // CameraManager.PlayerCamera.LookAt = null;
             _style = CameraManager.GetCinemachineBrain().m_DefaultBlend;
             CameraManager.GetCinemachineBrain().m_DefaultBlend.m_Style = CinemachineBlendDefinition.Style.Cut;
             CameraManager.EnableCamera(_cinemachineCam);
@@ -38,7 +40,13 @@ public class WorldHubDiceTower : MonoBehaviour
 
     IEnumerator ResetCamera()
     {
+        // Transform _followTarget = _playerTransform.parent.GetComponentInChildren<FollowTarget>().gameObject.transform;
+        // _followTarget.localRotation = _cinemachineCam.transform.localRotation;
         yield return new WaitForSecondsRealtime(3);
+        // CameraManager.PlayerCamera.transform.rotation = _cinemachineCam.transform.rotation;
+        // CameraManager.PlayerCamera.transform.position = _cinemachineCam.transform.position;
+        // CameraManager.PlayerCamera.Follow = _followTarget;
+        // CameraManager.PlayerCamera.LookAt = _followTarget;
         CameraManager.GetComponent<CinemachineBrain>().m_DefaultBlend = _style;
         CameraManager.EnablePlayerCamera();
     }
