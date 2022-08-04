@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
-
 public class CameraManager : MonoBehaviour
 {
     CinemachineBrain _cinemachineBrain;
@@ -10,16 +9,19 @@ public class CameraManager : MonoBehaviour
     public CinemachineVirtualCamera PlayerCamera;
     public CinemachineVirtualCamera[] Cameras;
 
-
+    public bool IsSceneLevel;
+    public static CameraManager cameraManager;
 
     // Start is called before the first frame update
     void Start()
     {
+        cameraManager = GetComponent<CameraManager>();
         foreach(CinemachineVirtualCamera camera in Cameras)
         {
             camera.enabled = false;
         }
-        MainMenuCamera.enabled = true;
+        if(MainMenuCamera != null)
+            MainMenuCamera.enabled = true;
         _cinemachineBrain = GetComponent<CinemachineBrain>();
     }
 

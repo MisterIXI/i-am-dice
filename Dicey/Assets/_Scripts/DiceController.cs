@@ -29,6 +29,10 @@ public class DiceController : MonoBehaviour
     [HideInInspector]
     public bool IsMovementLocked = false;
     private List<IControllable> _controllables;
+
+    [SerializeField]
+    private CameraControl _cameraControl;
+    private PlayerInput _playerInput;
     private void Awake()
     {
         PLAYER = transform.parent.gameObject;
@@ -45,6 +49,24 @@ public class DiceController : MonoBehaviour
         _material2 = GetComponent<MeshRenderer>().materials[1];
         _controllables = new List<IControllable>();
         transform.parent.gameObject.SetActive(false);
+    }
+
+
+    void InitializePlayerInputSystem()
+    {
+        _playerInput = GetComponent<PlayerInput>();
+
+        _playerInput.currentActionMap.FindAction("MoveDice", true).performed += MoveDice;
+        _playerInput.currentActionMap.FindAction("RotateCamera", true).performed += _cameraControl.RotateCamera;
+        _playerInput.currentActionMap.FindAction("Jump", true).performed += Jump;
+        _playerInput.currentActionMap.FindAction("ZoomCamera", true).performed += _cameraControl.ZoomCamera;
+        _playerInput.currentActionMap.FindAction("ResetPosition", true).performed += ResetPosition;
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        _cameraControl = FindObjectOfType<CameraControl>();
+        InitializePlayerInputSystem();
     }
 
     void FixedUpdate()
