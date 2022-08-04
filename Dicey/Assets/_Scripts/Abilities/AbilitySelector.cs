@@ -22,7 +22,8 @@ public class AbilitySelector : MonoBehaviour
         _abilities = new IAbility[]{
             gameObject.AddComponent<ExplosionAbility>(),
             gameObject.AddComponent<DashAbility>(),
-            gameObject.AddComponent<GroundPoundAbility>()
+            gameObject.AddComponent<GroundPoundAbility>(),
+            gameObject.AddComponent<FreezeObjectsAbility>()
         };
         for (int i = 0; i < _abilities.Length; i++)
         {
