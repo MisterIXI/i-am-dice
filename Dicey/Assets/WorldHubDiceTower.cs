@@ -48,7 +48,7 @@ public class WorldHubDiceTower : MonoBehaviour
         }
         CameraManager.GetComponent<CinemachineBrain>().m_DefaultBlend = _style;
         CameraManager.EnablePlayerCamera();
-        yield return new WaitForSecondsRealtime(CameraManager.CinemachineBrain.m_DefaultBlend.m_Time);
+        yield return new WaitForSecondsRealtime(CameraManager.GetCinemachineBrain().m_DefaultBlend.m_Time);
         CameraManager.GetComponent<CameraControl>().enabled = true;
     }
 }

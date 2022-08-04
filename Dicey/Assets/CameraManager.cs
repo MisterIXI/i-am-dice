@@ -5,7 +5,7 @@ using Cinemachine;
 
 public class CameraManager : MonoBehaviour
 {
-    public CinemachineBrain CinemachineBrain;
+    CinemachineBrain _cinemachineBrain;
     public CinemachineVirtualCamera MainMenuCamera;
     public CinemachineVirtualCamera PlayerCamera;
     public CinemachineVirtualCamera[] Cameras;
@@ -20,6 +20,7 @@ public class CameraManager : MonoBehaviour
             camera.enabled = false;
         }
         MainMenuCamera.enabled = true;
+        _cinemachineBrain = GetComponent<CinemachineBrain>();
     }
 
 
@@ -43,6 +44,6 @@ public class CameraManager : MonoBehaviour
 
     public CinemachineBrain GetCinemachineBrain()
     {
-        return CinemachineBrain;
+        return _cinemachineBrain;
     }
 }
