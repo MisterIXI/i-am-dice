@@ -55,18 +55,24 @@ public class DiceController : MonoBehaviour
     void InitializePlayerInputSystem()
     {
         _playerInput = GetComponent<PlayerInput>();
-
         _playerInput.currentActionMap.FindAction("MoveDice", true).performed += MoveDice;
         _playerInput.currentActionMap.FindAction("RotateCamera", true).performed += _cameraControl.RotateCamera;
         _playerInput.currentActionMap.FindAction("Jump", true).performed += Jump;
         _playerInput.currentActionMap.FindAction("ZoomCamera", true).performed += _cameraControl.ZoomCamera;
         _playerInput.currentActionMap.FindAction("ResetPosition", true).performed += ResetPosition;
+
+        _playerInput.currentActionMap.FindAction("MoveDice", true).canceled += MoveDice;
+        _playerInput.currentActionMap.FindAction("RotateCamera", true).canceled += _cameraControl.RotateCamera;
+        _playerInput.currentActionMap.FindAction("Jump", true).canceled += Jump;
+        _playerInput.currentActionMap.FindAction("ZoomCamera", true).canceled += _cameraControl.ZoomCamera;
+        _playerInput.currentActionMap.FindAction("ResetPosition", true).canceled += ResetPosition;
     }
 
     private void OnLevelWasLoaded(int level)
     {
         _cameraControl = FindObjectOfType<CameraControl>();
         InitializePlayerInputSystem();
+        Debug.Log("Level loaded");
     }
 
     void FixedUpdate()
