@@ -40,7 +40,7 @@ public class ExplosionAbility : Ability
                 {
                     rb.AddExplosionForce(ExplosionForce, transform.position, ExplosionRadius);
                 }
-                else if (hits[i].transform.parent.TryGetComponent(out Rigidbody rb2))
+                else if (!hits[i].isTrigger && hits[i].transform.parent.TryGetComponent(out Rigidbody rb2))
                 {
                     rb2.AddExplosionForce(ExplosionForce, transform.position, ExplosionRadius);
                 }

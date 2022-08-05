@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 public class DiceController : MonoBehaviour
 {
     private float JUMP_COOLDOWN = 1f;
@@ -29,6 +30,11 @@ public class DiceController : MonoBehaviour
     [HideInInspector]
     public bool IsMovementLocked = false;
     private List<IControllable> _controllables;
+
+    [SerializeField]
+    private CameraControl _cameraControl;
+    private PlayerInput _playerInput;
+    private AbilitySelector _abilitySelector;
     private void Awake()
     {
         PLAYER = transform.parent.gameObject;
@@ -44,7 +50,48 @@ public class DiceController : MonoBehaviour
         _material = GetComponent<MeshRenderer>().material;
         _material2 = GetComponent<MeshRenderer>().materials[1];
         _controllables = new List<IControllable>();
+        _cameraControl = FindObjectOfType<CameraControl>();
+        _abilitySelector = GetComponent<AbilitySelector>();
+        InitializePlayerInputSystem(true);
         transform.parent.gameObject.SetActive(false);
+    }
+
+
+    void InitializePlayerInputSystem(bool firstTime)
+    {
+        _playerInput = GetComponent<PlayerInput>();
+        InputActionMap actionMap = _playerInput.currentActionMap;
+        if (firstTime)
+        {
+            SceneManager.activeSceneChanged += LevelLoad;
+        }
+        else
+        {
+            HelperFunctions.UnsubscribeFromEvent(actionMap, "MoveDice", MoveDice);
+            HelperFunctions.UnsubscribeFromEvent(actionMap, "RotateCamera", _cameraControl.RotateCamera);
+            HelperFunctions.UnsubscribeFromEvent(actionMap, "Jump", Jump);
+            HelperFunctions.UnsubscribeFromEvent(actionMap, "ZoomCamera", _cameraControl.ZoomCamera);
+            HelperFunctions.UnsubscribeFromEvent(actionMap, "ResetPosition", ResetPosition);
+            HelperFunctions.UnsubscribeFromEvent(actionMap, "AbilityAction", TriggerAbility);
+
+            if (GameManager.DEBUG_ENABLED)
+                HelperFunctions.UnsubscribeFromEvent(actionMap, "DebugSpawn", SpawnDot);
+        }
+        HelperFunctions.SubsribeToEvent(actionMap, "MoveDice", MoveDice);
+        HelperFunctions.SubsribeToEvent(actionMap, "RotateCamera", _cameraControl.RotateCamera);
+        HelperFunctions.SubsribeToEvent(actionMap, "Jump", Jump);
+        HelperFunctions.SubsribeToEvent(actionMap, "ZoomCamera", _cameraControl.ZoomCamera);
+        HelperFunctions.SubsribeToEvent(actionMap, "ResetPosition", ResetPosition);
+        HelperFunctions.SubsribeToEvent(actionMap, "AbilityAction", TriggerAbility);
+        if (GameManager.DEBUG_ENABLED)
+            HelperFunctions.SubsribeToEvent(actionMap, "DebugSpawn", SpawnDot);
+    }
+
+    private void LevelLoad(Scene oldScene, Scene newScene)
+    {
+        _cameraControl = FindObjectOfType<CameraControl>();
+        InitializePlayerInputSystem(false);
+        Debug.Log("Level loaded");
     }
 
     void FixedUpdate()
@@ -136,24 +183,26 @@ public class DiceController : MonoBehaviour
         {
             if (!_isJumping && !_isOnJumpCooldown || InfiniteJumpsEnabled)
             {
-
-                if (context.action.phase == InputActionPhase.Performed)
+                if (!IsMovementLocked)
                 {
-                    //Instantiate JumpParticleGO at ground position 
-                    RaycastHit hit;
-                    if (Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity))
+                    if (context.action.phase == InputActionPhase.Performed)
                     {
-                        GameObject jumpEffect = Instantiate(JumpParticleGO);
-                        jumpEffect.transform.position = hit.point;
-                        Destroy(jumpEffect, 2);
+                        //Instantiate JumpParticleGO at ground position 
+                        RaycastHit hit;
+                        if (Physics.Raycast(transform.position, Vector3.down, out hit, Mathf.Infinity))
+                        {
+                            GameObject jumpEffect = Instantiate(JumpParticleGO);
+                            jumpEffect.transform.position = hit.point;
+                            Destroy(jumpEffect, 2);
+                        }
+                        _rb.AddForce(new Vector3(0, JumpStrength, 0));
+                        _rb.AddTorque(new Vector3(Random.Range(1f, 2f) * JumpStrength, Random.Range(1f, 2f) * JumpStrength, Random.Range(1f, 2f) * JumpStrength));
+                        StartCoroutine(JumpCooldown());
                     }
-                    _rb.AddForce(new Vector3(0, JumpStrength, 0));
-                    _rb.AddTorque(new Vector3(Random.Range(1f, 2f) * JumpStrength, Random.Range(1f, 2f) * JumpStrength, Random.Range(1f, 2f) * JumpStrength));
-                    StartCoroutine(JumpCooldown());
-                }
-                else if (context.action.phase == InputActionPhase.Canceled)
-                {
-                    // Debug.Log("Canceled");
+                    else if (context.action.phase == InputActionPhase.Canceled)
+                    {
+                        // Debug.Log("Canceled");
+                    }
                 }
             }
             foreach (var controllable in _controllables)
@@ -193,6 +242,17 @@ public class DiceController : MonoBehaviour
         if (context.action.phase == InputActionPhase.Performed)
         {
             DotAnimation.SpawnDot(transform.position + transform.forward * 5f);
+        }
+    }
+
+    public void TriggerAbility(InputAction.CallbackContext context)
+    {
+        if (context.action.phase == InputActionPhase.Performed)
+        {
+            if (!IsMovementLocked)
+                _abilitySelector.TriggerCurrentAbility(context);
+            else
+                Debug.Log("Movement is locked");
         }
     }
     private bool CheckFloorRaycast(Vector3 position, float distance)
