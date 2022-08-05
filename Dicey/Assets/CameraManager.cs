@@ -16,15 +16,20 @@ public class CameraManager : MonoBehaviour
     void Start()
     {
         cameraManager = GetComponent<CameraManager>();
-        foreach(CinemachineVirtualCamera camera in Cameras)
+        foreach (CinemachineVirtualCamera camera in Cameras)
         {
             camera.enabled = false;
         }
-        if(MainMenuCamera != null)
+        if (MainMenuCamera != null)
             MainMenuCamera.enabled = true;
         _cinemachineBrain = GetComponent<CinemachineBrain>();
+        InitializePlayerCam();
     }
-
+    public void InitializePlayerCam()
+    {
+        if (PlayerCamera == null)
+            PlayerCamera = DiceController.PLAYER.GetComponentInChildren<CinemachineVirtualCamera>();
+    }
 
     public void EnableCamera(CinemachineVirtualCamera camera)
     {
@@ -37,6 +42,7 @@ public class CameraManager : MonoBehaviour
 
     public void EnablePlayerCamera()
     {
+        InitializePlayerCam();
         foreach (CinemachineVirtualCamera camera in Cameras)
         {
             camera.enabled = false;

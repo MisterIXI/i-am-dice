@@ -11,14 +11,15 @@ public class AbilitySelector : MonoBehaviour
     private PlayerInput _playerInput;
     void Start()
     {
-        InitializeAbilities();
         _playerInput = GetComponent<PlayerInput>();
+        InitializeAbilities();
         // Select first ability
         SelectAbility(_abilityIndex);
     }
 
     private void InitializeAbilities()
     {
+        _playerInput.currentActionMap.FindAction("CycleAbilities").performed += CycleAbility;
         _abilities = new IAbility[]{
             gameObject.AddComponent<ExplosionAbility>(),
             gameObject.AddComponent<DashAbility>(),
@@ -35,13 +36,19 @@ public class AbilitySelector : MonoBehaviour
         {
             _currentAbility.Deselect();
             _currentAbility.MonoBehaviour().enabled = false;
-            _playerInput.currentActionMap.FindAction("AbilityAction", true).performed -= _currentAbility.AbilityAction;
 
         }
         _currentAbility = _abilities[index];
         _currentAbility.Select();
         _currentAbility.MonoBehaviour().enabled = true;
-        _playerInput.currentActionMap.FindAction("AbilityAction", true).performed += _currentAbility.AbilityAction;
+    }
+
+    public void TriggerCurrentAbility(InputAction.CallbackContext context)
+    {
+        if(_currentAbility != null)
+        {
+            _currentAbility.AbilityAction(context);
+        }
     }
 
     public void CycleAbility(InputAction.CallbackContext context)
