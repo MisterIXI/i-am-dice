@@ -21,11 +21,14 @@ public class CameraControl : MonoBehaviour
     public float LookDownMax = 20;
     void Start()
     {
+        VirtualCamera = PlayerManager.PLAYER_CAMERA;
         _followCam = VirtualCamera.GetCinemachineComponent<Cinemachine3rdPersonFollow>();
         _cameraDistance = _followCam.CameraDistance;
         _affectedMat = new HashSet<GameObject>();
         _camRotation = transform.localRotation;
-        _diceController = Target.gameObject.GetComponent<FollowTarget>().Target.gameObject.GetComponent<DiceController>();
+        //_diceController = PlayerManager.PLAYER_TARGET;
+        Target = PlayerManager.PLAYER_TARGET;
+        _diceController = PlayerManager.PLAYER_TARGET.gameObject.GetComponent<FollowTarget>().Target.gameObject.GetComponent<DiceController>();
     }
 
     void Update()

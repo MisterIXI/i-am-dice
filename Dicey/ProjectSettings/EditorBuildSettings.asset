@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/WorldHub.unity
+    guid: a19d74826de7cbe4da746338a316f6e6
+  - enabled: 1
+    path: Assets/Scenes/SteffenScene.unity
+    guid: 6d380da5980465f4da3dc73bd16afe4a
   m_configObjects: {}
