@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class CannonController : MonoBehaviour
+public class ForcePush : MonoBehaviour
 {
     public bool ShootFromCenter;
     public float ShootingForce = 6000f;
