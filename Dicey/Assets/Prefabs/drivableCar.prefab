@@ -221,7 +221,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 827730589096924288}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7893dbc6d5ab7649bfe84cad05c2cad, type: 3}
+  m_Script: {fileID: 11500000, guid: 07eacd422469f0443a0aea29d981f628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1242411873186443911
@@ -955,20 +955,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5548375765995837491}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53466a1e6f1b50247925ebcdb179851c, type: 3}
+  m_Script: {fileID: 11500000, guid: bf64a6df85883b24e8b873c5470e7f5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  axleInfos:
-  - leftWheel: {fileID: 9035462738827558816}
-    rightWheel: {fileID: 9220018624227657886}
-    motor: 0
-    steering: 1
-  - leftWheel: {fileID: 5551480311524142075}
-    rightWheel: {fileID: 272972539002928168}
-    motor: 1
-    steering: 0
-  maxMotorTorque: 40
-  maxSteeringAngle: 60
+  axleInfos: []
+  maxMotorTorque: 0
+  maxSteeringAngle: 0
   maxBrakeTorque: 0
   HeadLightsMaterial: {fileID: 0}
   TailLightsMaterial: {fileID: 0}
