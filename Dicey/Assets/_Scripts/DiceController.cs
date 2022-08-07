@@ -26,6 +26,7 @@ public class DiceController : MonoBehaviour
     private Material _material;
     private Material _material2;
     public static GameObject PLAYER { get; private set; }
+    public static GameObject PLAYER_MESH { get; private set; }
     [HideInInspector]
     public bool IsMovementLocked = false;
     private List<IControllable> _controllables;
@@ -36,6 +37,7 @@ public class DiceController : MonoBehaviour
     private void Awake()
     {
         PLAYER = transform.parent.gameObject;
+        PLAYER_MESH = transform.gameObject;
     }
     void Start()
     {
