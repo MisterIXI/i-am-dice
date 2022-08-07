@@ -11,10 +11,11 @@ public class CameraManager : MonoBehaviour
 
     public bool IsSceneLevel;
     public static CameraManager cameraManager;
-
+    HashSet<CinemachineVirtualCamera> _cameraSet;
     // Start is called before the first frame update
     void Start()
     {
+        _cameraSet = new HashSet<CinemachineVirtualCamera>();
         cameraManager = GetComponent<CameraManager>();
         foreach (CinemachineVirtualCamera camera in Cameras)
         {
@@ -37,6 +38,12 @@ public class CameraManager : MonoBehaviour
         {
             _camera.enabled = false;
         }
+
+        foreach(CinemachineVirtualCamera _camera in _cameraSet)
+        {
+            _camera.enabled = false;
+        }
+
         camera.enabled = true;
     }
 
@@ -47,11 +54,20 @@ public class CameraManager : MonoBehaviour
         {
             camera.enabled = false;
         }
+        foreach (CinemachineVirtualCamera _camera in _cameraSet)
+        {
+            _camera.enabled = false;
+        }
         PlayerCamera.enabled = true;
     }
 
     public CinemachineBrain GetCinemachineBrain()
     {
         return _cinemachineBrain;
+    }
+
+    public void AddCameraToList(CinemachineVirtualCamera camera)
+    {
+        _cameraSet.Add(camera);
     }
 }
