@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43670994, g: 0.48431247, b: 0.56456476, a: 1}
+  m_IndirectSpecularColor: {r: 0.43670967, g: 0.4843123, b: 0.5645642, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1469,13 +1469,37 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1026745511967611058, guid: 8b44347a037c8e54c97d7b3400fb46fb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1026745511967611058, guid: 8b44347a037c8e54c97d7b3400fb46fb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 1026745511967611058, guid: 8b44347a037c8e54c97d7b3400fb46fb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -21.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 1150662990228849556, guid: 8b44347a037c8e54c97d7b3400fb46fb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1150662990228849557, guid: 8b44347a037c8e54c97d7b3400fb46fb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1150662990228849562, guid: 8b44347a037c8e54c97d7b3400fb46fb, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5095155942543770026, guid: 8b44347a037c8e54c97d7b3400fb46fb, type: 3}
       propertyPath: m_Name
       value: diceTower
       objectReference: {fileID: 0}
-    - target: {fileID: 5606499767247393668, guid: 8b44347a037c8e54c97d7b3400fb46fb, type: 3}
-      propertyPath: m_Layer
-      value: 6
+    - target: {fileID: 6066688411097679494, guid: 8b44347a037c8e54c97d7b3400fb46fb, type: 3}
+      propertyPath: m_Lens.FieldOfView
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7225019062123918553, guid: 8b44347a037c8e54c97d7b3400fb46fb, type: 3}
       propertyPath: m_RootOrder
@@ -1525,10 +1549,6 @@ PrefabInstance:
       propertyPath: CameraManager
       value: 
       objectReference: {fileID: 1942063187}
-    - target: {fileID: 7905423143216051331, guid: 8b44347a037c8e54c97d7b3400fb46fb, type: 3}
-      propertyPath: NextLevelBuildIndex
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b44347a037c8e54c97d7b3400fb46fb, type: 3}
 --- !u!114 &311997584 stripped
@@ -6752,7 +6772,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 3.046083, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

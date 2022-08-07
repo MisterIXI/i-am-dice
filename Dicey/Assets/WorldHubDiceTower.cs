@@ -13,7 +13,7 @@ public class WorldHubDiceTower : MonoBehaviour
     Transform _playerTransform;
     CinemachineVirtualCamera _cinemachineCam;
     CinemachineBlendDefinition _style;
-
+    bool _canLevelSwitch;
     private void Start()
     {
         try
@@ -48,7 +48,9 @@ public class WorldHubDiceTower : MonoBehaviour
         DontDestroyOnLoad(DiceController.PLAYER);
         DontDestroyOnLoad(gameObject);
         //wait for player to fall down before moving camera
-        yield return new WaitForSecondsRealtime(3);
+        //yield return new WaitForSecondsRealtime(3);
+        yield return new WaitUntil(() => _canLevelSwitch == true);
+        Debug.Log("level switch initialized");
         asyncLoad.allowSceneActivation = true;
         asyncLoad.completed += SceneLoadFinished;
     }
@@ -61,6 +63,10 @@ public class WorldHubDiceTower : MonoBehaviour
         StartCoroutine(CameraTransitionToPlayer());
     }
 
+    public void EnableLevelSwitch()
+    {
+        _canLevelSwitch = true;
+    }
     IEnumerator CameraTransitionToPlayer()
     {
         yield return new WaitForEndOfFrame();
