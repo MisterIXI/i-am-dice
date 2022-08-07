@@ -16,6 +16,7 @@ public class GroundPoundAbility : Ability
     private GameObject _groundPoundParticle;
     private bool _isGroundPounding = false;
     private float _oldHeight;
+    private bool _controlsWereLocked = false;
     private void Start()
     {
         _diceController = GetComponent<DiceController>();
@@ -49,7 +50,10 @@ public class GroundPoundAbility : Ability
 
     private IEnumerator GroundPound()
     {
-        _diceController.IsMovementLocked = true;
+        if (_diceController.IsMovementLocked)
+            _controlsWereLocked = true;
+        else
+            _diceController.IsMovementLocked = true;
         _isOnCoolDown = true;
         _rb.velocity = Vector3.zero;
         _rb.AddForce(Vector3.up * 50, ForceMode.Impulse);
@@ -84,7 +88,10 @@ public class GroundPoundAbility : Ability
                 float heightDiffFactor = _oldHeight - transform.position.y;
                 heightDiffFactor = heightDiffFactor * 0.01f + 0.75f;
                 _isGroundPounding = false;
-                _diceController.IsMovementLocked = false;
+                if (_controlsWereLocked)
+                    _controlsWereLocked = false;
+                else
+                    _diceController.IsMovementLocked = false;
                 _isOnCoolDown = false;
                 if (AddExplosionEffect)
                     ExplosionEffect(heightDiffFactor);
