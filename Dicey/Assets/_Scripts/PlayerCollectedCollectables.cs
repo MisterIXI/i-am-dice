@@ -8,6 +8,13 @@ public class PlayerCollectedCollectables : MonoBehaviour
     public TMP_Text CollectedDiceText;
 
     int _amountCollectedDice;
+
+    private void OnLevelWasLoaded(int level)
+    {
+        CollectedDiceText = GameObject.Find("DiceCollectedCounter").GetComponent<TMP_Text>();
+    }
+
+
     public void AddCollectableDice()
     {
         _amountCollectedDice++;
