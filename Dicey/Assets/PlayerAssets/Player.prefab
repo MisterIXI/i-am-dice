@@ -2705,51 +2705,15 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7177648855470827000}
-        m_TargetAssemblyTypeName: DiceController, Assembly-CSharp
-        m_MethodName: MoveDice
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 44c1adc8-beb1-41cb-a8b1-1777f6ed689c
     m_ActionName: Player/MoveDice[/XInputControllerWindows/leftStick,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow,/BEEF-46D/stick]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CameraControl, Assembly-CSharp
-        m_MethodName: RotateCamera
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: a3807f9d-0ffb-4283-8422-ae6e6aba775f
     m_ActionName: Player/Look[/XInputControllerWindows/rightStick,/Mouse/delta]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7177648855470827000}
-        m_TargetAssemblyTypeName: DiceController, Assembly-CSharp
-        m_MethodName: Jump
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 27bd8cfd-9344-4130-b6bf-8f148aad9c3b
     m_ActionName: Player/Fire[/XInputControllerWindows/rightTrigger,/Mouse/leftButton,/BEEF-46D/trigger]
   - m_PersistentCalls:
@@ -2793,51 +2757,15 @@ MonoBehaviour:
     m_ActionId: 573f67a3-4d74-473a-b391-2bb9dcafd9ab
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CameraControl, Assembly-CSharp
-        m_MethodName: ZoomCamera
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 82871717-d9c7-4af7-bcbe-68493d9f91fb
     m_ActionName: Player/CameraZoomOut[/XInputControllerWindows/leftTrigger]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7177648855470827000}
-        m_TargetAssemblyTypeName: DiceController, Assembly-CSharp
-        m_MethodName: ResetPosition
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 342e3d16-d618-4035-998f-9578d9e39779
     m_ActionName: Player/ResetPosition[/XInputControllerWindows/buttonNorth,/Keyboard/r]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7177648855470827000}
-        m_TargetAssemblyTypeName: DiceController, Assembly-CSharp
-        m_MethodName: SpawnDot
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: d6197ab5-f876-4906-8b30-bea08a1745e4
     m_ActionName: Player/DebugSpawn[/XInputControllerWindows/buttonEast]
   - m_PersistentCalls:
@@ -2845,19 +2773,7 @@ MonoBehaviour:
     m_ActionId: ecb6cf78-9a65-4365-8629-773e67106b43
     m_ActionName: Player/AbilityAction[/XInputControllerWindows/buttonWest,/Keyboard/e]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1247313882172061845}
-        m_TargetAssemblyTypeName: AbilitySelector, Assembly-CSharp
-        m_MethodName: CycleAbility
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 08c2eab1-866d-4f1f-9b6f-a84c9cfed7bf
     m_ActionName: Player/CycleAbilities[/Keyboard/tab,/XInputControllerWindows/leftShoulder]
   m_NeverAutoSwitchControlSchemes: 0
@@ -2926,11 +2842,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   JumpParticleGO: {fileID: 2900073107201928112, guid: a2654b38fa127ba499a7901f0deca346, type: 3}
   CurrentInput: {x: 0, y: 0}
-  JumpStrength: 800
+  JumpStrength: 1000
   Offset: 0.5
   BaseColor: {r: 0, g: 0, b: 0, a: 0}
   InfiniteJumpsEnabled: 0
   IsMovementLocked: 0
+  CayoteeTime: 0.5
+  _cameraControl: {fileID: 0}
 --- !u!114 &1247313882172061845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3039,8 +2957,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
+  m_LookAt: {fileID: 2914934823596031575}
+  m_Follow: {fileID: 6255216567767657773}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 5
@@ -3050,7 +2968,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 2.1480837, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

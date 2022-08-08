@@ -16,7 +16,7 @@ public class DiceController : MonoBehaviour
     [HideInInspector]
     public Vector2 CurrentInput;
     Rigidbody _rb;
-    public float JumpStrength = 800;
+    public float JumpStrength = 1000;
     public float Offset = 0.5f;
     public Color BaseColor;
     private bool _isJumping = false;
@@ -31,7 +31,10 @@ public class DiceController : MonoBehaviour
     [HideInInspector]
     public bool IsMovementLocked = false;
     private List<IControllable> _controllables;
-
+    [HideInInspector]
+    public bool GroundState { get; private set; }
+    private float _timeSinceLastJump = 0;
+    public float CayoteeTime = 0.3f;
     [SerializeField]
     private CameraControl _cameraControl;
     private PlayerInput _playerInput;
@@ -197,8 +200,9 @@ public class DiceController : MonoBehaviour
                             jumpEffect.transform.position = hit.point;
                             Destroy(jumpEffect, 2);
                         }
+                        _rb.velocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z);
                         _rb.AddForce(new Vector3(0, JumpStrength, 0));
-                        _rb.AddTorque(new Vector3(Random.Range(1f, 2f) * JumpStrength, Random.Range(1f, 2f) * JumpStrength, Random.Range(1f, 2f) * JumpStrength));
+                        // _rb.AddTorque(new Vector3(Random.Range(1f, 2f) * JumpStrength, Random.Range(1f, 2f) * JumpStrength, Random.Range(1f, 2f) * JumpStrength));
                         StartCoroutine(JumpCooldown());
                     }
                     else if (context.action.phase == InputActionPhase.Canceled)
@@ -215,29 +219,41 @@ public class DiceController : MonoBehaviour
     }
 
     private string _debugString = "";
+    private float _floorCheckHeight = -1f;
+    private float _floorCheckRadius = 0.9f;
     public bool IsOnFloor()
     {
         bool isOnFloor = false;
-        isOnFloor = CheckFloorRaycast(transform.position, RAYCAST_DISTANCE_INNER);
-        isOnFloor = !isOnFloor ? CheckFloorRaycast(transform.position + new Vector3(Offset, 0, Offset), RAYCAST_DISTANCE_OUTER) : isOnFloor;
-        isOnFloor = !isOnFloor ? CheckFloorRaycast(transform.position + new Vector3(-Offset, 0, Offset), RAYCAST_DISTANCE_OUTER) : isOnFloor;
-        isOnFloor = !isOnFloor ? CheckFloorRaycast(transform.position + new Vector3(Offset, 0, -Offset), RAYCAST_DISTANCE_OUTER) : isOnFloor;
-        isOnFloor = !isOnFloor ? CheckFloorRaycast(transform.position + new Vector3(-Offset, 0, -Offset), RAYCAST_DISTANCE_OUTER) : isOnFloor;
+        Vector3 checkOrigin = transform.position;
+        checkOrigin.y += _floorCheckHeight;
+        isOnFloor = Physics.CheckSphere(checkOrigin, _floorCheckRadius, ~LayerMask.GetMask("Player", "DiceFace"));
+        // isOnFloor = CheckFloorRaycast(transform.position, RAYCAST_DISTANCE_INNER);
+        // isOnFloor = !isOnFloor ? CheckFloorRaycast(transform.position + new Vector3(Offset, 0, Offset), RAYCAST_DISTANCE_OUTER) : isOnFloor;
+        // isOnFloor = !isOnFloor ? CheckFloorRaycast(transform.position + new Vector3(-Offset, 0, Offset), RAYCAST_DISTANCE_OUTER) : isOnFloor;
+        // isOnFloor = !isOnFloor ? CheckFloorRaycast(transform.position + new Vector3(Offset, 0, -Offset), RAYCAST_DISTANCE_OUTER) : isOnFloor;
+        // isOnFloor = !isOnFloor ? CheckFloorRaycast(transform.position + new Vector3(-Offset, 0, -Offset), RAYCAST_DISTANCE_OUTER) : isOnFloor;
         return isOnFloor;
     }
     private void CheckForFloor()
     {
-        bool isOnFloor = IsOnFloor();
-        if (isOnFloor)
+        GroundState = IsOnFloor();
+        if (GroundState)
         {
-            _isJumping = false;
-            // _material2.color = Color.green;
+            _timeSinceLastJump = Time.time;
         }
         else
         {
-            _isJumping = true;
-            // _material2.color = Color.red;
+            if (Time.time - _timeSinceLastJump < CayoteeTime)
+            {
+                // Debug.Log("Cayotee: " + (Time.time - _timeSinceLastJump) + " " + CayoteeTime);
+                GroundState = true;
+            }
         }
+
+        if (GroundState)
+            _isJumping = false;
+        else
+            _isJumping = true;
     }
     public void SpawnDot(InputAction.CallbackContext context)
     {
@@ -290,30 +306,41 @@ public class DiceController : MonoBehaviour
         }
     }
     // gizmos
-    //void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.red;
-    //    // draw force arrow
-    //    // Vector2 viewDir = new Vector2(Camera.main.transform.forward.x, Camera.main.transform.forward.z).normalized;
-    //    // float angle = Mathf.Atan2(viewDir.y, viewDir.x) *Mathf.Rad2Deg;//Vector2.Angle(new Vector2(0, 1), viewDir);
-    //    // if(angle < 0){
-    //    //     GUI.color = Color.red;
-    //    //     angle = 360 + angle;
-    //    // }
-    //    // else{
-    //    //     GUI.color = Color.green;
-    //    // }
-    //    // Handles.Label(transform.position, "Angle: " + angle);
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        // draw force arrow
+        // Vector2 viewDir = new Vector2(Camera.main.transform.forward.x, Camera.main.transform.forward.z).normalized;
+        // float angle = Mathf.Atan2(viewDir.y, viewDir.x) *Mathf.Rad2Deg;//Vector2.Angle(new Vector2(0, 1), viewDir);
+        // if(angle < 0){
+        //     GUI.color = Color.red;
+        //     angle = 360 + angle;
+        // }
+        // else{
+        //     GUI.color = Color.green;
+        // }
+        // Handles.Label(transform.position, "Angle: " + angle);
+        if (GroundState)
+        {
+            Gizmos.color = Color.green;
+        }
+        else
+        {
+            Gizmos.color = Color.red;
+        }
+        Vector3 newPos = transform.position;
+        newPos.y += _floorCheckHeight;
+        Gizmos.DrawSphere(newPos, _floorCheckRadius);
 
-    //    Gizmos.DrawRay(transform.position, Vector3.down * RAYCAST_DISTANCE_INNER);
-    //    Gizmos.DrawRay(transform.position + new Vector3(Offset, 0, Offset), Vector3.down * RAYCAST_DISTANCE_OUTER);
-    //    Gizmos.DrawRay(transform.position + new Vector3(-Offset, 0, Offset), Vector3.down * RAYCAST_DISTANCE_OUTER);
-    //    Gizmos.DrawRay(transform.position + new Vector3(Offset, 0, -Offset), Vector3.down * RAYCAST_DISTANCE_OUTER);
-    //    Gizmos.DrawRay(transform.position + new Vector3(-Offset, 0, -Offset), Vector3.down * RAYCAST_DISTANCE_OUTER);
-    //    Handles.Label(transform.position, _debugString);
-    //    if (IsMoving())
-    //    {
-    //        Gizmos.DrawRay(transform.position, GetMovementVector());
-    //    }
-    //}
+        //    Gizmos.DrawRay(transform.position, Vector3.down * RAYCAST_DISTANCE_INNER);
+        //    Gizmos.DrawRay(transform.position + new Vector3(Offset, 0, Offset), Vector3.down * RAYCAST_DISTANCE_OUTER);
+        //    Gizmos.DrawRay(transform.position + new Vector3(-Offset, 0, Offset), Vector3.down * RAYCAST_DISTANCE_OUTER);
+        //    Gizmos.DrawRay(transform.position + new Vector3(Offset, 0, -Offset), Vector3.down * RAYCAST_DISTANCE_OUTER);
+        //    Gizmos.DrawRay(transform.position + new Vector3(-Offset, 0, -Offset), Vector3.down * RAYCAST_DISTANCE_OUTER);
+        //    Handles.Label(transform.position, _debugString);
+        //    if (IsMoving())
+        //    {
+        //        Gizmos.DrawRay(transform.position, GetMovementVector());
+        //    }
+    }
 }
