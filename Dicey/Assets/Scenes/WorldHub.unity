@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43670967, g: 0.4843123, b: 0.5645642, a: 1}
+  m_IndirectSpecularColor: {r: 0.43670994, g: 0.48431247, b: 0.56456476, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6646,15 +6646,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1286341028653968722, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -500.6
+      value: -502.46
       objectReference: {fileID: 0}
     - target: {fileID: 1286341028653968722, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -107.6
+      value: -101.19
       objectReference: {fileID: 0}
     - target: {fileID: 1286341028653968722, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -88
+      value: -87.83
       objectReference: {fileID: 0}
     - target: {fileID: 1286341028653968722, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6684,22 +6684,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3198212174270749110, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
-      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1942063186}
-    - target: {fileID: 3198212174270749110, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
-      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1942063186}
-    - target: {fileID: 3198212174270749110, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
-      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RotateCamera
-      objectReference: {fileID: 0}
-    - target: {fileID: 3198212174270749110, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
-      propertyPath: m_ActionEvents.Array.data[13].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ZoomCamera
-      objectReference: {fileID: 0}
     - target: {fileID: 4856988866383380216, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
       propertyPath: m_Name
       value: Player
@@ -6708,28 +6692,15 @@ PrefabInstance:
       propertyPath: IngameUI
       value: 
       objectReference: {fileID: 50937091}
-    - target: {fileID: 6944989750767729414, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
-      propertyPath: m_Follow
-      value: 
-      objectReference: {fileID: 1836518899}
-    - target: {fileID: 6944989750767729414, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
-      propertyPath: m_LookAt
-      value: 
-      objectReference: {fileID: 1836518900}
-    - target: {fileID: 8519469501985134892, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.9361824
+    - target: {fileID: 7177648855470827000, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
+      propertyPath: CayoteeTime
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
 --- !u!4 &1836518899 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6255216567767657773, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
-  m_PrefabInstance: {fileID: 1836518898}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1836518900 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2914934823596031575, guid: abda2bbb54186204caf9f4bf351132ba, type: 3}
   m_PrefabInstance: {fileID: 1836518898}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1836518901 stripped
@@ -6783,7 +6754,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 2.1480837, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
