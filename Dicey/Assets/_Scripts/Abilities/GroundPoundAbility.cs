@@ -112,7 +112,7 @@ public class GroundPoundAbility : Ability
                 {
                     rb.AddExplosionForce(ExplosionForce * scaleFactor, transform.position, ExplosionRadius * scaleFactor);
                 }
-                else if (hits[i].transform.parent.TryGetComponent(out Rigidbody rb2))
+                else if (hits[i].transform.parent != null && hits[i].transform.parent.TryGetComponent(out Rigidbody rb2))
                 {
                     rb2.AddExplosionForce(ExplosionForce * scaleFactor, transform.position, ExplosionRadius * scaleFactor);
                 }
