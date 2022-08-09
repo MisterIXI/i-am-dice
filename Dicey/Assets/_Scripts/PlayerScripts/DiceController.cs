@@ -202,7 +202,7 @@ public class DiceController : MonoBehaviour
                         }
                         _rb.velocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z);
                         _rb.AddForce(new Vector3(0, JumpStrength, 0));
-                        // _rb.AddTorque(new Vector3(Random.Range(1f, 2f) * JumpStrength, Random.Range(1f, 2f) * JumpStrength, Random.Range(1f, 2f) * JumpStrength));
+                        _rb.AddTorque(new Vector3(Random.Range(-2f, 2f) * JumpStrength, Random.Range(-2f, 2f) * JumpStrength, Random.Range(-2f, 2f) * JumpStrength));
                         StartCoroutine(JumpCooldown());
                     }
                     else if (context.action.phase == InputActionPhase.Canceled)
