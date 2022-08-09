@@ -9,7 +9,6 @@ public class FreezeObjectsAbility : Ability
 {
     public float FreezeTime = 10f;
     public float FreezeRadius = 10f;
-    private bool _isFreezing = false;
     public override void Select()
     {
         Debug.Log("FreezeObjectsAbility Selected");

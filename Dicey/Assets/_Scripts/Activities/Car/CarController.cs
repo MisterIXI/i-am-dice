@@ -6,7 +6,6 @@ using Cinemachine;
 
 public class CarController : MonoBehaviour, IControllable
 {
-    private bool _isActive = false;
     private bool _isBraking = false;
     private bool _isReversing = false;
     private enum CarState
@@ -23,7 +22,6 @@ public class CarController : MonoBehaviour, IControllable
     public float maxSteeringAngle; // maximum steer angle the wheel can have
     public float maxBrakeTorque;
     public Material HeadLightsMaterial, TailLightsMaterial;
-    private bool _hasTriggered = false;
     private Rigidbody _rb;
     private Transform _followTarget;
     private Transform _oldFollowTarget;

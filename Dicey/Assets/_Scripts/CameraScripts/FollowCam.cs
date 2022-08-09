@@ -19,7 +19,6 @@ public class FollowCam : MonoBehaviour
     private HashSet<GameObject> _affectedMat;
     bool _isCameraColliding;
     float _lastZoomedDistance;
-    bool _hasZoomedIn;
     // Start is called before the first frame update
     void Start()
     {
@@ -82,7 +81,7 @@ public class FollowCam : MonoBehaviour
         if (CameraDistance > 5f)
         {
             transform.position = Vector3.Lerp(transform.position, Target.position, ZoomSpeed * Time.deltaTime);
-            _hasZoomedIn = true;
+            // _hasZoomedIn = true;
         }
         CameraDistance = Vector3.Distance(transform.position, Target.position);
         

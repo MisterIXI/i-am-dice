@@ -7,10 +7,8 @@ using UnityEngine.SceneManagement;
 public class DiceController : MonoBehaviour
 {
     private float JUMP_COOLDOWN = 1f;
-    private float RAYCAST_DISTANCE_INNER = 2.3f;
-    private float RAYCAST_DISTANCE_OUTER = 1.5f;
-
     public GameObject JumpParticleGO;
+
 
     private Vector2 _movement;
     [HideInInspector]
@@ -218,7 +216,6 @@ public class DiceController : MonoBehaviour
         }
     }
 
-    private string _debugString = "";
     private float _floorCheckHeight = -1f;
     private float _floorCheckRadius = 0.9f;
     public bool IsOnFloor()
