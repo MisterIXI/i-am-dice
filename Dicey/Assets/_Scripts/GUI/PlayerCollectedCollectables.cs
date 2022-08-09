@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+ using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerCollectedCollectables : MonoBehaviour
 {
@@ -9,7 +8,12 @@ public class PlayerCollectedCollectables : MonoBehaviour
 
     int _amountCollectedDice;
 
-    private void OnLevelWasLoaded(int level)
+    private void Start()
+    {
+        SceneManager.activeSceneChanged += OnLevelLoad;
+    }
+
+    private void OnLevelLoad(Scene current, Scene next)
     {
         CollectedDiceText = GameObject.Find("DiceCollectedCounter").GetComponent<TMP_Text>();
     }
