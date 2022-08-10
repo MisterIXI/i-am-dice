@@ -32,18 +32,19 @@ public class DotCollection : MonoBehaviour
             DotAnimation dotAnimation = other.gameObject.GetComponent<DotAnimation>();
             dotAnimation.PlayCollectedAnimation();
             other.gameObject.GetComponent<SphereCollider>().enabled = false;
+            PlayerCollectedCollectables.AddCollectableDot();
             CollectDot();
         }
     }
 
     private void CollectDot()
     {
-        Debug.Log("Name: " + _materialsList[0].name);
+        //Debug.Log("Name: " + _materialsList[0].name);
         if (_dotCount < _materialsList.Count - 1)
         {
             DotEffects[_dotCount].enabled = true;
             _dotCount++;
-            Debug.Log("Dot collected: " + _dotCount);
+            //Debug.Log("Dot collected: " + _dotCount);
             if (_dotCount < _materialsList.Count)
             {
                 _materialsList[_dotCount].color = new Color(1f, 0.8431372549019608f, 0f);
