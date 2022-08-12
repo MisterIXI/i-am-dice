@@ -8,6 +8,8 @@ TagManager:
   - Dot
   - Submesh
   - CameraTarget
+  - MenuGUI
+  - IngameGUI
   layers:
   - Default
   - TransparentFX

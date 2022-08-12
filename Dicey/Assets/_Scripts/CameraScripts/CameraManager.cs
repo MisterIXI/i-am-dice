@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.Rendering.Universal;
+
+
 public class CameraManager : MonoBehaviour
 {
     CinemachineBrain _cinemachineBrain;
@@ -24,6 +27,9 @@ public class CameraManager : MonoBehaviour
         if (MainMenuCamera != null)
             MainMenuCamera.enabled = true;
         _cinemachineBrain = GetComponent<CinemachineBrain>();
+        UniversalAdditionalCameraData cameraData = GetComponent<Camera>().GetUniversalAdditionalCameraData();
+        cameraData.cameraStack.Add(ReferenceManager.INGAME_UI.GetComponent<Camera>());
+
         InitializePlayerCam();
     }
     public void InitializePlayerCam()

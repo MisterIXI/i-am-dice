@@ -6,14 +6,14 @@ using Cinemachine;
 public class PlayerManager : MonoBehaviour
 {
 
-    public static GameObject PLAYER_OBJECT;
-    public static CinemachineVirtualCamera PLAYER_CAMERA;
-    public static Transform PLAYER_TARGET;
-    private void Start()
-    {
-        PLAYER_OBJECT = DiceController.PLAYER;
-        PLAYER_CAMERA = PLAYER_OBJECT.GetComponentInChildren<CinemachineVirtualCamera>();
-        PLAYER_TARGET = PLAYER_OBJECT.GetComponentInChildren<FollowTarget>().transform;
+    public GameObject FollowTarget;
+    public GameObject Dice;
+    public GameObject PlayerCamera;
+
+    public void InitManager(){
+        FollowTarget = GetComponentInChildren<FollowTarget>().gameObject;
+        Dice = GetComponentInChildren<DiceController>().gameObject;
+        PlayerCamera = GetComponentInChildren<CinemachineVirtualCamera>().gameObject;
         DontDestroyOnLoad(gameObject);
     }
 }
