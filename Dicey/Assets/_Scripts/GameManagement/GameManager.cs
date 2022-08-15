@@ -10,6 +10,5 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Time.timeScale = Timescale;
-        FindObjectOfType<IngameUI>().StartStopwatch();
     }
 }

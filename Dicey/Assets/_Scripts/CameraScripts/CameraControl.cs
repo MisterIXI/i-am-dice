@@ -9,9 +9,10 @@ public class CameraControl : MonoBehaviour
     private float _cameraZoom = 0;
     public float Speed = 10;
     private Vector2 _directionChange;
-    public CinemachineVirtualCamera VirtualCamera;
+    private CinemachineVirtualCamera _virtualCamera;
     private Cinemachine3rdPersonFollow _followCam;
     public LayerMask IgnoreLayer;
+    [HideInInspector]
     public Transform Target;
     private HashSet<GameObject> _affectedMat;
     private DiceController _diceController;
@@ -21,8 +22,8 @@ public class CameraControl : MonoBehaviour
     public float LookDownMax = 20;
     void Start()
     {
-        VirtualCamera = ReferenceManager.PLAYER.GetComponentInChildren<CinemachineVirtualCamera>();
-        _followCam = VirtualCamera.GetCinemachineComponent<Cinemachine3rdPersonFollow>();
+        _virtualCamera = ReferenceManager.PLAYER.GetComponentInChildren<CinemachineVirtualCamera>();
+        _followCam = _virtualCamera.GetCinemachineComponent<Cinemachine3rdPersonFollow>();
         _cameraDistance = _followCam.CameraDistance;
         _affectedMat = new HashSet<GameObject>();
         _camRotation = transform.localRotation;

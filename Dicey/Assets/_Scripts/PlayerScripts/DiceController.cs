@@ -33,7 +33,6 @@ public class DiceController : MonoBehaviour
     public bool GroundState { get; private set; }
     private float _timeSinceLastJump = 0;
     public float CayoteeTime = 0.3f;
-    [SerializeField]
     private CameraControl _cameraControl;
     private PlayerInput _playerInput;
     private AbilitySelector _abilitySelector;
@@ -56,6 +55,7 @@ public class DiceController : MonoBehaviour
         _cameraControl = FindObjectOfType<CameraControl>();
         _abilitySelector = GetComponent<AbilitySelector>();
         InitializePlayerInputSystem(true);
+        transform.parent.gameObject.GetComponent<PlayerManager>().InitManager();
         transform.parent.gameObject.SetActive(false);
     }
 
@@ -92,7 +92,7 @@ public class DiceController : MonoBehaviour
 
     private void LevelLoad(Scene oldScene, Scene newScene)
     {
-        _cameraControl = FindObjectOfType<CameraControl>();
+        _cameraControl = ReferenceManager.CAMERA_MANAGER.GetComponent<CameraControl>();
         InitializePlayerInputSystem(false);
         Debug.Log("Level loaded");
     }

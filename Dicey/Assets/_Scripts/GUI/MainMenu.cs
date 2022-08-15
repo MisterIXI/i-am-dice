@@ -5,19 +5,24 @@ using Cinemachine;
 
 public class MainMenu : MonoBehaviour
 {
-    public CameraManager CameraManager;
+    private CameraManager _cameraManager;
     public float rotationSpeed;
-    public GameObject player;
+    private GameObject _player;
     public GameObject mainMenuPanel;
     public GameObject creditsPanel;
-    public CinemachineVirtualCamera MainMenuCamera;
-    public CinemachineVirtualCamera PlayerCamera;
-    public IngameUI IngameUI;
+    private CinemachineVirtualCamera _mainMenuCamera;
+    private CinemachineVirtualCamera _playerCamera;
+    private IngameUI _ingameUI;
 
     public bool DebugSkipMenu = false;
 
     void Start()
     {
+        _cameraManager = ReferenceManager.CAMERA_MANAGER.GetComponent<CameraManager>();
+        _player = ReferenceManager.PLAYER;
+        _mainMenuCamera = GetComponentInChildren<CinemachineVirtualCamera>();
+        _playerCamera = _player.GetComponentInChildren<CinemachineVirtualCamera>();
+        _ingameUI = ReferenceManager.INGAME_UI.GetComponentInChildren<IngameUI>();
         if (DebugSkipMenu)
         {
             StartCoroutine(DelayedAutoStart());
@@ -26,17 +31,19 @@ public class MainMenu : MonoBehaviour
     
     void Update()
     {
-        MainMenuCamera.transform.RotateAround(MainMenuCamera.transform.position, Vector3.up, rotationSpeed * Time.deltaTime);
+        if(_mainMenuCamera != null)
+                _mainMenuCamera.transform.RotateAround(_mainMenuCamera.transform.position, Vector3.up, rotationSpeed * Time.deltaTime);
     }
 
 
     public void StartGame()
     {
-
-        IngameUI.TriggerStopwatch();
+        _ingameUI.TriggerStopwatch();
         mainMenuPanel.SetActive(false);
-        CameraManager.EnableCamera(PlayerCamera);
-        player.SetActive(true);
+        _cameraManager.EnableCamera(_playerCamera);
+        _player.SetActive(true);
+        if(ReferenceManager.INGAME_UI != null)
+            ReferenceManager.INGAME_UI.GetComponentInChildren<IngameUI>().StartStopwatch();
     }
 
     public void OpenOptionsMenu()

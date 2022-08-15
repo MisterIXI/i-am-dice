@@ -5,7 +5,7 @@ using UnityEngine;
 public class DotCollection : MonoBehaviour
 {
 
-    public IngameUI IngameUI;
+    private IngameUI _ingameUI;
     public DotSpot[] DotEffects;
 
     private int _dotCount = 0;
@@ -14,6 +14,7 @@ public class DotCollection : MonoBehaviour
 
     public void Start()
     {
+        _ingameUI = ReferenceManager.INGAME_UI.GetComponentInChildren<IngameUI>();
         _materials = GetComponent<MeshRenderer>().materials;
         _materialsList = new List<Material>(_materials);
         _materialsList.Sort((x, y) => x.name.CompareTo(y.name));
@@ -54,7 +55,7 @@ public class DotCollection : MonoBehaviour
             if (_dotCount == _materialsList.Count - 1)
             {
                 Debug.Log("You win!");
-                IngameUI.StopStopwatch();
+                _ingameUI.StopStopwatch();
                 _materialsList[0].color = new Color(0.709803921f, 0.6078431372f, 0.05098039f);
                 _materialsList[0].SetFloat("_Metallic", 1f);
                 GetComponent<DiceController>().InfiniteJumpsEnabled = true;

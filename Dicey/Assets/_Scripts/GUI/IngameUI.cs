@@ -13,6 +13,7 @@ public class IngameUI : MonoBehaviour
     bool _isPlaying;
     Stopwatch _stopwatch;
 
+    public 
     bool _isStopwatchStarted;
     bool once;
     private void Start()

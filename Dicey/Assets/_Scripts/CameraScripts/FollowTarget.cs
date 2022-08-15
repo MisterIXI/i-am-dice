@@ -5,7 +5,6 @@ using UnityEngine;
 public class FollowTarget : MonoBehaviour
 {
     public Transform Target;
-
     // Update is called once per frame
     void Update()
     {

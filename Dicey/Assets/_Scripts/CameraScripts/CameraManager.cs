@@ -7,9 +7,9 @@ using UnityEngine.Rendering.Universal;
 
 public class CameraManager : MonoBehaviour
 {
-    CinemachineBrain _cinemachineBrain;
-    public CinemachineVirtualCamera MainMenuCamera;
-    public CinemachineVirtualCamera PlayerCamera;
+    private CinemachineBrain _cinemachineBrain;
+    private CinemachineVirtualCamera _mainMenuCamera;
+    private CinemachineVirtualCamera _playerCamera;
     public CinemachineVirtualCamera[] Cameras;
 
     public bool IsSceneLevel;
@@ -18,14 +18,16 @@ public class CameraManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _mainMenuCamera = ReferenceManager.MENU_CANVAS.GetComponentInChildren<CinemachineVirtualCamera>();
+        _playerCamera = ReferenceManager.PLAYER.GetComponentInChildren<CinemachineVirtualCamera>();
         _cameraSet = new HashSet<CinemachineVirtualCamera>();
         cameraManager = GetComponent<CameraManager>();
         foreach (CinemachineVirtualCamera camera in Cameras)
         {
             camera.enabled = false;
         }
-        if (MainMenuCamera != null)
-            MainMenuCamera.enabled = true;
+        if (_mainMenuCamera != null)
+            _mainMenuCamera.enabled = true;
         _cinemachineBrain = GetComponent<CinemachineBrain>();
         UniversalAdditionalCameraData cameraData = GetComponent<Camera>().GetUniversalAdditionalCameraData();
         cameraData.cameraStack.Add(ReferenceManager.INGAME_UI.GetComponent<Camera>());
@@ -34,8 +36,8 @@ public class CameraManager : MonoBehaviour
     }
     public void InitializePlayerCam()
     {
-        if (PlayerCamera == null)
-            PlayerCamera = DiceController.PLAYER.GetComponentInChildren<CinemachineVirtualCamera>();
+        if (_playerCamera == null)
+            _playerCamera = DiceController.PLAYER.GetComponentInChildren<CinemachineVirtualCamera>();
     }
 
     public void EnableCamera(CinemachineVirtualCamera camera)
@@ -64,7 +66,7 @@ public class CameraManager : MonoBehaviour
         {
             _camera.enabled = false;
         }
-        PlayerCamera.enabled = true;
+        _playerCamera.enabled = true;
     }
 
     public CinemachineBrain GetCinemachineBrain()

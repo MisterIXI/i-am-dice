@@ -35,7 +35,7 @@ public class CarController : MonoBehaviour, IControllable
         // expected first child of car to be the trigger zone
         _triggerZone = transform.GetComponentInChildren<CarTriggerZone>().gameObject.GetComponent<Collider>();
         _followTarget = transform.Find("CarFollowTarget");
-        _cameraControl = DiceController.PLAYER.GetComponentInChildren<CameraControl>();
+        _cameraControl = ReferenceManager.CAMERA_MANAGER.GetComponent<CameraControl>();
         _cmVcam = DiceController.PLAYER.GetComponentInChildren<CinemachineVirtualCamera>();
     }
 

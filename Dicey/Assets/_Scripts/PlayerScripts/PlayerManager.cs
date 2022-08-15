@@ -5,12 +5,15 @@ using Cinemachine;
 
 public class PlayerManager : MonoBehaviour
 {
+    [HideInInspector]
+    public GameObject FollowTarget { get; private set; }
+    [HideInInspector]
+    public GameObject Dice { get; private set; }
+    [HideInInspector]
+    public GameObject PlayerCamera { get; private set; }
 
-    public GameObject FollowTarget;
-    public GameObject Dice;
-    public GameObject PlayerCamera;
-
-    public void InitManager(){
+    public void InitManager()
+    {
         FollowTarget = GetComponentInChildren<FollowTarget>().gameObject;
         Dice = GetComponentInChildren<DiceController>().gameObject;
         PlayerCamera = GetComponentInChildren<CinemachineVirtualCamera>().gameObject;

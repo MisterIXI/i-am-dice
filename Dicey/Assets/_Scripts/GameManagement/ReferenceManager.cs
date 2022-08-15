@@ -55,8 +55,7 @@ public class ReferenceManager : MonoBehaviour
             MENU_CANVAS = GameObject.FindObjectOfType<MainMenu>().transform.parent.gameObject;
 
         // MENU_CANVAS.GetComponentInChildren<MainMenu>().DebugSkipMenu = SkipMenu;
-        MENU_CANVAS.transform.GetChild(0).GetComponent<MainMenu>().DebugSkipMenu = SkipMenu;
-        PLAYER.GetComponent<PlayerManager>().InitManager();
+        MENU_CANVAS.transform.GetComponentInChildren<MainMenu>().DebugSkipMenu = SkipMenu;
     }
     private void Start()
     {
