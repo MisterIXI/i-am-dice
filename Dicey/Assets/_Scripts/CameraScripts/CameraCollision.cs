@@ -18,7 +18,7 @@ public class CameraCollision : MonoBehaviour
         {
             ZoomToPlayer();
         }
-        else if(IsCameraColliding())
+        else if (IsCameraColliding())
         {
             ZoomToPlayer();
         }
@@ -31,12 +31,12 @@ public class CameraCollision : MonoBehaviour
         RaycastHit hit;
         Debug.DrawRay(transform.position, PlayerTarget.position - transform.position, Color.red);
         //check for collision between camera and player
-        return (Physics.Raycast(transform.position, (PlayerTarget.position - transform.position), out hit, IgnoreCollision) && hit.collider.gameObject.layer == 8 );
+        return (Physics.Raycast(transform.position, (PlayerTarget.position - transform.position), out hit, IgnoreCollision) && hit.collider.gameObject.layer == 8);
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.gameObject.layer == 8)
+        if (other.gameObject.layer == 8)
             _isCameraColliding = true;
     }
 
