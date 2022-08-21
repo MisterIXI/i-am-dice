@@ -76,8 +76,9 @@ public class DiceController : MonoBehaviour
             HelperFunctions.UnsubscribeFromEvent(actionMap, "ZoomCamera", _cameraControl.ZoomCamera);
             HelperFunctions.UnsubscribeFromEvent(actionMap, "ResetPosition", ResetPosition);
             HelperFunctions.UnsubscribeFromEvent(actionMap, "AbilityAction", TriggerAbility);
+            HelperFunctions.UnsubscribeFromEvent(actionMap, "PauseGame", TogglePause);
 
-            if (GameManager.DEBUG_ENABLED)
+            if (ReferenceManager.REFERENCE_MANAGER.GetComponent<ReferenceManager>().DebugMode)
                 HelperFunctions.UnsubscribeFromEvent(actionMap, "DebugSpawn", SpawnDot);
         }
         HelperFunctions.SubsribeToEvent(actionMap, "MoveDice", MoveDice);
@@ -86,7 +87,8 @@ public class DiceController : MonoBehaviour
         HelperFunctions.SubsribeToEvent(actionMap, "ZoomCamera", _cameraControl.ZoomCamera);
         HelperFunctions.SubsribeToEvent(actionMap, "ResetPosition", ResetPosition);
         HelperFunctions.SubsribeToEvent(actionMap, "AbilityAction", TriggerAbility);
-        if (GameManager.DEBUG_ENABLED)
+        HelperFunctions.SubsribeToEvent(actionMap, "PauseGame", TogglePause);
+        if (ReferenceManager.REFERENCE_MANAGER.GetComponent<ReferenceManager>().DebugMode)
             HelperFunctions.SubsribeToEvent(actionMap, "DebugSpawn", SpawnDot);
     }
 
@@ -260,6 +262,31 @@ public class DiceController : MonoBehaviour
         }
     }
 
+    private bool _isPaused;
+
+    public void TogglePauseInternal()
+    {
+        if (_isPaused)
+        {
+            //unpause
+            ReferenceManager.PAUSE_UI.SetActive(false);
+            Time.timeScale = GameManager.GAME_MANAGER.GetComponent<GameManager>().Timescale;
+            _isPaused = false;
+        }
+        else
+        {
+            Time.timeScale = 0;
+            ReferenceManager.PAUSE_UI.SetActive(true);
+            _isPaused = true;
+        }
+    }
+    public void TogglePause(InputAction.CallbackContext context)
+    {
+        if (context.action.phase == InputActionPhase.Performed)
+        {
+            TogglePauseInternal();
+        }
+    }
     public void TriggerAbility(InputAction.CallbackContext context)
     {
         if (context.action.phase == InputActionPhase.Performed)

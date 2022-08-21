@@ -67,6 +67,7 @@ MonoBehaviour:
   MenuCanvasPrefab: {fileID: 6588405857644036465, guid: b599afdf348f09d408fc4eecb0c59ce0, type: 3}
   IngameUIPrefab: {fileID: 4222078968807022980, guid: 3fdbfd3e5b5745142aef51b037cf9fe9, type: 3}
   CameraManagerPrefab: {fileID: 4592129278002094380, guid: 00968abe9aad64648aab6e67f40aeae2, type: 3}
+  PauseUIPrefab: {fileID: 7173055249904042, guid: 2c451a3580047fc4ebfcad430c040600, type: 3}
   SpawnPlayer: 1
   SpawnCameraManager: 1
   SpawnMenuCanvas: 1

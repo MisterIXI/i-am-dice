@@ -5,8 +5,12 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public float Timescale;
-    // Start is called before the first frame update
-    public const bool DEBUG_ENABLED = true;
+    public static GameObject GAME_MANAGER;
+
+    void Awake(){
+        GAME_MANAGER = this.gameObject;
+    }
+
     void Start()
     {
         Time.timeScale = Timescale;

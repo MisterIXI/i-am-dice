@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
-
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     private CameraManager _cameraManager;
@@ -13,6 +14,8 @@ public class MainMenu : MonoBehaviour
     private CinemachineVirtualCamera _mainMenuCamera;
     private CinemachineVirtualCamera _playerCamera;
     private IngameUI _ingameUI;
+    public GameObject InitialButtonSelection;
+    public GameObject debug;
 
     public bool DebugSkipMenu = false;
 
@@ -28,13 +31,18 @@ public class MainMenu : MonoBehaviour
             StartCoroutine(DelayedAutoStart());
         }
     }
-    
+
     void Update()
     {
-        if(_mainMenuCamera != null)
-                _mainMenuCamera.transform.RotateAround(_mainMenuCamera.transform.position, Vector3.up, rotationSpeed * Time.deltaTime);
+        if (_mainMenuCamera != null)
+            _mainMenuCamera.transform.RotateAround(_mainMenuCamera.transform.position, Vector3.up, rotationSpeed * Time.deltaTime);
+        debug = GameObject.FindObjectOfType<EventSystem>().currentSelectedGameObject;
     }
-
+    private void OnEnable()
+    {
+        // set first button as selected
+        GameObject.FindObjectOfType<EventSystem>().SetSelectedGameObject(InitialButtonSelection);
+    }
 
     public void StartGame()
     {
@@ -42,7 +50,7 @@ public class MainMenu : MonoBehaviour
         mainMenuPanel.SetActive(false);
         _cameraManager.EnableCamera(_playerCamera);
         _player.SetActive(true);
-        if(ReferenceManager.INGAME_UI != null)
+        if (ReferenceManager.INGAME_UI != null)
             ReferenceManager.INGAME_UI.GetComponentInChildren<IngameUI>().StartStopwatch();
     }
 
