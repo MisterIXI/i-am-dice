@@ -20,7 +20,7 @@ public class MainMenu : MonoBehaviour
     {
         _cameraManager = ReferenceManager.CAMERA_MANAGER.GetComponent<CameraManager>();
         _player = ReferenceManager.PLAYER;
-        _mainMenuCamera = GetComponentInChildren<CinemachineVirtualCamera>();
+        _mainMenuCamera = transform.parent.GetComponentInChildren<CinemachineVirtualCamera>();
         _playerCamera = _player.GetComponentInChildren<CinemachineVirtualCamera>();
         _ingameUI = ReferenceManager.INGAME_UI.GetComponentInChildren<IngameUI>();
         if (DebugSkipMenu)

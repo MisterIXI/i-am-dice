@@ -335,6 +335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StopwatchText: {fileID: 4222078968430072780}
+  _isStopwatchStarted: 0
 --- !u!1 &4222078968430072782
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,6 +483,7 @@ GameObject:
   - component: {fileID: 4222078968807022981}
   - component: {fileID: 4222078968807022986}
   - component: {fileID: 4222078968807022987}
+  - component: {fileID: 7216534737379792703}
   m_Layer: 0
   m_Name: IngameGUI
   m_TagString: Untagged
@@ -497,7 +499,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4222078968807022980}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 122.3, y: 0, z: -204.1}
+  m_LocalPosition: {x: 10000, y: -10000, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -581,6 +583,19 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &7216534737379792703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4222078968807022980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2475cb5531133e408df77c40e20511a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <DiceCollectedCounter>k__BackingField: {fileID: 4222078969135547445}
 --- !u!1 &4222078969135547445
 GameObject:
   m_ObjectHideFlags: 0

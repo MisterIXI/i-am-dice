@@ -11,6 +11,7 @@ public class PlayerCollectedCollectables : MonoBehaviour
 
     private void Start()
     {
+        _collectedDiceText = ReferenceManager.INGAME_UI.GetComponent<IngameGUIReferences>().DiceCollectedCounter.GetComponent<TMP_Text>();
         SceneManager.activeSceneChanged += OnLevelLoad;
     }
 

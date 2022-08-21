@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class ReferenceManager : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class ReferenceManager : MonoBehaviour
     public static GameObject CAMERA_MANAGER { get; private set; }
     public static GameObject MENU_CANVAS { get; private set; }
     public static GameObject INGAME_UI { get; private set; }
+    [field: SerializeField]
+    public GameObject PLAYER_SPAWN_POINT { get; private set; }
+    [field: SerializeField]
+    public GameObject MENU_CAMERA_START { get; private set; }
 
     public GameObject PlayerPrefab;
     public GameObject MenuCanvasPrefab;
@@ -22,13 +27,15 @@ public class ReferenceManager : MonoBehaviour
 
     private void Awake()
     {
+        //disable placeholder camera
+        GetComponentInChildren<Camera>().gameObject.SetActive(false);
         // Reference manager
         REFERENCE_MANAGER = gameObject;
         // Player
         if (SpawnPlayer)
         {
             PLAYER = Instantiate(PlayerPrefab);
-            PLAYER.transform.position = transform.position;
+            PLAYER.transform.position = PLAYER_SPAWN_POINT.transform.position;
         }
         else
         {
@@ -39,6 +46,7 @@ public class ReferenceManager : MonoBehaviour
                 PLAYER = DiceController.PLAYER;
             }
         }
+        PLAYER_SPAWN_POINT.GetComponent<MeshRenderer>().enabled = false;
         if (SpawnCameraManager)
             CAMERA_MANAGER = Instantiate(CameraManagerPrefab);
         else
@@ -50,7 +58,10 @@ public class ReferenceManager : MonoBehaviour
             INGAME_UI = GameObject.FindObjectOfType<IngameUI>().transform.parent.parent.gameObject;
 
         if (SpawnMenuCanvas)
+        {
             MENU_CANVAS = Instantiate(MenuCanvasPrefab);
+            MENU_CANVAS.GetComponentInChildren<CinemachineVirtualCamera>().gameObject.transform.position = MENU_CAMERA_START.transform.position;
+        }
         else
             MENU_CANVAS = GameObject.FindObjectOfType<MainMenu>().transform.parent.gameObject;
 

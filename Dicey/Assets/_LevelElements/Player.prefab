@@ -2805,7 +2805,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85dcd87686647c94c91111f68a70e8df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IngameUI: {fileID: 0}
   DotEffects:
   - {fileID: 1247313882862975820}
   - {fileID: 1247313883963589045}
@@ -2848,7 +2847,6 @@ MonoBehaviour:
   InfiniteJumpsEnabled: 0
   IsMovementLocked: 0
   CayoteeTime: 0.5
-  _cameraControl: {fileID: 0}
 --- !u!114 &1247313882172061845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3088,6 +3086,7 @@ GameObject:
   - component: {fileID: 1286341028653968722}
   - component: {fileID: 1247313882872937622}
   - component: {fileID: 3611270480285459884}
+  - component: {fileID: 6782587869251961654}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3125,7 +3124,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e79e0f7490fe5bc45a53fe3145e151dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CollectedDiceText: {fileID: 0}
 --- !u!114 &3611270480285459884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3138,6 +3136,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92542c8ed5e5ef3479a3a98deb964063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6782587869251961654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4856988866383380216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f96bf919d34ac384dbabf2a49a38ce00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <FollowTarget>k__BackingField: {fileID: 2690454233042705533}
+  <Dice>k__BackingField: {fileID: 2537845922837767405}
+  <PlayerCamera>k__BackingField: {fileID: 2868649455487456056}
 --- !u!1 &5122708031028866563
 GameObject:
   m_ObjectHideFlags: 0

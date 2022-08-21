@@ -5076,6 +5076,7 @@ GameObject:
   - component: {fileID: 6588405857644036466}
   - component: {fileID: 6588405857644036467}
   - component: {fileID: 6588405857644036464}
+  - component: {fileID: 8301684338301075365}
   m_Layer: 5
   m_Name: MenuGUI
   m_TagString: Untagged
@@ -5167,6 +5168,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &8301684338301075365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6588405857644036465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a836a7090d03b94ea081c1092754e7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6588405857666576780
 GameObject:
   m_ObjectHideFlags: 0
@@ -5328,8 +5341,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8499350039926600653}
   m_LocalRotation: {x: -0, y: -0.5563187, z: -0, w: -0.83096904}
-  m_LocalPosition: {x: -2250.874, y: -739.64514, z: -60.801853}
-  m_LocalScale: {x: 2.0650094, y: 2.0650096, z: 2.0650094}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1257647553487089378}
