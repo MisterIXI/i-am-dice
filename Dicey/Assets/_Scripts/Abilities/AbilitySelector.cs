@@ -15,6 +15,7 @@ public class AbilitySelector : MonoBehaviour
         InitializeAbilities();
         // Select first ability
         SelectAbility(_abilityIndex);
+        _playerInput.transform.parent.gameObject.AddComponent<RadialMenu>();
     }
 
     private void InitializeAbilities()

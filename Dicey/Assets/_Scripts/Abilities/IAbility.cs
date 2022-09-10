@@ -14,7 +14,8 @@ public interface IAbility
 
 public abstract class Ability : MonoBehaviour, IAbility
 {
-    public MonoBehaviour MonoBehaviour(){
+    public MonoBehaviour MonoBehaviour()
+    {
         return this;
     }
     protected bool _isOnCoolDown = false;
@@ -23,6 +24,8 @@ public abstract class Ability : MonoBehaviour, IAbility
         yield return new WaitForSeconds(coolDownTime);
         _isOnCoolDown = false;
     }
+
+    public bool IsUnlocked = true;
     public abstract void Select();
     public abstract void Deselect();
     public abstract void AcquireAnimation();
